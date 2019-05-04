@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
 
-namespace Kent.Boogaart.MVVM
+namespace SunamoMvvm
 {
 	/// <summary>
 	/// A base class for command implementations.

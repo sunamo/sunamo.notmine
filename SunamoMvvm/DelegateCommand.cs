@@ -2,7 +2,7 @@
 using System;
 
 
-namespace Kent.Boogaart.MVVM
+namespace SunamoMvvm
 {
 	/// <summary>
 	/// A command that executes delegates to determine whether the command can execute, and to execute the command.

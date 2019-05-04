@@ -5,10 +5,14 @@ using System.Windows;
 using System.Windows.Threading;
 
 
-namespace Kent.Boogaart.MVVM
+namespace SunamoMvvm
 {
 	/// <summary>
-	/// A base class for all view models.
+    /// Model-View-ViewModel
+    /// 
+    /// Implement controller which will notify for change property value
+    /// 
+	/// A base class for all view models, like Item, ItemsViewModel, ItemViewModel in SunamoMvvm.
 	/// </summary>
 	/// <remarks>
 	/// <para>
