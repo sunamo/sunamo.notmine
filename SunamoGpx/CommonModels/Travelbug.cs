@@ -16,7 +16,7 @@ namespace csGeoTools.CommonModels
 
         public Travelbug() { }
 
-        internal static List<Travelbug> Parse(Parsers.gpx.gc101.Travelbug[] bugs)
+        public static List<Travelbug> Parse(Parsers.gpx.gc101.Travelbug[] bugs)
         {
             List<Travelbug> travelbugs = new List<Travelbug>();
             if (bugs == null || bugs.Count() == 0) return travelbugs;

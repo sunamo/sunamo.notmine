@@ -24,7 +24,7 @@ namespace csGeoTools.CommonModels
 
         public Log() { }
 
-        internal static List<Log> Parse(Parsers.gpx.gc101.Log[] logs)
+        public static List<Log> Parse(Parsers.gpx.gc101.Log[] logs)
         {
             List<Log> parsedLogs = new List<Log>();
             if (logs == null || logs.Count() == 0) return parsedLogs;

@@ -10,7 +10,7 @@ using System.Text;
 
 namespace csGeoTools
 {
-    internal static class FNVHasher
+    public static class FNVHasher
     {
         private static readonly int offsetBasis = unchecked((int)2166136261);
         private static readonly int prime = 16777619;
@@ -34,7 +34,7 @@ namespace csGeoTools
         [DataMember]
         public virtual Ellipsoid ReferenceEllipsoid { get; protected set; }
 
-        internal GeoPoint() { }
+        public GeoPoint() { }
         
         private GeoPoint(Double latitude, Double longitude, Ellipsoid referenceEllipsoid)
         {

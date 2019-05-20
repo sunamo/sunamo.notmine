@@ -20,7 +20,7 @@ namespace csGeoTools.CommonModels
 
         public Waypoint() { }
 
-        internal static List<Waypoint> Parse(Parsers.gpx.gc101.LogWaypoint[] logWaypoints)
+        public static List<Waypoint> Parse(Parsers.gpx.gc101.LogWaypoint[] logWaypoints)
         {
             List<Waypoint> waypoints = new List<Waypoint>();
             if (logWaypoints == null || logWaypoints.Count() == 0) return waypoints;
