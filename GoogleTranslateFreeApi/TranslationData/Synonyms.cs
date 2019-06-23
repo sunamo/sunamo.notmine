@@ -10,16 +10,16 @@ namespace GoogleTranslateFreeApi.TranslationData
 	[DataContract]
 	public sealed class Synonyms: TranslationInfoParser
 	{
-		[DataMember] public string[] Noun { get; internal set; }
-		[DataMember] public string[] Exclamation { get; internal set; }
-		[DataMember] public string[] Adjective { get; internal set; }
-		[DataMember] public string[] Verb { get; internal set; }
-		[DataMember] public string[] Adverb { get; internal set; }
-		[DataMember] public string[] Preposition { get; internal set; }
-		[DataMember] public string[] Conjunction { get; internal set; }
-		[DataMember] public string[] Pronoun { get; internal set; }
+		[DataMember] public string[] Noun { get; public set; }
+		[DataMember] public string[] Exclamation { get; public set; }
+		[DataMember] public string[] Adjective { get; public set; }
+		[DataMember] public string[] Verb { get; public set; }
+		[DataMember] public string[] Adverb { get; public set; }
+		[DataMember] public string[] Preposition { get; public set; }
+		[DataMember] public string[] Conjunction { get; public set; }
+		[DataMember] public string[] Pronoun { get; public set; }
 
-		internal Synonyms() { }
+		public Synonyms() { }
 
 		public override string ToString()
 		{
@@ -46,7 +46,7 @@ namespace GoogleTranslateFreeApi.TranslationData
 				: $"{partOfSpeechName}: {string.Join(", ", partOfSpeechData)} \n";
 		}
 
-		internal override bool TryParseMemberAndAdd(string memberName, JToken parseInformation)
+		public override bool TryParseMemberAndAdd(string memberName, JToken parseInformation)
 		{
 			PropertyInfo property = this.GetType().GetRuntimeProperty(memberName.ToCamelCase());
 			if (property == null)
@@ -61,6 +61,6 @@ namespace GoogleTranslateFreeApi.TranslationData
 			return true;
 		}
 
-		internal override int ItemDataIndex => 1;
+		public override int ItemDataIndex => 1;
 	}
 }

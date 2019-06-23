@@ -5,12 +5,12 @@ namespace GoogleTranslateFreeApi.TranslationData
 {
   public abstract class TranslationInfoParser
   {
-    internal abstract bool TryParseMemberAndAdd(string memberName, JToken parseInformation);
-    internal abstract int ItemDataIndex { get; }
+    public abstract bool TryParseMemberAndAdd(string memberName, JToken parseInformation);
+    public abstract int ItemDataIndex { get; }
     ////////////////////////////////////////////////////////////////////////////////////////////
     //I've created a method, because the where: new() statement requires a public constructor///
     ////////////////////////////////////////////////////////////////////////////////////////////    
-    internal static T Create<T>() where T : TranslationInfoParser
+    public static T Create<T>() where T : TranslationInfoParser
     {
       Type type = typeof(T);
 

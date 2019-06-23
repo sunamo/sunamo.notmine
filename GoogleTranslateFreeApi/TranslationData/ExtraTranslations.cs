@@ -19,7 +19,7 @@ namespace GoogleTranslateFreeApi.TranslationData
 			[DataMember] public string Phrase { get; private set; }
 			[DataMember] public string[] PhraseTranslations { get; private set; }
 
-			internal ExtraTranslation(string phrase, string[] phraseTranslations)
+			public ExtraTranslation(string phrase, string[] phraseTranslations)
 			{
 				Phrase = phrase;
 				PhraseTranslations = phraseTranslations;
@@ -28,20 +28,20 @@ namespace GoogleTranslateFreeApi.TranslationData
 			public override string ToString() => $"{Phrase}: {String.Join(", ", PhraseTranslations)}";
 		}
 		
-		[DataMember] public ExtraTranslation[] Noun { get; internal set; }
-		[DataMember] public ExtraTranslation[] Verb { get; internal set; }
-		[DataMember] public ExtraTranslation[] Pronoun { get;  internal set; }
-		[DataMember] public ExtraTranslation[] Adverb { get; internal set; }
-		[DataMember] public ExtraTranslation[] AuxiliaryVerb { get; internal set; }
-		[DataMember] public ExtraTranslation[] Adjective { get; internal set; }
-		[DataMember] public ExtraTranslation[] Conjunction { get; internal set; }
-		[DataMember] public ExtraTranslation[] Preposition { get; internal set; }
-		[DataMember] public ExtraTranslation[] Interjection { get; internal set; }
-		[DataMember] public ExtraTranslation[] Suffix { get; internal set; }
-		[DataMember] public ExtraTranslation[] Prefix { get; internal set; }
-		[DataMember] public ExtraTranslation[] Abbreviation { get; internal set; }
-		[DataMember] public ExtraTranslation[] Particle { get; internal set; }
-		[DataMember] public ExtraTranslation[] Phrase { get; internal set; }
+		[DataMember] public ExtraTranslation[] Noun { get; public set; }
+		[DataMember] public ExtraTranslation[] Verb { get; public set; }
+		[DataMember] public ExtraTranslation[] Pronoun { get;  public set; }
+		[DataMember] public ExtraTranslation[] Adverb { get; public set; }
+		[DataMember] public ExtraTranslation[] AuxiliaryVerb { get; public set; }
+		[DataMember] public ExtraTranslation[] Adjective { get; public set; }
+		[DataMember] public ExtraTranslation[] Conjunction { get; public set; }
+		[DataMember] public ExtraTranslation[] Preposition { get; public set; }
+		[DataMember] public ExtraTranslation[] Interjection { get; public set; }
+		[DataMember] public ExtraTranslation[] Suffix { get; public set; }
+		[DataMember] public ExtraTranslation[] Prefix { get; public set; }
+		[DataMember] public ExtraTranslation[] Abbreviation { get; public set; }
+		[DataMember] public ExtraTranslation[] Particle { get; public set; }
+		[DataMember] public ExtraTranslation[] Phrase { get; public set; }
 		
 		public ExtraTranslations() { }
 
@@ -80,7 +80,7 @@ namespace GoogleTranslateFreeApi.TranslationData
 		}
 
 
-		internal override bool TryParseMemberAndAdd(string memberName, JToken parseInformation)
+		public override bool TryParseMemberAndAdd(string memberName, JToken parseInformation)
 		{
 			PropertyInfo property = this.GetType().GetRuntimeProperty(memberName.ToCamelCase());
 			if (property == null)
@@ -98,6 +98,6 @@ namespace GoogleTranslateFreeApi.TranslationData
 			return true;
 		}
 
-		internal override int ItemDataIndex => 2;
+		public override int ItemDataIndex => 2;
 	}
 }

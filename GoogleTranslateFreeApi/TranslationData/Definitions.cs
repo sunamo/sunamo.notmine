@@ -16,7 +16,7 @@ namespace GoogleTranslateFreeApi.TranslationData
 			[DataMember] public string Explanation { get; private set; }
 			[DataMember] public string Example { get; private set; }
 			
-			internal Definition(string explantion, string example)
+			public Definition(string explantion, string example)
 			{
 				Explanation = explantion;
 				Example = example;
@@ -25,20 +25,20 @@ namespace GoogleTranslateFreeApi.TranslationData
 			public override string ToString() => $"Explantion: {Explanation} Example: {Example}";
 		}
 
-		[DataMember] public Definition[] Noun { get; internal set; }
-		[DataMember] public Definition[] Verb { get; internal set; }
-		[DataMember] public Definition[] Exclamation { get; internal set; }
-		[DataMember] public Definition[] Adjective { get; internal set; }
-		[DataMember] public Definition[] Adverb { get; internal set; }
-		[DataMember] public Definition[] Abbreviation { get; internal set; }
-		[DataMember] public Definition[] Article { get; internal set; }
-		[DataMember] public Definition[] Preposition { get; internal set; }
-		[DataMember] public Definition[] Suffix { get; internal set; }
-		[DataMember] public Definition[] Conjunction { get; internal set; }
-		[DataMember] public Definition[] Pronoun { get; internal set; }
-		[DataMember] public Definition[] Prefix { get; internal set; }
-		[DataMember] public Definition[] Symbol { get; internal set; }
-		[DataMember] public Definition[] Contraction { get; internal set; }
+		[DataMember] public Definition[] Noun { get; public set; }
+		[DataMember] public Definition[] Verb { get; public set; }
+		[DataMember] public Definition[] Exclamation { get; public set; }
+		[DataMember] public Definition[] Adjective { get; public set; }
+		[DataMember] public Definition[] Adverb { get; public set; }
+		[DataMember] public Definition[] Abbreviation { get; public set; }
+		[DataMember] public Definition[] Article { get; public set; }
+		[DataMember] public Definition[] Preposition { get; public set; }
+		[DataMember] public Definition[] Suffix { get; public set; }
+		[DataMember] public Definition[] Conjunction { get; public set; }
+		[DataMember] public Definition[] Pronoun { get; public set; }
+		[DataMember] public Definition[] Prefix { get; public set; }
+		[DataMember] public Definition[] Symbol { get; public set; }
+		[DataMember] public Definition[] Contraction { get; public set; }
 
 
 		public override string ToString()
@@ -75,7 +75,7 @@ namespace GoogleTranslateFreeApi.TranslationData
 		}
 
 
-		internal override bool TryParseMemberAndAdd(string memberName, JToken parseInformation)
+		public override bool TryParseMemberAndAdd(string memberName, JToken parseInformation)
 		{
 			PropertyInfo property = this.GetType().GetRuntimeProperty(memberName.ToCamelCase());
 			if (property == null)
@@ -93,7 +93,7 @@ namespace GoogleTranslateFreeApi.TranslationData
 			return true;
 		}
 
-		internal override int ItemDataIndex => 1;
+		public override int ItemDataIndex => 1;
 	}
 
 }

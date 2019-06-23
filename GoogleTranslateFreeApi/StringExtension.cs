@@ -9,7 +9,7 @@ namespace GoogleTranslateFreeApi
 {
 	static class StringExtension
 	{
-		internal static string GetTextBetween(this string src, string from, string to, int startIndex = 0)
+		public static string GetTextBetween(this string src, string from, string to, int startIndex = 0)
 		{
 			if (src == null)
 				throw new ArgumentNullException(nameof(src));
@@ -33,7 +33,7 @@ namespace GoogleTranslateFreeApi
 		}
 
 
-		internal static string ToCamelCase(this string src)
+		public static string ToCamelCase(this string src)
 		{
 			string[] words = src.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 

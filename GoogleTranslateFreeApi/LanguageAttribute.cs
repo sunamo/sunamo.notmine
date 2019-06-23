@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace GoogleTranslateFreeApi
 {
 	[AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-	internal class LanguageAttribute: Attribute
+	public class LanguageAttribute: Attribute
 	{
 		public string Iso639 { get; }
 		public string FullName { get; }

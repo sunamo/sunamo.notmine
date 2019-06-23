@@ -13,31 +13,31 @@ namespace GoogleTranslateFreeApi
 	public class TranslationResult
 	{
 		[DataMember]
-		public string[] FragmentedTranslation { get; internal set; }
+		public string[] FragmentedTranslation { get; public set; }
 		
 		public string MergedTranslation => String.Concat(FragmentedTranslation);
 		
 		[DataMember]
-		public string OriginalText { get; internal set; }
+		public string OriginalText { get; public set; }
 		[DataMember]
-		public string TranslatedTextTranscription { get; internal set; }
+		public string TranslatedTextTranscription { get; public set; }
 		[DataMember]
-		public string OriginalTextTranscription { get; internal set; }
+		public string OriginalTextTranscription { get; public set; }
 		[DataMember]
-		public string[] SeeAlso { get; internal set; }
+		public string[] SeeAlso { get; public set; }
 		[DataMember]
-		public Language SourceLanguage { get; internal set; }
+		public Language SourceLanguage { get; public set; }
 		[DataMember]
-		public Language TargetLanguage { get; internal set; }
+		public Language TargetLanguage { get; public set; }
 		[DataMember]
-		public Synonyms Synonyms { get; internal set; }
+		public Synonyms Synonyms { get; public set; }
 		[DataMember]
-		public Corrections Corrections { get; internal set; }
+		public Corrections Corrections { get; public set; }
 		[DataMember]
-		public Definitions Definitions { get; internal set; }
+		public Definitions Definitions { get; public set; }
 		[DataMember]
-		public ExtraTranslations ExtraTranslations { get; internal set; }
+		public ExtraTranslations ExtraTranslations { get; public set; }
 
-		internal TranslationResult() { }
+		public TranslationResult() { }
 	}
 }
