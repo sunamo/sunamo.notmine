@@ -28,20 +28,20 @@ namespace GoogleTranslateFreeApi.TranslationData
 			public override string ToString() => $"{Phrase}: {String.Join(", ", PhraseTranslations)}";
 		}
 		
-		[DataMember] public ExtraTranslation[] Noun { get; public set; }
-		[DataMember] public ExtraTranslation[] Verb { get; public set; }
-		[DataMember] public ExtraTranslation[] Pronoun { get;  public set; }
-		[DataMember] public ExtraTranslation[] Adverb { get; public set; }
-		[DataMember] public ExtraTranslation[] AuxiliaryVerb { get; public set; }
-		[DataMember] public ExtraTranslation[] Adjective { get; public set; }
-		[DataMember] public ExtraTranslation[] Conjunction { get; public set; }
-		[DataMember] public ExtraTranslation[] Preposition { get; public set; }
-		[DataMember] public ExtraTranslation[] Interjection { get; public set; }
-		[DataMember] public ExtraTranslation[] Suffix { get; public set; }
-		[DataMember] public ExtraTranslation[] Prefix { get; public set; }
-		[DataMember] public ExtraTranslation[] Abbreviation { get; public set; }
-		[DataMember] public ExtraTranslation[] Particle { get; public set; }
-		[DataMember] public ExtraTranslation[] Phrase { get; public set; }
+		[DataMember] public ExtraTranslation[] Noun { get; set; }
+		[DataMember] public ExtraTranslation[] Verb { get; set; }
+		[DataMember] public ExtraTranslation[] Pronoun { get;   set; }
+		[DataMember] public ExtraTranslation[] Adverb { get; set; }
+		[DataMember] public ExtraTranslation[] AuxiliaryVerb { get; set; }
+		[DataMember] public ExtraTranslation[] Adjective { get; set; }
+		[DataMember] public ExtraTranslation[] Conjunction { get; set; }
+		[DataMember] public ExtraTranslation[] Preposition { get; set; }
+		[DataMember] public ExtraTranslation[] Interjection { get; set; }
+		[DataMember] public ExtraTranslation[] Suffix { get; set; }
+		[DataMember] public ExtraTranslation[] Prefix { get; set; }
+		[DataMember] public ExtraTranslation[] Abbreviation { get; set; }
+		[DataMember] public ExtraTranslation[] Particle { get; set; }
+		[DataMember] public ExtraTranslation[] Phrase { get; set; }
 		
 		public ExtraTranslations() { }
 

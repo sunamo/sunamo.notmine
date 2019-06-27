@@ -10,14 +10,14 @@ namespace GoogleTranslateFreeApi.TranslationData
 	[DataContract]
 	public sealed class Synonyms: TranslationInfoParser
 	{
-		[DataMember] public string[] Noun { get; public set; }
-		[DataMember] public string[] Exclamation { get; public set; }
-		[DataMember] public string[] Adjective { get; public set; }
-		[DataMember] public string[] Verb { get; public set; }
-		[DataMember] public string[] Adverb { get; public set; }
-		[DataMember] public string[] Preposition { get; public set; }
-		[DataMember] public string[] Conjunction { get; public set; }
-		[DataMember] public string[] Pronoun { get; public set; }
+		[DataMember] public string[] Noun { get; set; }
+		[DataMember] public string[] Exclamation { get; set; }
+		[DataMember] public string[] Adjective { get; set; }
+		[DataMember] public string[] Verb { get; set; }
+		[DataMember] public string[] Adverb { get; set; }
+		[DataMember] public string[] Preposition { get; set; }
+		[DataMember] public string[] Conjunction { get; set; }
+		[DataMember] public string[] Pronoun { get; set; }
 
 		public Synonyms() { }
 

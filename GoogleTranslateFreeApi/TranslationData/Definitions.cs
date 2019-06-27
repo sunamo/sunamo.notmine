@@ -25,20 +25,20 @@ namespace GoogleTranslateFreeApi.TranslationData
 			public override string ToString() => $"Explantion: {Explanation} Example: {Example}";
 		}
 
-		[DataMember] public Definition[] Noun { get; public set; }
-		[DataMember] public Definition[] Verb { get; public set; }
-		[DataMember] public Definition[] Exclamation { get; public set; }
-		[DataMember] public Definition[] Adjective { get; public set; }
-		[DataMember] public Definition[] Adverb { get; public set; }
-		[DataMember] public Definition[] Abbreviation { get; public set; }
-		[DataMember] public Definition[] Article { get; public set; }
-		[DataMember] public Definition[] Preposition { get; public set; }
-		[DataMember] public Definition[] Suffix { get; public set; }
-		[DataMember] public Definition[] Conjunction { get; public set; }
-		[DataMember] public Definition[] Pronoun { get; public set; }
-		[DataMember] public Definition[] Prefix { get; public set; }
-		[DataMember] public Definition[] Symbol { get; public set; }
-		[DataMember] public Definition[] Contraction { get; public set; }
+		[DataMember] public Definition[] Noun { get; set; }
+		[DataMember] public Definition[] Verb { get; set; }
+		[DataMember] public Definition[] Exclamation { get; set; }
+		[DataMember] public Definition[] Adjective { get; set; }
+		[DataMember] public Definition[] Adverb { get; set; }
+		[DataMember] public Definition[] Abbreviation { get; set; }
+		[DataMember] public Definition[] Article { get; set; }
+		[DataMember] public Definition[] Preposition { get; set; }
+		[DataMember] public Definition[] Suffix { get; set; }
+		[DataMember] public Definition[] Conjunction { get; set; }
+		[DataMember] public Definition[] Pronoun { get; set; }
+		[DataMember] public Definition[] Prefix { get; set; }
+		[DataMember] public Definition[] Symbol { get; set; }
+		[DataMember] public Definition[] Contraction { get; set; }
 
 
 		public override string ToString()
