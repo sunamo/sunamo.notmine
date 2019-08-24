@@ -25,12 +25,38 @@
         private const string AttributeVersion = "version";
         private XDocument doc;
 
+        #region Changed to load also from Embedded Resources
+        /// <summary>
+        /// A1 can be null but then is need to call LoadXml
+        /// </summary>
+        /// <param name="fileName"></param>
         public XlfDocument(string fileName)
         {
             FileName = fileName;
-            doc = XDocument.Load(FileName);
+            if (FileName != null)
+            {
+                doc = XDocument.Load(FileName);
+                Dialect = DetermineDialect();
+            }
+
+
+        }
+
+        public void LoadXml(string xml)
+        {
+            doc = XDocument.Parse(xml);
             Dialect = DetermineDialect();
         }
+
+        public void Save()
+        {
+            if (FileName != null)
+            {
+                this.doc.Save(this.FileName);
+            }
+
+        }
+        #endregion
 
         [Flags]
         public enum ResXSaveOption
@@ -82,10 +108,7 @@
             }).Remove();
         }
 
-        public void Save()
-        {
-            this.doc.Save(this.FileName);
-        }
+        
 
         public void SaveAsResX(string fileName)
         {
