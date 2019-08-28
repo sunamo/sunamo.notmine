@@ -46,7 +46,7 @@
             private const string AttributePriority = "priority";
             private XElement node;
 
-            internal Optionals(XElement node)
+            public Optionals(XElement node)
             {
                 this.node = node;
             }

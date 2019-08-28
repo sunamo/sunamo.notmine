@@ -19,7 +19,7 @@
         private XElement node;
         private XNamespace ns;
 
-        internal XlfFile(XElement node, XNamespace ns)
+        public XlfFile(XElement node, XNamespace ns)
         {
             this.node = node;
             this.ns = ns;
@@ -30,7 +30,7 @@
             }
         }
 
-        internal XlfFile(XElement node, XNamespace ns, string original, string dataType, string sourceLang)
+        public XlfFile(XElement node, XNamespace ns, string original, string dataType, string sourceLang)
             : this(node, ns)
         {
             Original = original;
@@ -224,7 +224,7 @@
             private const string AttributeToolId = "tool-id";
             private XElement node;
 
-            internal Optionals(XElement node)
+            public Optionals(XElement node)
             {
                 this.node = node;
             }

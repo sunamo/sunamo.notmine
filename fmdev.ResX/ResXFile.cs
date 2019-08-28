@@ -86,9 +86,9 @@ namespace fmdev.ResX
         /// <param name="resXFile">The source resx file.</param>
         /// <param name="className">The base class name.</param>
         /// <param name="namespaceName">The namespace for the generated code.</param>
-        /// <param name="internalClass">Specifies if the class has internal or public access level.</param>
+        /// <param name="publicClass">Specifies if the class has public or public access level.</param>
         /// <returns>false if generation of at least one property failed.</returns>
-        public static bool GenerateDesignerFile(string resXFile, string className, string namespaceName, bool internalClass)
+        public static bool GenerateDesignerFile(string resXFile, string className, string namespaceName, bool publicClass)
         {
             if (!File.Exists(resXFile))
             {
@@ -113,7 +113,7 @@ namespace fmdev.ResX
                     className,
                     namespaceName,
                     codeProvider,
-                    internalClass,
+                    publicClass,
                     out unmatchedElements);
 
             var designerFileName = Path.Combine(Path.GetDirectoryName(resXFile), $"{className}.Designer.cs");

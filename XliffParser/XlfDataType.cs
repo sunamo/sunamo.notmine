@@ -11,7 +11,7 @@
     ///
     /// Userdefined datatypes are allowed - but have to begin with "x-".
     /// </summary>
-    internal enum XlfDataType
+    public enum XlfDataType
     {
 #pragma warning disable SA1300 // Element must begin with upper-case letter
         asp,  // Indicates Active Server Page data.

@@ -115,7 +115,7 @@
             private XElement node;
             private XNamespace ns;
 
-            internal Optionals(XElement node, XNamespace ns)
+            public Optionals(XElement node, XNamespace ns)
             {
                 this.node = node;
                 this.ns = ns;
