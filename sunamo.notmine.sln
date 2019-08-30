@@ -11,11 +11,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sunamo", "..\sunamo\sunamo\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shared", "..\sunamo\shared\shared.csproj", "{77719C0D-7C8B-4B9E-A644-AEE7CEB35134}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XliffParser", "XliffParser\XliffParser.csproj", "{A7A52187-F57F-463B-90A2-D6511DF73F27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XliffParser", "XliffParser\XliffParser.csproj", "{A7A52187-F57F-463B-90A2-D6511DF73F27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fmdev.ResX", "fmdev.ResX\fmdev.ResX.csproj", "{6B66AD58-4DE4-4897-B5DA-9972D538C25F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmdev.ResX", "fmdev.ResX\fmdev.ResX.csproj", "{6B66AD58-4DE4-4897-B5DA-9972D538C25F}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HtmlAgilityPack.Shared", "HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.shproj", "{5BA9A0D7-173F-4C4F-AFFA-3DD6DC2F9A79}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlAgilityPack.NETStandard2_0", "HtmlAgilityPack.NETStandard2_0\HtmlAgilityPack.NETStandard2_0.csproj", "{EF331821-8547-4CC6-9CE1-DBBDE919714F}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems*{5ba9a0d7-173f-4c4f-affa-3dd6dc2f9a79}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -93,6 +100,18 @@ Global
 		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Release|x64.Build.0 = Release|Any CPU
 		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Release|x86.ActiveCfg = Release|Any CPU
 		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Release|x86.Build.0 = Release|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Release|x64.Build.0 = Release|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
