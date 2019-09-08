@@ -8,29 +8,29 @@
 #if METRO
 namespace HtmlAgilityPack
 {
-    internal class NameValuePair
+    public class NameValuePair
     {
         #region Fields
 
-        internal readonly string Name;
-        internal string Value;
+        public readonly string Name;
+        public string Value;
 
         #endregion
 
         #region Constructors
 
-        internal NameValuePair()
+        public NameValuePair()
         {
         }
 
-        internal NameValuePair(string name)
+        public NameValuePair(string name)
             :
             this()
         {
             Name = name;
         }
 
-        internal NameValuePair(string name, string value)
+        public NameValuePair(string name, string value)
             :
             this(name)
         {

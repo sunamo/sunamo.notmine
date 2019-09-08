@@ -1,9 +1,9 @@
-// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
 // Website & Documentation: http://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 #if !METRO
 using System;
@@ -20,16 +20,16 @@ namespace HtmlAgilityPack
         #region Fields
 
         private int _c;
-        internal MixedCodeDocumentFragmentList _codefragments;
+        public MixedCodeDocumentFragmentList _codefragments;
         private MixedCodeDocumentFragment _currentfragment;
-        internal MixedCodeDocumentFragmentList _fragments;
+        public MixedCodeDocumentFragmentList _fragments;
         private int _index;
         private int _line;
         private int _lineposition;
         private ParseState _state;
         private Encoding _streamencoding;
-        internal string _text;
-        internal MixedCodeDocumentFragmentList _textfragments;
+        public string _text;
+        public MixedCodeDocumentFragmentList _textfragments;
 
         /// <summary>
         /// Gets or sets the token representing code end.
@@ -382,7 +382,7 @@ namespace HtmlAgilityPack
 
         #region Internal Methods
 
-        internal MixedCodeDocumentFragment CreateFragment(MixedCodeDocumentFragmentType type)
+        public MixedCodeDocumentFragment CreateFragment(MixedCodeDocumentFragmentType type)
         {
             switch (type)
             {
@@ -397,7 +397,7 @@ namespace HtmlAgilityPack
             }
         }
 
-        internal Encoding GetOutEncoding()
+        public Encoding GetOutEncoding()
         {
             if (_streamencoding != null)
                 return _streamencoding;

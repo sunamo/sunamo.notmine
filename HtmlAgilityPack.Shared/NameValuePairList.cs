@@ -1,20 +1,20 @@
-// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
 // Website & Documentation: http://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: http://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System;
 using System.Collections.Generic;
 
 namespace HtmlAgilityPack
 {
-    internal class NameValuePairList
+    public class NameValuePairList
     {
         #region Fields
 
-        internal readonly string Text;
+        public readonly string Text;
         private List<KeyValuePair<string, string>> _allPairs;
         private Dictionary<string, List<KeyValuePair<string, string>>> _pairsWithName;
 
@@ -22,12 +22,12 @@ namespace HtmlAgilityPack
 
         #region Constructors
 
-        internal NameValuePairList() :
+        public NameValuePairList() :
             this(null)
         {
         }
 
-        internal NameValuePairList(string text)
+        public NameValuePairList(string text)
         {
             Text = text;
             _allPairs = new List<KeyValuePair<string, string>>();
@@ -40,20 +40,20 @@ namespace HtmlAgilityPack
 
         #region Internal Methods
 
-        internal static string GetNameValuePairsValue(string text, string name)
+        public static string GetNameValuePairsValue(string text, string name)
         {
             NameValuePairList l = new NameValuePairList(text);
             return l.GetNameValuePairValue(name);
         }
 
-        internal List<KeyValuePair<string, string>> GetNameValuePairs(string name)
+        public List<KeyValuePair<string, string>> GetNameValuePairs(string name)
         {
             if (name == null)
                 return _allPairs;
             return _pairsWithName.ContainsKey(name) ? _pairsWithName[name] : new List<KeyValuePair<string, string>>();
         }
 
-        internal string GetNameValuePairValue(string name)
+        public string GetNameValuePairValue(string name)
         {
             if (name == null)
                 throw new ArgumentNullException();

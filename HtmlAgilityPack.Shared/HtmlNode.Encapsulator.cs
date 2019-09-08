@@ -315,7 +315,7 @@ namespace HtmlAgilityPack
     /// <summary>
     /// Includes tools that GetEncapsulatedData method uses them.
     /// </summary>
-    internal static class Tools
+    public static class Tools
     {
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace HtmlAgilityPack
         /// <param name="type">Type you want to test it.</param>
         /// <param name="attributeType">Attribute that type must have or not.</param>
         /// <returns>If true , The type parameter define attributeType parameter.</returns>
-        internal static bool IsDefinedAttribute(this Type type, Type attributeType)
+        public static bool IsDefinedAttribute(this Type type, Type attributeType)
         {
 
             if (type == null)
@@ -369,7 +369,7 @@ namespace HtmlAgilityPack
         /// </summary>
         /// <param name="type">Type that you want to find it's XPath-Defined properties.</param>
         /// <returns>IEnumerable of property infos of a type , that defined specific attribute.</returns>
-        internal static IEnumerable<PropertyInfo> GetPropertiesDefinedXPath(this Type type)
+        public static IEnumerable<PropertyInfo> GetPropertiesDefinedXPath(this Type type)
         {
             if (type == null)
             {
@@ -400,7 +400,7 @@ namespace HtmlAgilityPack
         /// </summary>
         /// <param name="propertyInfo">The property info you want to test.</param>
         /// <returns>True if property info is IEnumerable.</returns>
-        internal static bool IsIEnumerable(this PropertyInfo propertyInfo)
+        public static bool IsIEnumerable(this PropertyInfo propertyInfo)
         {
             //return propertyInfo.PropertyType.GetInterface(typeof(IEnumerable<>).FullName) != null;
 
@@ -435,7 +435,7 @@ namespace HtmlAgilityPack
         /// </summary>
         /// <param name="propertyInfo">IEnumerable-Implemented property</param>
         /// <returns>List of generic types.</returns>
-        internal static IEnumerable<Type> GetGenericTypes(this PropertyInfo propertyInfo)
+        public static IEnumerable<Type> GetGenericTypes(this PropertyInfo propertyInfo)
         {
 
             if (propertyInfo == null)
@@ -462,7 +462,7 @@ namespace HtmlAgilityPack
         /// <param name="type">Type of class include requested method.</param>
         /// <param name="methodName">Name of requested method as string.</param>
         /// <returns>Method info of requested method.</returns>
-        internal static MethodInfo GetMethodByItsName(this Type type, string methodName)
+        public static MethodInfo GetMethodByItsName(this Type type, string methodName)
         {
             if (type == null)
             {
@@ -492,7 +492,7 @@ namespace HtmlAgilityPack
         /// </summary>
         /// <param name="type">Type that you want to make a List of it.</param>
         /// <returns>Returns IList of given type.</returns>
-        internal static IList CreateIListOfType(this Type type)
+        public static IList CreateIListOfType(this Type type)
         {
             if (type == null)
             {
@@ -514,7 +514,7 @@ namespace HtmlAgilityPack
         /// <param name="htmlNode">A htmlNode instance.</param>
         /// <param name="xPathAttribute">Attribute that includes ReturnType</param>
         /// <returns>String that choosen from HtmlNode as result.</returns>
-        internal static T GetNodeValueBasedOnXPathReturnType<T>(HtmlNode htmlNode, XPathAttribute xPathAttribute)
+        public static T GetNodeValueBasedOnXPathReturnType<T>(HtmlNode htmlNode, XPathAttribute xPathAttribute)
         {
             if (htmlNode == null)
             {
@@ -564,7 +564,7 @@ namespace HtmlAgilityPack
         /// <param name="xPathAttribute">A <see cref="XPathAttribute"/> instnce incules <see cref="ReturnType"/>.</param>
         /// <param name="listGenericType">Type of IList generic you want.</param>
         /// <returns></returns>
-        internal static IList GetNodesValuesBasedOnXPathReturnType(HtmlNodeCollection htmlNodeCollection, XPathAttribute xPathAttribute, Type listGenericType)
+        public static IList GetNodesValuesBasedOnXPathReturnType(HtmlNodeCollection htmlNodeCollection, XPathAttribute xPathAttribute, Type listGenericType)
         {
             if (htmlNodeCollection == null || htmlNodeCollection.Count == 0)
             {
@@ -624,7 +624,7 @@ namespace HtmlAgilityPack
         /// <typeparam name="TResult"></typeparam>
         /// <param name="arg"></param>
         /// <returns></returns>
-        internal delegate TResult HAPFunc<T, TResult>(T arg);
+        public delegate TResult HAPFunc<T, TResult>(T arg);
 
 
         /// <summary>
@@ -634,7 +634,7 @@ namespace HtmlAgilityPack
         /// <param name="source"></param>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        internal static IEnumerable<TSource> HAPWhere<TSource>(this IEnumerable<TSource> source, HAPFunc<TSource, bool> predicate)
+        public static IEnumerable<TSource> HAPWhere<TSource>(this IEnumerable<TSource> source, HAPFunc<TSource, bool> predicate)
         {
             foreach (TSource item in source)
             {
@@ -651,7 +651,7 @@ namespace HtmlAgilityPack
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        internal static bool IsInstantiable(this Type type)
+        public static bool IsInstantiable(this Type type)
         {
             if (type == null)
             {
@@ -696,7 +696,7 @@ namespace HtmlAgilityPack
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        internal static int CountOfIEnumerable<T>(this IEnumerable<T> source)
+        public static int CountOfIEnumerable<T>(this IEnumerable<T> source)
         {
             if (source == null)
             {

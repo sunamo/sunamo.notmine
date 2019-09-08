@@ -29,18 +29,18 @@ namespace HtmlAgilityPack
         private readonly HtmlDocument _doc = new HtmlDocument();
         private readonly HtmlNameTable _nametable = new HtmlNameTable();
 
-        internal bool Trace;
+        public bool Trace;
 
         #endregion
 
         #region Constructors
 
-        internal HtmlNodeNavigator()
+        public HtmlNodeNavigator()
         {
             Reset();
         }
 
-        internal HtmlNodeNavigator(HtmlDocument doc, HtmlNode currentNode)
+        public HtmlNodeNavigator(HtmlDocument doc, HtmlNode currentNode)
         {
             if (currentNode == null)
             {
@@ -865,7 +865,7 @@ namespace HtmlAgilityPack
         #region Internal Methods
 #if TRACE_NAVIGATOR
         [Conditional("TRACE")]
-        internal void InternalTrace(object traceValue)
+        public void InternalTrace(object traceValue)
         {
             if (!Trace)
             {
