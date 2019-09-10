@@ -2,6 +2,7 @@
 using PathEditor.ModelViews;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,7 +39,8 @@ namespace PathEditor
         public static void Validate(object tb, SuggestTextBoxPath control)
         {
             var path = control.dataContext.SelectedPathPart.Path;
-            if (FS.ExistsFile(path ) || FS.ExistsDirectory(path))
+            // Cant use FS because have to import PathEditor to both desktop and desktop.web  (common validation method)
+            if (File.Exists(path ) || Directory.Exists(path))
             {
                 validated = true;
                 return;

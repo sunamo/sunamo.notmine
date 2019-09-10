@@ -63,7 +63,7 @@ namespace HtmlAgilityPack
 
                 return _fragmentText;
             }
-            public set { _fragmentText = value; }
+             set { _fragmentText = value; }
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace HtmlAgilityPack
         public int Line
         {
             get { return _line; }
-            public set { _line = value; }
+             set { _line = value; }
         }
 
         /// <summary>

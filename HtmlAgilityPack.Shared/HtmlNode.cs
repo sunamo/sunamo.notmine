@@ -203,7 +203,7 @@ namespace HtmlAgilityPack
 
 				return _attributes;
 			}
-			public set { _attributes = value; }
+			set { _attributes = value; }
 		}
 
 		/// <summary>
@@ -212,7 +212,7 @@ namespace HtmlAgilityPack
 		public HtmlNodeCollection ChildNodes
 		{
 			get { return _childnodes ?? (_childnodes = new HtmlNodeCollection(this)); }
-			public set { _childnodes = value; }
+			set { _childnodes = value; }
 		}
 
 		/// <summary>
@@ -531,7 +531,7 @@ namespace HtmlAgilityPack
 		public int Line
 		{
 			get { return _line; }
-			public set { _line = value; }
+			set { _line = value; }
 		}
 
 		/// <summary>
@@ -540,7 +540,7 @@ namespace HtmlAgilityPack
 		public int LinePosition
 		{
 			get { return _lineposition; }
-			public set { _lineposition = value; }
+			set { _lineposition = value; }
 		}
 
 		/// <summary>
@@ -600,7 +600,7 @@ namespace HtmlAgilityPack
 		public HtmlNode NextSibling
 		{
 			get { return _nextnode; }
-			public set { _nextnode = value; }
+			set { _nextnode = value; }
 		}
 
 		/// <summary>
@@ -609,7 +609,7 @@ namespace HtmlAgilityPack
 		public HtmlNodeType NodeType
 		{
 			get { return _nodetype; }
-			public set { _nodetype = value; }
+			set { _nodetype = value; }
 		}
 
 		/// <summary>
@@ -653,7 +653,7 @@ namespace HtmlAgilityPack
 		public HtmlDocument OwnerDocument
 		{
 			get { return _ownerdocument; }
-			public set { _ownerdocument = value; }
+			set { _ownerdocument = value; }
 		}
 
 		/// <summary>
@@ -662,7 +662,7 @@ namespace HtmlAgilityPack
 		public HtmlNode ParentNode
 		{
 			get { return _parentnode; }
-			public set { _parentnode = value; }
+			set { _parentnode = value; }
 		}
 
 		/// <summary>
@@ -671,7 +671,7 @@ namespace HtmlAgilityPack
 		public HtmlNode PreviousSibling
 		{
 			get { return _prevnode; }
-			public set { _prevnode = value; }
+			set { _prevnode = value; }
 		}
 
 		/// <summary>
