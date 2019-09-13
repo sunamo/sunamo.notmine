@@ -1,8 +1,8 @@
 ﻿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
-// Website & Documentation: http://html-agility-pack.net
+// Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
-// More projects: http://www.zzzprojects.com/
+// More projects: https://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 #if !(NETSTANDARD1_3 || NETSTANDARD1_6) && !METRO
@@ -19,7 +19,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Creates an instance of the given type from the specified Internet resource.
         /// </summary>
-        /// <param name="htmlUrl">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="htmlUrl">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="xsltUrl">The URL that specifies the XSLT stylesheet to load.</param>
         /// <param name="xsltArgs">An <see cref="XsltArgumentList"/> containing the namespace-qualified arguments used as input to the transform.</param>
         /// <param name="type">The requested type.</param>
@@ -32,7 +32,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Creates an instance of the given type from the specified Internet resource.
         /// </summary>
-        /// <param name="htmlUrl">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="htmlUrl">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="xsltUrl">The URL that specifies the XSLT stylesheet to load.</param>
         /// <param name="xsltArgs">An <see cref="XsltArgumentList"/> containing the namespace-qualified arguments used as input to the transform.</param>
         /// <param name="type">The requested type.</param>
@@ -79,7 +79,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource and saves it to the specified XmlTextWriter, after an XSLT transformation.
         /// </summary>
-        /// <param name="htmlUrl">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="htmlUrl">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="xsltUrl">The URL that specifies the XSLT stylesheet to load.</param>
         /// <param name="xsltArgs">An XsltArgumentList containing the namespace-qualified arguments used as input to the transform.</param>
         /// <param name="writer">The XmlTextWriter to which you want to save.</param>
@@ -91,7 +91,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource and saves it to the specified XmlTextWriter, after an XSLT transformation.
         /// </summary>
-        /// <param name="htmlUrl">The requested URL, such as "http://Myserver/Mypath/Myfile.asp". May not be null.</param>
+        /// <param name="htmlUrl">The requested URL, such as "https://Myserver/Mypath/Myfile.asp". May not be null.</param>
         /// <param name="xsltUrl">The URL that specifies the XSLT stylesheet to load.</param>
         /// <param name="xsltArgs">An XsltArgumentList containing the namespace-qualified arguments used as input to the transform.</param>
         /// <param name="writer">The XmlTextWriter to which you want to save.</param>

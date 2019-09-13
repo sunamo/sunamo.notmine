@@ -1,8 +1,8 @@
 // Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
-// Website & Documentation: http://html-agility-pack.net
+// Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
-// More projects: http://www.zzzprojects.com/
+// More projects: https://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System;
@@ -2118,7 +2118,7 @@ namespace HtmlAgilityPack
 
             if (!string.IsNullOrEmpty(charset))
             {
-                // The following check fixes the the bug described at: http://htmlagilitypack.codeplex.com/WorkItem/View.aspx?WorkItemId=25273
+                // The following check fixes the the bug described at: https://htmlagilitypack.codeplex.com/WorkItem/View.aspx?WorkItemId=25273
                 if (string.Equals(charset, "utf8", StringComparison.OrdinalIgnoreCase))
                     charset = "utf-8";
                 try

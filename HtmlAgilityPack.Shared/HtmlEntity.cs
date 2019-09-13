@@ -1,8 +1,8 @@
 // Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
-// Website & Documentation: http://html-agility-pack.net
+// Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
-// More projects: http://www.zzzprojects.com/
+// More projects: https://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System;
@@ -14,7 +14,7 @@ namespace HtmlAgilityPack
 {
     /// <summary>
     /// A utility class to replace special characters by entities and vice-versa.
-    /// Follows HTML 4.0 specification found at http://www.w3.org/TR/html4/sgml/entities.html
+    /// Follows HTML 4.0 specification found at https://www.w3.org/TR/html4/sgml/entities.html
     /// Follows Additional specification found at https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
     /// See also: https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references
     /// </summary>

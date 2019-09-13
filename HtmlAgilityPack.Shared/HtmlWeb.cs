@@ -1,8 +1,8 @@
 // Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
-// Website & Documentation: http://html-agility-pack.net
+// Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
-// More projects: http://www.zzzprojects.com/
+// More projects: https://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 #if !METRO
@@ -995,7 +995,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Creates an instance of the given type from the specified Internet resource.
         /// </summary>
-        /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="type">The requested type.</param>
         /// <returns>An newly created instance.</returns>
         public object CreateInstance(string url, Type type)
@@ -1008,7 +1008,7 @@ namespace HtmlAgilityPack
                 /// <summary>
                 /// Gets an HTML document from an Internet resource and saves it to the specified file.
                 /// </summary>
-                /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+                /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
                 /// <param name="path">The location of the file where you want to save the document.</param>
                 public void Get(string url, string path)
         {
@@ -1019,7 +1019,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Gets an HTML document from an Internet resource and saves it to the specified file. - Proxy aware
         /// </summary>
-        /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="path">The location of the file where you want to save the document.</param>
         /// <param name="proxy"></param>
         /// <param name="credentials"></param>
@@ -1032,7 +1032,7 @@ namespace HtmlAgilityPack
 /// <summary>
 /// Gets an HTML document from an Internet resource and saves it to the specified file. - Proxy aware
 /// </summary>
-/// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+/// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
 /// <param name="path">The location of the file where you want to save the document.</param>
 /// <param name="proxy"></param>
 /// <param name="credentials"></param>
@@ -1045,7 +1045,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Gets an HTML document from an Internet resource and saves it to the specified file.
         /// </summary>
-        /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="path">The location of the file where you want to save the document.</param>
         /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
         public void Get(string url, string path, string method)
@@ -1072,7 +1072,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Gets an HTML document from an Internet resource and saves it to the specified file.  Understands Proxies
         /// </summary>
-        /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="path">The location of the file where you want to save the document.</param>
         /// <param name="credentials"></param>
         /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
@@ -1096,7 +1096,7 @@ namespace HtmlAgilityPack
 /// <summary>
 /// Gets an HTML document from an Internet resource and saves it to the specified file.  Understands Proxies
 /// </summary>
-/// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+/// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
 /// <param name="path">The location of the file where you want to save the document.</param>
 /// <param name="credentials"></param>
 /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
@@ -1172,7 +1172,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Gets an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <returns>A new HTML document.</returns>
         public HtmlDocument Load(string url)
         {
@@ -1182,7 +1182,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Gets an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="uri">The requested Uri, such as new Uri("http://Myserver/Mypath/Myfile.asp").</param>
+        /// <param name="uri">The requested Uri, such as new Uri("https://Myserver/Mypath/Myfile.asp").</param>
         /// <returns>A new HTML document.</returns>
         public HtmlDocument Load(Uri uri)
         {
@@ -1193,7 +1193,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Gets an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="proxyHost">Host to use for Proxy</param>
         /// <param name="proxyPort">Port the Proxy is on</param>
         /// <param name="userId">User Id for Authentication</param>
@@ -1224,7 +1224,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Gets an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="uri">The requested Uri, such as new Uri("http://Myserver/Mypath/Myfile.asp").</param>
+        /// <param name="uri">The requested Uri, such as new Uri("https://Myserver/Mypath/Myfile.asp").</param>
         /// <param name="proxyHost">Host to use for Proxy</param>
         /// <param name="proxyPort">Port the Proxy is on</param>
         /// <param name="userId">User Id for Authentication</param>
@@ -1254,7 +1254,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
         /// <returns>A new HTML document.</returns>
         public HtmlDocument Load(string url, string method)
@@ -1267,7 +1267,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="uri">The requested URL, such as new Uri("http://Myserver/Mypath/Myfile.asp").</param>
+        /// <param name="uri">The requested URL, such as new Uri("https://Myserver/Mypath/Myfile.asp").</param>
         /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
         /// <returns>A new HTML document.</returns>
         public HtmlDocument Load(Uri uri, string method)
@@ -1324,7 +1324,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
         /// <param name="proxy">Proxy to use with this request</param>
         /// <param name="credentials">Credentials to use when authenticating</param>
@@ -1341,7 +1341,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="uri">The requested Uri, such as new Uri("http://Myserver/Mypath/Myfile.asp").</param>
+        /// <param name="uri">The requested Uri, such as new Uri("https://Myserver/Mypath/Myfile.asp").</param>
         /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
         /// <param name="proxy">Proxy to use with this request</param>
         /// <param name="credentials">Credentials to use when authenticating</param>
@@ -1386,7 +1386,7 @@ namespace HtmlAgilityPack
 /// <summary>
 /// Loads an HTML document from an Internet resource.
 /// </summary>
-/// <param name="url">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+/// <param name="url">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
 /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
 /// <param name="proxy">Proxy to use with this request</param>
 /// <param name="credentials">Credentials to use when authenticating</param>
@@ -1402,7 +1402,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource.
         /// </summary>
-        /// <param name="uri">The requested Uri, such as new Uri("http://Myserver/Mypath/Myfile.asp").</param>
+        /// <param name="uri">The requested Uri, such as new Uri("https://Myserver/Mypath/Myfile.asp").</param>
         /// <param name="method">The HTTP method used to open the connection, such as GET, POST, PUT, or PROPFIND.</param>
         /// <param name="proxy">Proxy to use with this request</param>
         /// <param name="credentials">Credentials to use when authenticating</param>
@@ -1454,7 +1454,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource and saves it to the specified XmlTextWriter.
         /// </summary>
-        /// <param name="htmlUrl">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="htmlUrl">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="writer">The XmlTextWriter to which you want to save to.</param>
         public void LoadHtmlAsXml(string htmlUrl, XmlTextWriter writer)
         {
@@ -1466,7 +1466,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Loads an HTML document from an Internet resource and saves it to the specified XmlTextWriter.
         /// </summary>
-        /// <param name="htmlUrl">The requested URL, such as "http://Myserver/Mypath/Myfile.asp".</param>
+        /// <param name="htmlUrl">The requested URL, such as "https://Myserver/Mypath/Myfile.asp".</param>
         /// <param name="writer">The XmlTextWriter to which you want to save to.</param>
         public void LoadHtmlAsXml(string htmlUrl, XmlWriter writer)
         {
@@ -2392,7 +2392,7 @@ namespace HtmlAgilityPack
 
         /// <summary>Loads HTML using a WebBrowser and Application.DoEvents.</summary>
         /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-        /// <param name="url">The requested URL, such as "http://html-agility-pack.net/".</param>
+        /// <param name="url">The requested URL, such as "https://html-agility-pack.net/".</param>
         /// <returns>A new HTML document.</returns>
         public HtmlDocument LoadFromBrowser(string url)
         {
@@ -2428,7 +2428,7 @@ namespace HtmlAgilityPack
 
         /// <summary>Loads HTML using a WebBrowser and Application.DoEvents.</summary>
         /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-        /// <param name="url">The requested URL, such as "http://html-agility-pack.net/".</param>
+        /// <param name="url">The requested URL, such as "https://html-agility-pack.net/".</param>
         /// <param name="isBrowserScriptCompleted">(Optional) Check if the browser script has all been run and completed.</param>
         /// <returns>A new HTML document.</returns>
         public HtmlDocument LoadFromBrowser(string url, Func<string, bool> isBrowserScriptCompleted = null)
@@ -2446,7 +2446,7 @@ namespace HtmlAgilityPack
 
         /// <summary>Loads HTML using a WebBrowser and Application.DoEvents.</summary>
         /// <exception cref="Exception">Thrown when an exception error condition occurs.</exception>
-        /// <param name="url">The requested URL, such as "http://html-agility-pack.net/".</param>
+        /// <param name="url">The requested URL, such as "https://html-agility-pack.net/".</param>
         /// <param name="isBrowserScriptCompleted">(Optional) Check if the browser script has all been run and completed.</param>
         /// <returns>A new HTML document.</returns>
         public HtmlDocument LoadFromBrowser(string url, Func<object, bool> isBrowserScriptCompleted = null)
