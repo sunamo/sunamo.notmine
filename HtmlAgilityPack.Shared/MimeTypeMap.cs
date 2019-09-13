@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HtmlAgilityPack
 {
-	internal static class MimeTypeMap
+	public static class MimeTypeMap
 	{
 		// code take here : https://github.com/samuelneff/MimeTypeMap/blob/master/src/MimeTypes/MimeTypeMap.cs
 		// On MIT License

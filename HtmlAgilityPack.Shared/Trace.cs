@@ -7,11 +7,11 @@
 
 namespace HtmlAgilityPack
 {
-    internal partial class Trace
+    public partial class Trace
     {
-        internal static Trace _current;
+        public static Trace _current;
 
-        internal static Trace Current
+        public static Trace Current
         {
             get
             {
