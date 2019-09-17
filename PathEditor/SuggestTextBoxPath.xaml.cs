@@ -36,7 +36,7 @@ namespace PathEditor
 
         public static bool validated;
 
-        public static void Validate(object tb, SuggestTextBoxPath control)
+        public static void Validate(object tb, SuggestTextBoxPath control, ValidateData d = null)
         {
             var path = control.dataContext.SelectedPathPart.Path;
             // Cant use FS because have to import PathEditor to both desktop and desktop.web  (common validation method)
@@ -49,9 +49,9 @@ namespace PathEditor
             return;
         }
 
-            public void Validate(object tbFolder)
+        public void Validate(object tbFolder, ValidateData d = null)
         {
-            Validate(tbFolder, this);
+            Validate(tbFolder, this, d);
         }
 
         /// <summary>
