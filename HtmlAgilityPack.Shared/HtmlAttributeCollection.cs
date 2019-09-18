@@ -1,9 +1,9 @@
-ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
-// Website & Documentation: http://html-agility-pack.net
+// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+// Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
-// More projects: http://www.zzzprojects.com/
-// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// More projects: https://www.zzzprojects.com/
+// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System;
 using System.Collections;
@@ -18,7 +18,7 @@ namespace HtmlAgilityPack
     {
         #region Fields
 
-        public Dictionary<string, HtmlAttribute> Hashitems = new Dictionary<string, HtmlAttribute>(StringComparer.OrdinalIgnoreCase);
+        internal Dictionary<string, HtmlAttribute> Hashitems = new Dictionary<string, HtmlAttribute>(StringComparer.OrdinalIgnoreCase);
         private HtmlNode _ownernode;
         private List<HtmlAttribute> items = new List<HtmlAttribute>();
 
@@ -26,7 +26,7 @@ namespace HtmlAgilityPack
 
         #region Constructors
 
-        public HtmlAttributeCollection(HtmlNode ownernode)
+        internal HtmlAttributeCollection(HtmlNode ownernode)
         {
             _ownernode = ownernode;
         }
@@ -407,13 +407,13 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Clears the attribute collection
         /// </summary>
-        public void Clear()
+        internal void Clear()
         {
             Hashitems.Clear();
             items.Clear();
         }
 
-        public int GetAttributeIndex(HtmlAttribute attribute)
+        internal int GetAttributeIndex(HtmlAttribute attribute)
         {
             if (attribute == null)
             {
@@ -429,7 +429,7 @@ namespace HtmlAgilityPack
             return -1;
         }
 
-        public int GetAttributeIndex(string name)
+        internal int GetAttributeIndex(string name)
         {
             if (name == null)
             {

@@ -23,7 +23,7 @@ namespace HtmlAgilityPack
                 // from c:\Windows\System32\inetsrv\config\applicationHost.config
                 // some added, including .7z and .dat
                 //
-                // Some added based on http://www.iana.org/assignments/media-types/media-types.xhtml
+                // Some added based on https://www.iana.org/assignments/media-types/media-types.xhtml
                 // which lists mime types, but not extensions
                 //
                 {".323", "text/h323"},

@@ -1,16 +1,16 @@
-ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
-// Website & Documentation: http://html-agility-pack.net
+// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+// Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
-// More projects: http://www.zzzprojects.com/
-// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// More projects: https://www.zzzprojects.com/
+// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System;
 using System.Text;
 
 namespace HtmlAgilityPack
 {
-    public class EncodingFoundException : Exception
+    internal class EncodingFoundException : Exception
     {
         #region Fields
 
@@ -20,7 +20,7 @@ namespace HtmlAgilityPack
 
         #region Constructors
 
-        public EncodingFoundException(Encoding encoding)
+        internal EncodingFoundException(Encoding encoding)
         {
             _encoding = encoding;
         }
@@ -29,7 +29,7 @@ namespace HtmlAgilityPack
 
         #region Properties
 
-        public Encoding Encoding
+        internal Encoding Encoding
         {
             get { return _encoding; }
         }

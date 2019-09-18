@@ -1,9 +1,9 @@
-ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
-// Website & Documentation: http://html-agility-pack.net
+// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+// Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
-// More projects: http://www.zzzprojects.com/
-// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// More projects: https://www.zzzprojects.com/
+// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System;
 using System.Collections;
@@ -24,39 +24,39 @@ namespace HtmlAgilityPack
 	{
 		#region Consts
 
-		public const string DepthLevelExceptionMessage = "The document is too complex to parse";
+		internal const string DepthLevelExceptionMessage = "The document is too complex to parse";
 
 		#endregion
 
 		#region Fields
 
-		public HtmlAttributeCollection _attributes;
-		public HtmlNodeCollection _childnodes;
-		public HtmlNode _endnode;
+		internal HtmlAttributeCollection _attributes;
+		internal HtmlNodeCollection _childnodes;
+		internal HtmlNode _endnode;
 
 		private bool _changed;
-		public string _innerhtml;
-		public int _innerlength;
-		public int _innerstartindex;
-		public int _line;
-		public int _lineposition;
+		internal string _innerhtml;
+		internal int _innerlength;
+		internal int _innerstartindex;
+		internal int _line;
+		internal int _lineposition;
 	    private string _name;
-		public int _namelength;
-		public int _namestartindex;
-		public HtmlNode _nextnode;
-		public HtmlNodeType _nodetype;
-		public string _outerhtml;
-		public int _outerlength;
-		public int _outerstartindex;
+		internal int _namelength;
+		internal int _namestartindex;
+		internal HtmlNode _nextnode;
+		internal HtmlNodeType _nodetype;
+		internal string _outerhtml;
+		internal int _outerlength;
+		internal int _outerstartindex;
 		private string _optimizedName;
-		public HtmlDocument _ownerdocument;
-		public HtmlNode _parentnode;
-		public HtmlNode _prevnode;
-		public HtmlNode _prevwithsamename;
-		public bool _starttag;
-		public int _streamposition;
-		public bool _isImplicitEnd;
-		public bool _isHideInnerText;
+		internal HtmlDocument _ownerdocument;
+		internal HtmlNode _parentnode;
+		internal HtmlNode _prevnode;
+		internal HtmlNode _prevwithsamename;
+		internal bool _starttag;
+		internal int _streamposition;
+		internal bool _isImplicitEnd;
+		internal bool _isHideInnerText;
 
 		#endregion
 
@@ -203,7 +203,7 @@ namespace HtmlAgilityPack
 
 				return _attributes;
 			}
-			set { _attributes = value; }
+			internal set { _attributes = value; }
 		}
 
 		/// <summary>
@@ -212,7 +212,7 @@ namespace HtmlAgilityPack
 		public HtmlNodeCollection ChildNodes
 		{
 			get { return _childnodes ?? (_childnodes = new HtmlNodeCollection(this)); }
-			set { _childnodes = value; }
+			internal set { _childnodes = value; }
 		}
 
 		/// <summary>
@@ -397,7 +397,7 @@ namespace HtmlAgilityPack
 			}
 		}
 
-		public virtual string InternalInnerText(bool isDisplayScriptingText)
+		internal virtual string InternalInnerText(bool isDisplayScriptingText)
 		{  
 				if (!_ownerdocument.BackwardCompatibility)
 				{
@@ -468,7 +468,7 @@ namespace HtmlAgilityPack
 	 
 		}
 
-		public string GetCurrentNodeText()
+		internal string GetCurrentNodeText()
 		{
 			if (_nodetype == HtmlNodeType.Text)
 			{
@@ -486,7 +486,7 @@ namespace HtmlAgilityPack
 			return "";
 		}
 
-		public void AppendDirectInnerText(StringBuilder sb)
+		internal void AppendDirectInnerText(StringBuilder sb)
 		{
 			if (_nodetype == HtmlNodeType.Text)
 			{
@@ -502,7 +502,7 @@ namespace HtmlAgilityPack
 			return; 
 		}
 
-		public void AppendInnerText(StringBuilder sb, bool isShowHideInnerText)
+		internal void AppendInnerText(StringBuilder sb, bool isShowHideInnerText)
 		{ 
 			if (_nodetype == HtmlNodeType.Text)
 			{
@@ -531,7 +531,7 @@ namespace HtmlAgilityPack
 		public int Line
 		{
 			get { return _line; }
-			set { _line = value; }
+			internal set { _line = value; }
 		}
 
 		/// <summary>
@@ -540,7 +540,7 @@ namespace HtmlAgilityPack
 		public int LinePosition
 		{
 			get { return _lineposition; }
-			set { _lineposition = value; }
+			internal set { _lineposition = value; }
 		}
 
 		/// <summary>
@@ -600,7 +600,7 @@ namespace HtmlAgilityPack
 		public HtmlNode NextSibling
 		{
 			get { return _nextnode; }
-			set { _nextnode = value; }
+			internal set { _nextnode = value; }
 		}
 
 		/// <summary>
@@ -609,7 +609,7 @@ namespace HtmlAgilityPack
 		public HtmlNodeType NodeType
 		{
 			get { return _nodetype; }
-			set { _nodetype = value; }
+			internal set { _nodetype = value; }
 		}
 
 		/// <summary>
@@ -653,7 +653,7 @@ namespace HtmlAgilityPack
 		public HtmlDocument OwnerDocument
 		{
 			get { return _ownerdocument; }
-			set { _ownerdocument = value; }
+			internal set { _ownerdocument = value; }
 		}
 
 		/// <summary>
@@ -662,7 +662,7 @@ namespace HtmlAgilityPack
 		public HtmlNode ParentNode
 		{
 			get { return _parentnode; }
-			set { _parentnode = value; }
+			internal set { _parentnode = value; }
 		}
 
 		/// <summary>
@@ -671,7 +671,7 @@ namespace HtmlAgilityPack
 		public HtmlNode PreviousSibling
 		{
 			get { return _prevnode; }
-			set { _prevnode = value; }
+			internal set { _prevnode = value; }
 		}
 
 		/// <summary>
@@ -1964,7 +1964,7 @@ namespace HtmlAgilityPack
 
 		#region Internal Methods
 
-		public void SetChanged()
+		internal void SetChanged()
 		{
 			_changed = true;
 			if (ParentNode != null)
@@ -1980,14 +1980,14 @@ namespace HtmlAgilityPack
 			_changed = false;
 		}
 
-		public static string GetXmlComment(HtmlCommentNode comment)
+		internal static string GetXmlComment(HtmlCommentNode comment)
 		{
 			string s = comment.Comment;
 			s = s.Substring(4, s.Length - 7).Replace("--", " - -");
 			return s;
 		}
 
-		public static void WriteAttributes(XmlWriter writer, HtmlNode node)
+		internal static void WriteAttributes(XmlWriter writer, HtmlNode node)
 		{
 			if (!node.HasAttributes)
 			{
@@ -2001,7 +2001,7 @@ namespace HtmlAgilityPack
 			}
 		}
 
-		public void UpdateLastNode()
+		internal void UpdateLastNode()
 		{
 			HtmlNode newLast = null;
 			if (_prevwithsamename == null || !_prevwithsamename._starttag)
@@ -2033,7 +2033,7 @@ namespace HtmlAgilityPack
 			}
 		}
 
-		public void CloseNode(HtmlNode endnode, int level = 0)
+		internal void CloseNode(HtmlNode endnode, int level = 0)
 		{
 			if (level > HtmlDocument.MaxDepthLevel)
 			{
@@ -2090,13 +2090,13 @@ namespace HtmlAgilityPack
 			}
 		}
 
-		public string GetId()
+		internal string GetId()
 		{
 			HtmlAttribute att = Attributes["id"];
 			return att == null ? string.Empty : att.Value;
 		}
 
-		public void SetId(string id)
+		internal void SetId(string id)
 		{
 			HtmlAttribute att = Attributes["id"] ?? _ownerdocument.CreateAttribute("id");
 			att.Value = id;
@@ -2105,7 +2105,7 @@ namespace HtmlAgilityPack
 			SetChanged();
 		}
 
-		public void WriteAttribute(TextWriter outText, HtmlAttribute att)
+		internal void WriteAttribute(TextWriter outText, HtmlAttribute att)
 		{
 			if (att.Value == null)
 			{
@@ -2149,7 +2149,7 @@ namespace HtmlAgilityPack
 			}
 		}
 
-		public void WriteAttributes(TextWriter outText, bool closing)
+		internal void WriteAttributes(TextWriter outText, bool closing)
 		{
 			if (_ownerdocument.OptionOutputAsXml)
 			{

@@ -1,9 +1,9 @@
-ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
-// Website & Documentation: http://html-agility-pack.net
+// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+// Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
-// More projects: http://www.zzzprojects.com/
-// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// More projects: https://www.zzzprojects.com/
+// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace HtmlAgilityPack
     {
         #region Manager
 
-        public static bool _disableBehaviorTagP = true;
+        internal static bool _disableBehaviorTagP = true;
 
         /// <summary>True to disable, false to enable the behavior tag p.</summary>
         public static bool DisableBehaviorTagP
@@ -71,14 +71,14 @@ namespace HtmlAgilityPack
         private HtmlNode _documentnode;
         private bool _fullcomment;
 		private int _index;
-        public Dictionary<string, HtmlNode> Lastnodes = new Dictionary<string, HtmlNode>();
+        internal Dictionary<string, HtmlNode> Lastnodes = new Dictionary<string, HtmlNode>();
         private HtmlNode _lastparentnode;
         private int _line;
         private int _lineposition, _maxlineposition;
-        public Dictionary<string, HtmlNode> Nodesid;
+        internal Dictionary<string, HtmlNode> Nodesid;
         private ParseState _oldstate;
         private bool _onlyDetectEncoding;
-        public Dictionary<int, HtmlNode> Openednodes;
+        internal Dictionary<int, HtmlNode> Openednodes;
         private List<HtmlParseError> _parseerrors = new List<HtmlParseError>();
         private string _remainder;
         private int _remainderOffset;
@@ -205,15 +205,15 @@ namespace HtmlAgilityPack
 
 		#region Static Members
 
-		public static readonly string HtmlExceptionRefNotChild = "Reference node must be a child of this node";
+		internal static readonly string HtmlExceptionRefNotChild = "Reference node must be a child of this node";
 
-        public static readonly string HtmlExceptionUseIdAttributeFalse = "You need to set UseIdAttribute property to true to enable this feature";
+        internal static readonly string HtmlExceptionUseIdAttributeFalse = "You need to set UseIdAttribute property to true to enable this feature";
 
-        public static readonly string HtmlExceptionClassDoesNotExist = "Class name doesn't exist";
+        internal static readonly string HtmlExceptionClassDoesNotExist = "Class name doesn't exist";
 
-        public static readonly string HtmlExceptionClassExists = "Class name already exists";
+        internal static readonly string HtmlExceptionClassExists = "Class name already exists";
 
-        public static readonly Dictionary<string, string[]> HtmlResetters = new Dictionary<string, string[]>()
+        internal static readonly Dictionary<string, string[]> HtmlResetters = new Dictionary<string, string[]>()
         {
             {"li", new[] {"ul", "ol"}},
             {"tr", new[] {"table"}},
@@ -406,7 +406,7 @@ namespace HtmlAgilityPack
             return HtmlEncodeWithCompatibility(html, true);
         }
 
-        public static string HtmlEncodeWithCompatibility(string html, bool backwardCompatibility = true)
+        internal static string HtmlEncodeWithCompatibility(string html, bool backwardCompatibility = true)
         {
             if (html == null)
             {
@@ -890,17 +890,17 @@ namespace HtmlAgilityPack
 
         #region Internal Methods
 
-        public HtmlAttribute CreateAttribute()
+        internal HtmlAttribute CreateAttribute()
         {
             return new HtmlAttribute(this);
         }
 
-        public HtmlNode CreateNode(HtmlNodeType type)
+        internal HtmlNode CreateNode(HtmlNodeType type)
         {
             return CreateNode(type, -1);
         }
 
-        public HtmlNode CreateNode(HtmlNodeType type, int index)
+        internal HtmlNode CreateNode(HtmlNodeType type, int index)
         {
             switch (type)
             {
@@ -915,13 +915,13 @@ namespace HtmlAgilityPack
             }
         }
 
-        public Encoding GetOutEncoding()
+        internal Encoding GetOutEncoding()
         {
             // when unspecified, use the stream encoding first
             return _declaredencoding ?? (_streamencoding ?? OptionDefaultStreamEncoding);
         }
 
-        public HtmlNode GetXmlDeclaration()
+        internal HtmlNode GetXmlDeclaration()
         {
             if (!_documentnode.HasChildNodes)
                 return null;
@@ -933,7 +933,7 @@ namespace HtmlAgilityPack
             return null;
         }
 
-        public void SetIdForNode(HtmlNode node, string id)
+        internal void SetIdForNode(HtmlNode node, string id)
         {
             if (!OptionUseIdAttribute)
                 return;
@@ -947,7 +947,7 @@ namespace HtmlAgilityPack
                 Nodesid[id] = node;
         }
 
-        public void UpdateLastParentNode()
+        internal void UpdateLastParentNode()
         {
             do
             {
@@ -2118,7 +2118,7 @@ namespace HtmlAgilityPack
 
             if (!string.IsNullOrEmpty(charset))
             {
-                // The following check fixes the the bug described at: http://htmlagilitypack.codeplex.com/WorkItem/View.aspx?WorkItemId=25273
+                // The following check fixes the the bug described at: https://htmlagilitypack.codeplex.com/WorkItem/View.aspx?WorkItemId=25273
                 if (string.Equals(charset, "utf8", StringComparison.OrdinalIgnoreCase))
                     charset = "utf-8";
                 try
