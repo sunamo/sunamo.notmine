@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoGpx", "SunamoGpx\SunamoGpx.csproj", "{495610CC-0E93-42BB-B146-F15ED1AD496D}"
 EndProject
@@ -11,10 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sunamo", "..\sunamo\sunamo\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shared", "..\sunamo\shared\shared.csproj", "{77719C0D-7C8B-4B9E-A644-AEE7CEB35134}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XliffParser", "XliffParser\XliffParser.csproj", "{A7A52187-F57F-463B-90A2-D6511DF73F27}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "fmdev.ResX", "fmdev.ResX\fmdev.ResX.csproj", "{6B66AD58-4DE4-4897-B5DA-9972D538C25F}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HtmlAgilityPack.Shared", "HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.shproj", "{5BA9A0D7-173F-4C4F-AFFA-3DD6DC2F9A79}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlAgilityPack.NETStandard2_0", "HtmlAgilityPack.NETStandard2_0\HtmlAgilityPack.NETStandard2_0.csproj", "{EF331821-8547-4CC6-9CE1-DBBDE919714F}"
@@ -22,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathEditor", "PathEditor\PathEditor.csproj", "{EC822654-CDE4-4EE2-B033-55125CD11B80}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "duo", "..\sunamo\duo\duo.csproj", "{C1900EAE-8F26-4256-9D24-C7E94FF14221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurableWindow", "ConfigurableWindow\ConfigurableWindow.csproj", "{409E4603-A3A6-4FCA-B73B-A17F42768011}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -84,26 +82,6 @@ Global
 		{77719C0D-7C8B-4B9E-A644-AEE7CEB35134}.Release|x64.Build.0 = Release|x64
 		{77719C0D-7C8B-4B9E-A644-AEE7CEB35134}.Release|x86.ActiveCfg = Release|x86
 		{77719C0D-7C8B-4B9E-A644-AEE7CEB35134}.Release|x86.Build.0 = Release|x86
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Debug|x64.Build.0 = Debug|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Debug|x86.Build.0 = Debug|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Release|x64.ActiveCfg = Release|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Release|x64.Build.0 = Release|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Release|x86.ActiveCfg = Release|Any CPU
-		{A7A52187-F57F-463B-90A2-D6511DF73F27}.Release|x86.Build.0 = Release|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Debug|x64.Build.0 = Debug|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Debug|x86.Build.0 = Debug|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Release|x64.ActiveCfg = Release|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Release|x64.Build.0 = Release|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Release|x86.ActiveCfg = Release|Any CPU
-		{6B66AD58-4DE4-4897-B5DA-9972D538C25F}.Release|x86.Build.0 = Release|Any CPU
 		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF331821-8547-4CC6-9CE1-DBBDE919714F}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -140,6 +118,18 @@ Global
 		{C1900EAE-8F26-4256-9D24-C7E94FF14221}.Release|x64.Build.0 = Release|Any CPU
 		{C1900EAE-8F26-4256-9D24-C7E94FF14221}.Release|x86.ActiveCfg = Release|Any CPU
 		{C1900EAE-8F26-4256-9D24-C7E94FF14221}.Release|x86.Build.0 = Release|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Debug|x64.Build.0 = Debug|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Debug|x86.Build.0 = Debug|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|Any CPU.Build.0 = Release|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x64.ActiveCfg = Release|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x64.Build.0 = Release|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x86.ActiveCfg = Release|Any CPU
+		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
