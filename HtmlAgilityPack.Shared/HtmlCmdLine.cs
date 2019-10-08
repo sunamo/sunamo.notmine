@@ -1,20 +1,20 @@
-// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
 // Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System;
 
 #if !NETSTANDARD1_3 && !METRO
 namespace HtmlAgilityPack
 {
-    internal class HtmlCmdLine
+    public class HtmlCmdLine
     {
 #region Static Members
 
-        internal static bool Help;
+        public static bool Help;
 
 #endregion
 
@@ -30,7 +30,7 @@ namespace HtmlAgilityPack
 
 #region Internal Methods
 
-        internal static string GetOption(string name, string def)
+        public static string GetOption(string name, string def)
         {
             string p = def;
             string[] args = Environment.GetCommandLineArgs();
@@ -42,7 +42,7 @@ namespace HtmlAgilityPack
             return p;
         }
 
-        internal static string GetOption(int index, string def)
+        public static string GetOption(int index, string def)
         {
             string p = def;
             string[] args = Environment.GetCommandLineArgs();
@@ -62,7 +62,7 @@ namespace HtmlAgilityPack
             return p;
         }
 
-        internal static bool GetOption(string name, bool def)
+        public static bool GetOption(string name, bool def)
         {
             bool p = def;
             string[] args = Environment.GetCommandLineArgs();
@@ -74,7 +74,7 @@ namespace HtmlAgilityPack
             return p;
         }
 
-        internal static int GetOption(string name, int def)
+        public static int GetOption(string name, int def)
         {
             int p = def;
             string[] args = Environment.GetCommandLineArgs();

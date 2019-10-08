@@ -1,9 +1,9 @@
-// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
 // Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 #region
 
@@ -25,23 +25,23 @@ namespace HtmlAgilityPack
         #region Fields
 
         private int _line;
-        internal int _lineposition;
-        internal string _name;
-        internal int _namelength;
-        internal int _namestartindex;
-        internal HtmlDocument _ownerdocument; // attribute can exists without a node
-        internal HtmlNode _ownernode;
+        public int _lineposition;
+        public string _name;
+        public int _namelength;
+        public int _namestartindex;
+        public HtmlDocument _ownerdocument; // attribute can exists without a node
+        public HtmlNode _ownernode;
         private AttributeValueQuote _quoteType = AttributeValueQuote.DoubleQuote;
-        internal int _streamposition;
-        internal string _value;
-        internal int _valuelength;
-        internal int _valuestartindex;
+        public int _streamposition;
+        public string _value;
+        public int _valuelength;
+        public int _valuestartindex;
 
         #endregion
 
         #region Constructors
 
-        internal HtmlAttribute(HtmlDocument ownerdocument)
+        public HtmlAttribute(HtmlDocument ownerdocument)
         {
             _ownerdocument = ownerdocument;
         }
@@ -56,7 +56,7 @@ namespace HtmlAgilityPack
         public int Line
         {
             get { return _line; }
-            internal set { _line = value; }
+            set { _line = value; }
         }
 
         /// <summary>
@@ -199,12 +199,12 @@ namespace HtmlAgilityPack
             get { return HtmlEntity.DeEntitize(Value); }
         }
 
-        internal string XmlName
+        public string XmlName
         {
             get { return HtmlDocument.GetXmlName(Name, true, OwnerDocument.OptionPreserveXmlNamespaces); }
         }
 
-        internal string XmlValue
+        public string XmlValue
         {
             get { return Value; }
         }

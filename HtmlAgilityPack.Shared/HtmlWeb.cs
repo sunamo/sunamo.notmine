@@ -1,9 +1,9 @@
-// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
 // Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 #if !METRO
 
@@ -1055,7 +1055,7 @@ namespace HtmlAgilityPack
             if ((uri.Scheme == Uri.UriSchemeHttps) ||
                 (uri.Scheme == Uri.UriSchemeHttp))
 #else
-// TODO: Check if UriSchemeHttps is still internal in NETSTANDARD 2.0
+// TODO: Check if UriSchemeHttps is still public in NETSTANDARD 2.0
             if ((uri.Scheme == "https") ||
                 (uri.Scheme == "http"))
 #endif
@@ -1108,7 +1108,7 @@ namespace HtmlAgilityPack
             if ((uri.Scheme == Uri.UriSchemeHttps) ||
                 (uri.Scheme == Uri.UriSchemeHttp))
 #else
-            // TODO: Check if UriSchemeHttps is still internal in NETSTANDARD 2.0
+            // TODO: Check if UriSchemeHttps is still public in NETSTANDARD 2.0
             if ((uri.Scheme == "https") ||
                 (uri.Scheme == "http"))
 #endif
@@ -1282,7 +1282,7 @@ namespace HtmlAgilityPack
             if ((uri.Scheme == Uri.UriSchemeHttps) ||
                 (uri.Scheme == Uri.UriSchemeHttp))
 #else
-// TODO: Check if UriSchemeHttps is still internal in NETSTANDARD 2.0
+// TODO: Check if UriSchemeHttps is still public in NETSTANDARD 2.0
             if ((uri.Scheme == "https") ||
                 (uri.Scheme == "http"))
 #endif
@@ -1294,7 +1294,7 @@ namespace HtmlAgilityPack
 #if !(NETSTANDARD1_3 || NETSTANDARD1_6)
                 if (uri.Scheme == Uri.UriSchemeFile)
 #else
-// TODO: Check if UriSchemeHttps is still internal in NETSTANDARD 2.0
+// TODO: Check if UriSchemeHttps is still public in NETSTANDARD 2.0
                 if (uri.Scheme == "file")
 #endif
                 {
@@ -1418,7 +1418,7 @@ namespace HtmlAgilityPack
 #if !(NETSTANDARD1_3 || NETSTANDARD1_6)
             if (uri.Scheme == Uri.UriSchemeFile)
 #else
-            // TODO: Check if UriSchemeHttps is still internal in NETSTANDARD 2.0
+            // TODO: Check if UriSchemeHttps is still public in NETSTANDARD 2.0
             if (uri.Scheme == "file")
 #endif
             {
@@ -1429,7 +1429,7 @@ namespace HtmlAgilityPack
 #if !(NETSTANDARD1_3 || NETSTANDARD1_6)
                 if (uri.Scheme == Uri.UriSchemeFile)
 #else
-                // TODO: Check if UriSchemeHttps is still internal in NETSTANDARD 2.0
+                // TODO: Check if UriSchemeHttps is still public in NETSTANDARD 2.0
                 if (uri.Scheme == "file")
 #endif
                 {
@@ -1774,7 +1774,7 @@ namespace HtmlAgilityPack
                         }
                         catch
                         {
-                            // That’s fine, the content type was unknown so probably not HTML
+                            // Thatï¿½s fine, the content type was unknown so probably not HTML
                             // Perhaps trying to figure if the content contains some HTML before would be a better idea.
                         }
                     }
@@ -2000,7 +2000,7 @@ namespace HtmlAgilityPack
                             }
                             catch
                             {
-                                // That’s fine, the content type was unknown so probably not HTML
+                                // Thatï¿½s fine, the content type was unknown so probably not HTML
                                 // Perhaps trying to figure if the content contains some HTML before would be a better idea.
                             }
                         }
@@ -2399,7 +2399,7 @@ namespace HtmlAgilityPack
             return LoadFromBrowser(url, (object browser) => true);
         }
 
-        internal string WebBrowserOuterHtml(object webBrowser)
+        public string WebBrowserOuterHtml(object webBrowser)
         {
 	        try
 	        { 

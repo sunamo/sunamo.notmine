@@ -1,15 +1,15 @@
-// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
 // Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 using System.Xml;
 
 namespace HtmlAgilityPack
 {
-    internal class HtmlNameTable : XmlNameTable
+    public class HtmlNameTable : XmlNameTable
     {
         #region Fields
 
@@ -43,7 +43,7 @@ namespace HtmlAgilityPack
 
         #region Internal Methods
 
-        internal string GetOrAdd(string array)
+        public string GetOrAdd(string array)
         {
             string s = Get(array);
             if (s == null)

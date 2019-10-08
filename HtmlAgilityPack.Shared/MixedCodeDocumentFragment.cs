@@ -1,9 +1,9 @@
-// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+ï»¿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
 // Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
-// Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
+// Copyright ï¿½ ZZZ Projects Inc. 2014 - 2017. All rights reserved.
 
 #if !METRO
 namespace HtmlAgilityPack
@@ -15,19 +15,19 @@ namespace HtmlAgilityPack
     {
         #region Fields
 
-        internal MixedCodeDocument Doc;
+        public MixedCodeDocument Doc;
         private string _fragmentText;
-        internal int Index;
-        internal int Length;
+        public int Index;
+        public int Length;
         private int _line;
-        internal int _lineposition;
-        internal MixedCodeDocumentFragmentType _type;
+        public int _lineposition;
+        public MixedCodeDocumentFragmentType _type;
 
         #endregion
 
         #region Constructors
 
-        internal MixedCodeDocumentFragment(MixedCodeDocument doc, MixedCodeDocumentFragmentType type)
+        public MixedCodeDocumentFragment(MixedCodeDocument doc, MixedCodeDocumentFragmentType type)
         {
             Doc = doc;
             _type = type;
@@ -63,7 +63,7 @@ namespace HtmlAgilityPack
 
                 return _fragmentText;
             }
-            internal set { _fragmentText = value; }
+            set { _fragmentText = value; }
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace HtmlAgilityPack
         public int Line
         {
             get { return _line; }
-            internal set { _line = value; }
+            set { _line = value; }
         }
 
         /// <summary>
