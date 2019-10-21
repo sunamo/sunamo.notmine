@@ -123,6 +123,10 @@
       <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
       <Name>duo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj">
+      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
+      <Name>sunamo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
