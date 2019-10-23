@@ -52,10 +52,6 @@
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj">
-      <Project>{11a3b08a-9b71-4bf1-a935-6f33dc2e1486}</Project>
-      <Name>sunamo</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
