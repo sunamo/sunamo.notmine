@@ -11,7 +11,7 @@ namespace HtmlAgilityPack
     {
         partial void WriteLineIntern(string message, string category)
         {
-            System.Diagnostics.Debug.WriteLine(message, category);
+            //System.Diagnostics.DebugLogger.DebugWriteLine(message, category);
         }
     }
 }
