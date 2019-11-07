@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoGpx", "SunamoGpx\SunamoGpx.csproj", "{495610CC-0E93-42BB-B146-F15ED1AD496D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunamoMvvm", "SunamoMvvm\SunamoMvvm.csproj", "{14FEC151-B84D-4D45-BA3C-3B7FFAF25385}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sunamo", "..\sunamo\sunamo\sunamo.csproj", "{F6F92307-B0B3-4D6C-BD9C-8B5FF5560DCF}"
@@ -21,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "duo", "..\sunamo\duo\duo.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurableWindow", "ConfigurableWindow\ConfigurableWindow.csproj", "{409E4603-A3A6-4FCA-B73B-A17F42768011}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collage.Engine", "Collage.Engine\Collage.Engine.csproj", "{BC82FC61-26E6-4F4A-AF93-73C38AA46394}"
-EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems*{5ba9a0d7-173f-4c4f-affa-3dd6dc2f9a79}*SharedItemsImports = 13
@@ -36,18 +32,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Debug|x64.Build.0 = Debug|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Debug|x86.Build.0 = Debug|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Release|x64.ActiveCfg = Release|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Release|x64.Build.0 = Release|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Release|x86.ActiveCfg = Release|Any CPU
-		{495610CC-0E93-42BB-B146-F15ED1AD496D}.Release|x86.Build.0 = Release|Any CPU
 		{14FEC151-B84D-4D45-BA3C-3B7FFAF25385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14FEC151-B84D-4D45-BA3C-3B7FFAF25385}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14FEC151-B84D-4D45-BA3C-3B7FFAF25385}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -132,18 +116,6 @@ Global
 		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x64.Build.0 = Release|Any CPU
 		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x86.ActiveCfg = Release|Any CPU
 		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x86.Build.0 = Release|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Debug|x64.Build.0 = Debug|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Debug|x86.Build.0 = Debug|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Release|x64.ActiveCfg = Release|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Release|x64.Build.0 = Release|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Release|x86.ActiveCfg = Release|Any CPU
-		{BC82FC61-26E6-4F4A-AF93-73C38AA46394}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
