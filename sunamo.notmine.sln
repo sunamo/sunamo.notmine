@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "duo", "..\sunamo\duo\duo.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurableWindow", "ConfigurableWindow\ConfigurableWindow.csproj", "{409E4603-A3A6-4FCA-B73B-A17F42768011}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlvExtract", "FlvExtract\FlvExtract.csproj", "{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems*{5ba9a0d7-173f-4c4f-affa-3dd6dc2f9a79}*SharedItemsImports = 13
@@ -116,6 +118,18 @@ Global
 		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x64.Build.0 = Release|Any CPU
 		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x86.ActiveCfg = Release|Any CPU
 		{409E4603-A3A6-4FCA-B73B-A17F42768011}.Release|x86.Build.0 = Release|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Debug|x64.Build.0 = Debug|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Debug|x86.Build.0 = Debug|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Release|x64.ActiveCfg = Release|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Release|x64.Build.0 = Release|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Release|x86.ActiveCfg = Release|Any CPU
+		{A56E7F0B-89F8-4DCB-A159-AFD92908AB99}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
