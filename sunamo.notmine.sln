@@ -24,7 +24,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collage.Engine", "Collage.Engine\Collage.Engine.csproj", "{BC82FC61-26E6-4F4A-AF93-73C38AA46394}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlAgilityPack.Net45", "HtmlAgilityPack.Net45\HtmlAgilityPack.Net45.csproj", "{8DCFDE1C-263F-41D4-B518-9B7EE06F7D52}"
-EndProject
+EndProject 
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems*{5ba9a0d7-173f-4c4f-affa-3dd6dc2f9a79}*SharedItemsImports = 13
