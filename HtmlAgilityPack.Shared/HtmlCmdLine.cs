@@ -10,6 +10,13 @@ using System;
 #if !NETSTANDARD1_3 && !METRO
 namespace HtmlAgilityPack
 {
+    /// <summary>
+    /// Allowed:
+    /// /k:v
+    /// -k:v
+    /// -k:"value with spaces"
+    /// Must be always :, without it take default value
+    /// </summary>
     public class HtmlCmdLine
     {
 #region Static Members
