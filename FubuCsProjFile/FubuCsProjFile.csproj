@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FubuCore, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FubuCore.2.0.1.321\lib\FubuCore.dll</HintPath>
+      <HintPath>..\..\AllProjectsSearch\packages\FubuCore.2.0.1.321\lib\FubuCore.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
