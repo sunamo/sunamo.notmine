@@ -1,4 +1,4 @@
-// Copyright (c) Jeff Kluge. All rights reserved.
+﻿// Copyright (c) Jeff Kluge. All rights reserved.
 //
 // Licensed under the MIT license.
 
@@ -17,7 +17,7 @@ namespace SlnGen.Common
 
         public IEnumerable<KeyValuePair<string, TimeSpan>> ProjectLoadTimes => _projectLoadTimes;
 
-        internal bool TryAddProjectLoadTime(string path, TimeSpan timeSpan)
+        public bool TryAddProjectLoadTime(string path, TimeSpan timeSpan)
         {
             return _projectLoadTimes.TryAdd(path, timeSpan);
         }

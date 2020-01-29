@@ -1,4 +1,4 @@
-// Copyright (c) Jeff Kluge. All rights reserved.
+﻿// Copyright (c) Jeff Kluge. All rights reserved.
 //
 // Licensed under the MIT license.
 
@@ -170,7 +170,7 @@ namespace SlnGen.Common
             }
             catch
             {
-                // Ignored because we never want this method to throw since its using reflection to access internal members that could go away with any future release of MSBuild
+                // Ignored because we never want this method to throw since its using reflection to access public members that could go away with any future release of MSBuild
             }
 
             return false;

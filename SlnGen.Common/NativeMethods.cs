@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SlnGen.Common
 {
-    internal static class NativeMethods
+    public static class NativeMethods
     {
         /// <summary>
         /// Retrieves the final path for the specified file.

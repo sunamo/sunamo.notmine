@@ -19,7 +19,7 @@ namespace FubuCsProjFile
             this.Initialize();
         }
 
-        internal override void Save()
+        public override void Save()
         {
             if (this._fileSystem.FileExists(this.FullPath))
             {

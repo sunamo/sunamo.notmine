@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Xml;
 
 namespace FubuCsProjFile.MSBuild
@@ -7,7 +7,7 @@ namespace FubuCsProjFile.MSBuild
     {
         private readonly MSBuildProject parent;
 
-        internal MSBuildItemGroup(MSBuildProject parent, XmlElement elem)
+        public MSBuildItemGroup(MSBuildProject parent, XmlElement elem)
             : base(elem)
         {
             this.parent = parent;

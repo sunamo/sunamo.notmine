@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FubuCore;
@@ -124,7 +124,7 @@ namespace FubuCsProjFile.Templating.Runtime
             return _substitutions.ApplySubstitutions(rawText, builder => writeNamespace(relativePath, builder));
         }
 
-        internal void ApplySubstitutions(string relativePath, StringBuilder builder)
+        public void ApplySubstitutions(string relativePath, StringBuilder builder)
         {
             _substitutions.ApplySubstitutions(builder);
             writeNamespace(relativePath, builder);

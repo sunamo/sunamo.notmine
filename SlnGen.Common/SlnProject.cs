@@ -154,7 +154,7 @@ namespace SlnGen.Common
         /// <param name="isUsingMicrosoftNetSdk">Indicates whether or not the project is using the Microsoft.NET.Sdk.</param>
         /// <param name="customProjectTypeGuids">A list of custom project type GUIDs to use.</param>
         /// <returns>The project type GUID for the specfied project extension.</returns>
-        internal static Guid GetKnownProjectTypeGuid(string extension, bool isUsingMicrosoftNetSdk, IReadOnlyDictionary<string, Guid> customProjectTypeGuids)
+        public static Guid GetKnownProjectTypeGuid(string extension, bool isUsingMicrosoftNetSdk, IReadOnlyDictionary<string, Guid> customProjectTypeGuids)
         {
             if (customProjectTypeGuids.TryGetValue(extension, out Guid projectTypeGuid) || KnownProjectTypeGuids.TryGetValue(extension, out projectTypeGuid))
             {
@@ -181,7 +181,7 @@ namespace SlnGen.Common
         /// </summary>
         /// <param name="project">The project.</param>
         /// <returns><code>true</code> if it should be included, <code>false</code> otherwise.</returns>
-        internal static bool ShouldIncludeInSolution(Project project)
+        public static bool ShouldIncludeInSolution(Project project)
         {
             return
                 !project.GetPropertyValue(SlnConstants.IncludeInSolutionFile).Equals(bool.FalseString, StringComparison.OrdinalIgnoreCase) // Filter out projects that explicitly should not be included
