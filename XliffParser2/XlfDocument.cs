@@ -30,16 +30,26 @@
         /// A1 can be null but then is need to call LoadXml
         /// </summary>
         /// <param name="fileName"></param>
-        public XlfDocument(string fileName)
+        public XlfDocument(string fileName) : this(fileName, null)
+        {
+            
+        }
+
+        public XlfDocument(string fileName, string content)
+
         {
             FileName = fileName;
             if (FileName != null)
             {
-                doc = XDocument.Load(FileName);
-                Dialect = DetermineDialect();
+                
+                doc = XDocument.Load(fileName);
+                
             }
-
-
+            else
+            {
+                doc = XDocument.Parse(content);
+            }
+            Dialect = DetermineDialect();
         }
 
         public void LoadXml(string xml)
