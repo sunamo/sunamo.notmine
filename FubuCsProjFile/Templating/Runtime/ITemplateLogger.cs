@@ -1,4 +1,4 @@
-namespace FubuCsProjFile.Templating.Runtime
+﻿namespace FubuCsProjFile.Templating.Runtime
 {
     public interface ITemplateLogger
     {

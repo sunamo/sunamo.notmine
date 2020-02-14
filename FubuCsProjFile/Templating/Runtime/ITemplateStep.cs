@@ -1,4 +1,4 @@
-using FubuCsProjFile.Templating.Planning;
+﻿using FubuCsProjFile.Templating.Planning;
 
 namespace FubuCsProjFile.Templating.Runtime
 {
