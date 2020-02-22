@@ -42,7 +42,7 @@ namespace PathEditor.Models
 
     public class EnvironmentVariableAutoCompleteProvider : IAutoCompleteProvider
     {
-        private static readonly string[] EnvironmentVariables = Environment.GetEnvironmentVariables().Keys.OfType<string>().ToArray();
+        private static readonly List<string> EnvironmentVariables = Environment.GetEnvironmentVariables().Keys.OfType<string>().ToArray();
 
         private readonly string _variableNamePrefix;
 
@@ -73,7 +73,7 @@ namespace PathEditor.Models
     public class DirectoryAutoCompleteProvider : IAutoCompleteProvider
     {
         private static string _currentDirectory;
-        private static string[] _currentSubDirectories;
+        private static List<string> _currentSubDirectories;
 
         private readonly bool _directoryExists;
         private readonly string _textToAppend;

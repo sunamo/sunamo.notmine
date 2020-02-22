@@ -105,7 +105,7 @@ namespace fmdev.ResX
                 throw new ArgumentException($"The namespace name must not be empty or null");
             }
 
-            string[] unmatchedElements;
+            List<string> unmatchedElements;
             var codeProvider = new Microsoft.CSharp.CSharpCodeProvider();
             System.CodeDom.CodeCompileUnit code =
                 System.Resources.Tools.StronglyTypedResourceBuilder.Create(

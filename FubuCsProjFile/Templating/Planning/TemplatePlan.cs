@@ -176,7 +176,7 @@ namespace FubuCsProjFile.Templating.Planning
                 }
             });
 
-            string[] projectsWithNugets = determineProjectsWithNugets();
+            List<string> projectsWithNugets = determineProjectsWithNugets();
             if (projectsWithNugets.Any())
             {
                 Console.WriteLine();
@@ -218,7 +218,7 @@ namespace FubuCsProjFile.Templating.Planning
 
         public void WriteNugetImports()
         {
-            string[] projectsWithNugets = determineProjectsWithNugets();
+            List<string> projectsWithNugets = determineProjectsWithNugets();
 
             if (projectsWithNugets.Any())
             {
@@ -231,9 +231,9 @@ namespace FubuCsProjFile.Templating.Planning
             }
         }
 
-        private string[] determineProjectsWithNugets()
+        private List<string> determineProjectsWithNugets()
         {
-            string[] projectsWithNugets = Steps
+            List<string> projectsWithNugets = Steps
                 .OfType<ProjectPlan>()
                 .Where(x => x.NugetDeclarations.Any())
                 .Select(x => x.ToNugetImportStatement()).ToArray();

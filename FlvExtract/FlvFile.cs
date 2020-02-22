@@ -66,7 +66,7 @@ namespace FlvExtract
 
         public VideoFormat VideoFormat { get; private set; }
 
-        public string[] Warnings
+        public List<string> Warnings
         {
             get { return _warnings.ToArray(); }
         }

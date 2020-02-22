@@ -145,7 +145,7 @@ namespace FubuCsProjFile.Templating.Runtime
                 .Split('/')
                 .Reverse()
                 .Skip(1)
-                .Union(new string[] { projectName })
+                .Union(new List<string> { projectName })
                 .Reverse()
                 .Join(".");
         }

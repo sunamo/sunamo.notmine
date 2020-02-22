@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -1128,7 +1129,7 @@ namespace HtmlAgilityPack
             return resetter;
         }
 
-        private bool FindResetterNodes(HtmlNode node, string[] names)
+        private bool FindResetterNodes(HtmlNode node, String[] names)
         {
             if (names == null)
                 return false;
@@ -1142,7 +1143,7 @@ namespace HtmlAgilityPack
             return false;
         }
 
-        private void FixNestedTag(string name, string[] resetters)
+        private void FixNestedTag(string name, String[] resetters)
         {
             if (resetters == null)
                 return;
@@ -1173,9 +1174,9 @@ namespace HtmlAgilityPack
             FixNestedTag(name, GetResetters(name));
         }
 
-        private string[] GetResetters(string name)
+        private String[] GetResetters(string name)
         {
-            string[] resetters;
+            String[] resetters;
 
             if (!HtmlResetters.TryGetValue(name, out resetters))
             {
@@ -1754,7 +1755,7 @@ namespace HtmlAgilityPack
 
         // In this moment, we don't have value. 
         // Potential: "\"", "'", "[", "]", "<", ">", "-", "|", "/", "\\"
-        private static List<string> BlockAttributes = new List<string>() { "\"", "'" };
+        private static String[] BlockAttributes = new string[] { "\"", "'" };
 
 	    private void PushAttributeNameEnd(int index)
 	    {

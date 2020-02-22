@@ -25,7 +25,7 @@ namespace FubuCsProjFile
         public static readonly string VS2013 = "VS2013";
         public static readonly string DefaultVersion = VS2010;
 
-        private static readonly Cache<string, string[]> _versionLines = new Cache<string, string[]>();
+        private static readonly Cache<string, List<string>> _versionLines = new Cache<string, List<string>>();
 
         static Solution()
         {

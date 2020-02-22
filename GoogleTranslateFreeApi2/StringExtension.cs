@@ -35,7 +35,7 @@ namespace GoogleTranslateFreeApi
 
 		public static string ToCamelCase(this string src)
 		{
-			string[] words = src.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+			List<string> words = src.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
 
 			return string.Concat(words.Select(word
 				=> char.ToUpper(word[0]) + word.Substring(1).ToLower()));

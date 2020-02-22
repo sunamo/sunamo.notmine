@@ -9,7 +9,7 @@ namespace FubuCsProjFile.Templating.Runtime
     {
         public static readonly string File = "ignore.txt";
 
-        private readonly string[] _entries;
+        private readonly List<string> _entries;
 
         public GitIgnoreStep(params string[] entries)
         {
@@ -21,7 +21,7 @@ namespace FubuCsProjFile.Templating.Runtime
             plan.AlterFile(".gitignore", list => _entries.Each(list.Fill));
         }
 
-        public string[] Entries
+        public List<string> Entries
         {
             get { return _entries; }
         }

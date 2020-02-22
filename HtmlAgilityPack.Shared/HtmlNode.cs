@@ -2351,7 +2351,7 @@ namespace HtmlAgilityPack
 					}
 					else if (att.Value.Contains(name))
 					{
-						string[] classNames = att.Value.Split(' ');
+						var classNames = att.Value.Split(' ');
 
 						string newClassNames = "";
 

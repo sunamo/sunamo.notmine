@@ -53,7 +53,7 @@ namespace FubuCsProjFile
             get { return this._fileSystem.GetFullPath(Path.Combine(this._projFile.ProjectDirectory, this._codeFile.Include)); }
         }
 
-        private string[] Lines { get; set; }
+        private List<string> Lines { get; set; }
 
         private void Initialize()
         {
@@ -72,7 +72,7 @@ namespace FubuCsProjFile
             }
         }
 
-        private void UpdateLine(string[] lines, string property, string value)
+        private void UpdateLine(List<string> lines, string property, string value)
         {
             for (int i = 0; i < lines.Length; i++)
             {
@@ -84,7 +84,7 @@ namespace FubuCsProjFile
             }
         }
 
-        private void Parse(string property, Action<string> action, string[] lines)
+        private void Parse(string property, Action<string> action, List<string> lines)
         {
             var rawValue = lines.FirstOrDefault(line => Match(property, line));
             if (!string.IsNullOrWhiteSpace(rawValue))

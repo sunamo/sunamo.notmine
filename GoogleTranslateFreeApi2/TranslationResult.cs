@@ -13,7 +13,7 @@ namespace GoogleTranslateFreeApi
 	public class TranslationResult
 	{
 		[DataMember]
-		public string[] FragmentedTranslation { get; set; }
+		public List<string> FragmentedTranslation { get; set; }
 		
 		public string MergedTranslation => String.Concat(FragmentedTranslation);
 		
@@ -24,7 +24,7 @@ namespace GoogleTranslateFreeApi
 		[DataMember]
 		public string OriginalTextTranscription { get; set; }
 		[DataMember]
-		public string[] SeeAlso { get; set; }
+		public List<string> SeeAlso { get; set; }
 		[DataMember]
 		public Language SourceLanguage { get; set; }
 		[DataMember]

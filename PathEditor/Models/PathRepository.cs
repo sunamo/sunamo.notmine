@@ -9,7 +9,7 @@ namespace PathEditor.Models
     {
         private const string PathKeyName = @"SYSTEM\CurrentControlSet\Control\Session Manager\Environment\";
 
-        public string[] GetPathParts()
+        public List<string> GetPathParts()
         {
             return ((string)Registry.LocalMachine.OpenSubKey(PathKeyName).GetValue("Path", string.Empty, RegistryValueOptions.DoNotExpandEnvironmentNames))
                 .Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
@@ -17,7 +17,7 @@ namespace PathEditor.Models
                 .ToArray();
         }
 
-        public void SetPathFromParts(string[] pathParts)
+        public void SetPathFromParts(List<string> pathParts)
         {
             var paths = pathParts
                 .Where(p => !string.IsNullOrWhiteSpace(p))

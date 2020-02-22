@@ -8,7 +8,7 @@ namespace GoogleTranslateFreeApi.TranslationData
 		[DataMember] public bool TextWasCorrected { get; set; }
 		[DataMember] public bool LanguageWasCorrected { get; set; }
 		[DataMember] public string CorrectedText { get; set; }
-		[DataMember] public string[] CorrectedWords { get; set; }
+		[DataMember] public List<string> CorrectedWords { get; set; }
 		[DataMember] public Language CorrectedLanguage { get; set; }
 		
 		[DataMember(EmitDefaultValue = false)] 

@@ -18,7 +18,7 @@ namespace FubuCsProjFile.Templating.Graph
     {
         public string Name { get; set; }
         public TemplateType TemplateType { get; set; }
-        public string[] ValidChoices { get; set; }
+        public List<string> ValidChoices { get; set; }
 
         public override string ToString()
         {
