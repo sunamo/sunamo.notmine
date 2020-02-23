@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -42,7 +43,7 @@ namespace PathEditor.Models
 
     public class EnvironmentVariableAutoCompleteProvider : IAutoCompleteProvider
     {
-        private static readonly List<string> EnvironmentVariables = Environment.GetEnvironmentVariables().Keys.OfType<string>().ToArray();
+        private static readonly List<string> EnvironmentVariables = Environment.GetEnvironmentVariables().Keys.OfType<string>().ToList();
 
         private readonly string _variableNamePrefix;
 
@@ -98,7 +99,7 @@ namespace PathEditor.Models
 
             _currentDirectory = directory;
             _currentSubDirectories = Directory.GetDirectories(directory)
-                .Select(Path.GetFileName).ToArray();
+                .Select(Path.GetFileName).ToList();
         }
 
         public string GetAutoCompleteText()
