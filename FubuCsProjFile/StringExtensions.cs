@@ -8,10 +8,10 @@ namespace FubuCsProjFile
 {
     public static class StringExtensions
     {
-        private static readonly List<string> Splitters = { "\r\n", "\n" };
+        private static readonly List<string> Splitters = new List<string>() { "\r\n", "\n" };
         public static List<string> SplitOnNewLine(this string value)
         {
-            return value.Split(Splitters, StringSplitOptions.None);
+            return value.Split(Splitters.ToArray(), StringSplitOptions.None).ToList();
         }
 
         public static string CanonicalPath(this string path)

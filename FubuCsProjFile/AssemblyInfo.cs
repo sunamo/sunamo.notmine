@@ -43,8 +43,8 @@ namespace FubuCsProjFile
                 this.UpdateLine(Lines, "AssemblyProduct", this.AssemblyProduct);
                 this.UpdateLine(Lines, "AssemblyCopyright", this.AssemblyCopyright);
                 this.UpdateLine(Lines, "AssemblyInformationalVersion", this.AssemblyInformationalVersion);
-                
-                Array.ForEach(this.Lines, s => result.AppendLine(s));
+
+                this.Lines.ForEach( s => result.AppendLine(s));
                 this._fileSystem.WriteStringToFile(this.FullPath, result.ToString().TrimEnd(Environment.NewLine.ToCharArray()));
             }
         }
@@ -75,7 +75,7 @@ namespace FubuCsProjFile
 
         private void UpdateLine(List<string> lines, string property, string value)
         {
-            for (int i = 0; i < lines.Length; i++)
+            for (int i = 0; i < lines.Count; i++)
             {
                 if (Match(property,lines[i]))
                 {

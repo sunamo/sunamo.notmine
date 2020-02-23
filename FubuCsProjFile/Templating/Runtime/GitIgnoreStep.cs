@@ -13,7 +13,8 @@ namespace FubuCsProjFile.Templating.Runtime
 
         public GitIgnoreStep(params string[] entries)
         {
-            _entries = entries;
+            _entries = new List<string>();
+            _entries.AddRange(  entries);
         }
 
         public void Alter(TemplatePlan plan)

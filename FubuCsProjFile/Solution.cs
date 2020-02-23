@@ -29,9 +29,9 @@ namespace FubuCsProjFile
 
         static Solution()
         {
-            _versionLines[VS2010] = new[] { "Microsoft Visual Studio Solution File, Format Version 11.00", "# Visual Studio 2010" };
-            _versionLines[VS2012] = new[] { "Microsoft Visual Studio Solution File, Format Version 12.00", "# Visual Studio 2012" };
-            _versionLines[VS2013] = new[] { "Microsoft Visual Studio Solution File, Format Version 12.00", "# Visual Studio 2013", "VisualStudioVersion = 12.0.21005.1", "MinimumVisualStudioVersion = 10.0.40219.1" };
+            _versionLines[VS2010] = new List<string> { "Microsoft Visual Studio Solution File, Format Version 11.00", "# Visual Studio 2010" };
+            _versionLines[VS2012] = new List<string> { "Microsoft Visual Studio Solution File, Format Version 12.00", "# Visual Studio 2012" };
+            _versionLines[VS2013] = new List<string> { "Microsoft Visual Studio Solution File, Format Version 12.00", "# Visual Studio 2013", "VisualStudioVersion = 12.0.21005.1", "MinimumVisualStudioVersion = 10.0.40219.1" };
         }
 
         private readonly string _filename;

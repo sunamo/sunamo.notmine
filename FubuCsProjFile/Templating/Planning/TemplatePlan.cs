@@ -236,7 +236,7 @@ namespace FubuCsProjFile.Templating.Planning
             List<string> projectsWithNugets = Steps
                 .OfType<ProjectPlan>()
                 .Where(x => x.NugetDeclarations.Any())
-                .Select(x => x.ToNugetImportStatement()).ToArray();
+                .Select(x => x.ToNugetImportStatement()).ToList();
             return projectsWithNugets;
         }
 
