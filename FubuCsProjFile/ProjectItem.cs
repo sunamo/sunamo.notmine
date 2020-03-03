@@ -24,7 +24,7 @@ namespace FubuCsProjFile
         public string Name
         {
             get { return _name; }
-             set { _name = value; }
+            protected set { _name = value; }
         }
 
         public string Include
@@ -35,12 +35,12 @@ namespace FubuCsProjFile
 
         protected MSBuildItem BuildItem { get; set; }
 
-        public bool Matches(MSBuildItem item)
+        internal bool Matches(MSBuildItem item)
         {
             return item.Name == Name && item.Include == Include;
         }
 
-        public virtual MSBuildItem Configure(MSBuildItemGroup @group)
+        internal virtual MSBuildItem Configure(MSBuildItemGroup @group)
         {
             var item = @group.Items.FirstOrDefault(Matches)
                        ?? @group.AddNewItem(Name, Include);
@@ -49,13 +49,13 @@ namespace FubuCsProjFile
             return item;
         }
 
-        public virtual void Read(MSBuildItem item)
+        internal virtual void Read(MSBuildItem item)
         {
             this.BuildItem = item;
             Include = item.Include;
         }
 
-        public virtual void Save()
+        internal virtual void Save()
         {
             this.BuildItem.Include = this.Include;
         }

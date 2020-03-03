@@ -563,7 +563,134 @@ namespace HtmlAgilityPack
         /// <param name="htmlNodeCollection"><see cref="HtmlNodeCollection"/> that you want to retrive each <see cref="HtmlNode"/> value.</param>
         /// <param name="xPathAttribute">A <see cref="XPathAttribute"/> instnce incules <see cref="ReturnType"/>.</param>
         /// <param name="listGenericType">Type of IList generic you want.</param>
-        
+        public static IList GetNodesValuesBasedOnXPathReturnType(HtmlNodeCollection htmlNodeCollection, XPathAttribute xPathAttribute, Type listGenericType)
+        {
+            if (htmlNodeCollection == null || htmlNodeCollection.Count == 0)
+            {
+                throw new ArgumentNullException("parameter htmlNodeCollection is null or empty.");
+            }
+
+            if (xPathAttribute == null)
+            {
+                throw new ArgumentNullException("parameter xpathAttribute is null");
+            }
+
+
+            IList result = listGenericType.CreateIListOfType();
+
+            switch (xPathAttribute.NodeReturnType)
+            {
+
+                case ReturnType.InnerHtml:
+                    {
+                        foreach (HtmlNode node in htmlNodeCollection)
+                        {
+                            result.Add(Convert.ChangeType(node.InnerHtml, listGenericType));
+                        }
+                    }
+                    break;
+
+
+                case ReturnType.InnerText:
+                    {
+                        foreach (HtmlNode node in htmlNodeCollection)
+                        {
+                            result.Add(Convert.ChangeType(node.InnerText, listGenericType));
+                        }
+                    }
+                    break;
+
+
+                case ReturnType.OuterHtml:
+                    {
+                        foreach (HtmlNode node in htmlNodeCollection)
+                        {
+                            result.Add(Convert.ChangeType(node.OuterHtml, listGenericType));
+                        }
+                    }
+                    break;
+
+            }
+
+            return result;
+        }
+
+
+        /// <summary>
+        /// Simulate Func method to use in Lambada Expression.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="arg"></param>
+        public delegate TResult HAPFunc<T, TResult>(T arg);
+
+
+        /// <summary>
+        /// This method works like Where method in LINQ.
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="predicate"></param>
+        public static IEnumerable<TSource> HAPWhere<TSource>(this IEnumerable<TSource> source, HAPFunc<TSource, bool> predicate)
+        {
+            foreach (TSource item in source)
+            {
+                if (predicate(item))
+                {
+                    yield return item;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Check if the type can instantiated.
+        /// </summary>
+        /// <param name="type"></param>
+        public static bool IsInstantiable(this Type type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException("type is null");
+            }
+
+
+#if !(NETSTANDARD1_3 || NETSTANDARD1_6)
+            // checking for having parameterless constructor.
+            if (type.GetConstructor(Type.EmptyTypes) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+#endif
+
+
+#if NETSTANDARD1_3 || NETSTANDARD1_6
+            // checking for having parameterless constructor.
+            if (type.GetTypeInfo().DeclaredConstructors.HAPWhere(x => x.GetParameters().Length == 0).CountOfIEnumerable() == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+#endif
+
+            throw new NotImplementedException("Can't Target any platform while getting Method methodName from Type type.");
+
+
+        }
+
+
+        /// <summary>
+        /// Returns count of elements stored in IEnumerable of T
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
         public static int CountOfIEnumerable<T>(this IEnumerable<T> source)
         {
             if (source == null)

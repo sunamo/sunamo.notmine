@@ -26,7 +26,6 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Creates an XPathNavigator using the root of this document.
         /// </summary>
-        
         public XPathNavigator CreateRootNavigator()
         {
             return new HtmlNodeNavigator(OwnerDocument, OwnerDocument.DocumentNode);

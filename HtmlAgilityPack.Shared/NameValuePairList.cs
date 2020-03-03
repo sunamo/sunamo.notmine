@@ -76,12 +76,12 @@ namespace HtmlAgilityPack
             if (text == null)
                 return;
 
-            var p = text.Split(';');
+            string[] p = text.Split(';');
             foreach (string pv in p)
             {
                 if (pv.Length == 0)
                     continue;
-                var onep = pv.Split(new[] {'='}, 2);
+                string[] onep = pv.Split(new[] {'='}, 2);
                 if (onep.Length == 0)
                     continue;
                 KeyValuePair<string, string> nvp = new KeyValuePair<string, string>(onep[0].Trim().ToLowerInvariant(),

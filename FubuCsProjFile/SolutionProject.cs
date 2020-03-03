@@ -63,6 +63,8 @@ namespace FubuCsProjFile
             });
         }
 
+
+
         private void InitializeFromSolution(CsProjFile projFile, Solution solution)
         {
             var tfsSourceControl = solution.Sections.FirstOrDefault(section => section.SectionName.Equals("TeamFoundationVersionControl"));

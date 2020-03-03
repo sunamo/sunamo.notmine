@@ -58,13 +58,6 @@ namespace FubuCsProjFile.MSBuild
             }
         }
 
-        /// <summary>
-        /// If I want to override existing propery, must set A3 to false
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="value"></param>
-        /// <param name="preserveExistingCase"></param>
-        
         public MSBuildProperty SetPropertyValue(string name, string value, bool preserveExistingCase)
         {
             MSBuildProperty prop = GetProperty(name);

@@ -240,7 +240,7 @@ namespace GoogleTranslateFreeApi
 			JToken tmp = JsonConvert.DeserializeObject<JToken>(result);
 			
 			string originalTextTranscription = null, translatedTextTranscription = null;
-			List<string> translate;
+			string[] translate;
 
 			var mainTranslationInfo = tmp[0];
 
@@ -312,12 +312,12 @@ namespace GoogleTranslateFreeApi
 		  return translationInfoObject;
 	  }
 
-	  protected static List<string> GetSeeAlso(JToken response)
+	  protected static string[] GetSeeAlso(JToken response)
 	  {
-		  return !response.HasValues ? new string[0] : response[0].ToObject<List<string>>(); 
+		  return !response.HasValues ? new string[0] : response[0].ToObject<string[]>(); 
 	  }
 	  
-		protected static void GetMainTranslationInfo(JToken translationInfo, out List<string> translate, 
+		protected static void GetMainTranslationInfo(JToken translationInfo, out string[] translate, 
 			ref string originalTextTranscription, ref string translatedTextTranscription)
 		{
 			List<string> translations = new List<string>();

@@ -65,7 +65,7 @@ namespace FubuCsProjFile.MSBuild
             doc.AppendChild(doc.CreateElement(null, "Project", Schema));
         }
 
-        public static XmlNamespaceManager XmlNamespaceManager
+        internal static XmlNamespaceManager XmlNamespaceManager
         {
             get
             {
@@ -470,7 +470,7 @@ namespace FubuCsProjFile.MSBuild
             }
         }
 
-        public MSBuildItem GetItem(XmlElement elem)
+        internal MSBuildItem GetItem(XmlElement elem)
         {
             MSBuildObject ob;
             if (elemCache.TryGetValue(elem, out ob))

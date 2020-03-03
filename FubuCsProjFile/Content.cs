@@ -28,7 +28,7 @@ namespace FubuCsProjFile
 
         public string Link { get; set; }
 
-        public override MSBuildItem Configure(MSBuildItemGroup @group)
+        internal override MSBuildItem Configure(MSBuildItemGroup @group)
         {
             var item = base.Configure(@group);
 
@@ -37,7 +37,7 @@ namespace FubuCsProjFile
             return item;
         }
 
-        public override void Read(MSBuildItem item)
+        internal override void Read(MSBuildItem item)
         {
             base.Read(item);
 
@@ -63,7 +63,7 @@ namespace FubuCsProjFile
             Link = item.HasMetadata(LinkAtt) ? item.GetMetadata(LinkAtt) : null;
         }
 
-        public override void Save()
+        internal override void Save()
         {
             base.Save();
             this.UpdateMetadata();

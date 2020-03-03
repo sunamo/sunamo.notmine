@@ -7,7 +7,7 @@ namespace FubuCsProjFile.MSBuild
     {
         private readonly MSBuildProject parent;
 
-        public MSBuildItemGroup(MSBuildProject parent, XmlElement elem)
+        internal MSBuildItemGroup(MSBuildProject parent, XmlElement elem)
             : base(elem)
         {
             this.parent = parent;

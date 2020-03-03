@@ -110,7 +110,7 @@ namespace FubuCsProjFile.Templating.Graph
                 {
                     Name = name,
                     TemplateType = type,
-                    ValidChoices = templates.Select(x => x.Name).ToList()
+                    ValidChoices = templates.Select(x => x.Name).ToArray()
                 };
             }
         }

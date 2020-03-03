@@ -43,7 +43,7 @@ namespace FubuCsProjFile
             }
         }
 
-        public override MSBuildItem Configure(MSBuildItemGroup @group)
+        internal override MSBuildItem Configure(MSBuildItemGroup @group)
         {
             var item = base.Configure(@group);
             this.UpdateMetaData();
@@ -51,13 +51,13 @@ namespace FubuCsProjFile
             return item;
         }
 
-        public override void Save()
+        internal override void Save()
         {
             base.Save();
             this.UpdateMetaData();
         }
 
-        public override void Read(MSBuildItem item)
+        internal override void Read(MSBuildItem item)
         {
             base.Read(item);
 

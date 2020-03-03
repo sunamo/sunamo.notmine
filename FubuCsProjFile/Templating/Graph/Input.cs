@@ -14,10 +14,10 @@ namespace FubuCsProjFile.Templating.Graph
 
         public Input(string text)
         {
-            List<string> parts = new List<string>( text.ToDelimitedArray());
+            string[] parts = text.ToDelimitedArray();
             if (parts.First().Contains("="))
             {
-                List<string> nameParts = parts.First().Split('=').ToList();
+                string[] nameParts = parts.First().Split('=');
                 Name = nameParts.First();
                 Default = nameParts.Last();
             }

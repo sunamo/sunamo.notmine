@@ -124,7 +124,7 @@ namespace FubuCsProjFile.Templating.Runtime
             return _substitutions.ApplySubstitutions(rawText, builder => writeNamespace(relativePath, builder));
         }
 
-        public void ApplySubstitutions(string relativePath, StringBuilder builder)
+        internal void ApplySubstitutions(string relativePath, StringBuilder builder)
         {
             _substitutions.ApplySubstitutions(builder);
             writeNamespace(relativePath, builder);
@@ -145,7 +145,7 @@ namespace FubuCsProjFile.Templating.Runtime
                 .Split('/')
                 .Reverse()
                 .Skip(1)
-                .Union(new List<string> { projectName })
+                .Union(new string[] { projectName })
                 .Reverse()
                 .Join(".");
         }

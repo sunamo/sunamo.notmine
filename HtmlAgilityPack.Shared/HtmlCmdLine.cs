@@ -10,13 +10,6 @@ using System;
 #if !NETSTANDARD1_3 && !METRO
 namespace HtmlAgilityPack
 {
-    /// <summary>
-    /// Allowed:
-    /// /k:v
-    /// -k:v
-    /// -k:"value with spaces"
-    /// Must be always :, without it take default value
-    /// </summary>
     public class HtmlCmdLine
     {
 #region Static Members
@@ -40,7 +33,7 @@ namespace HtmlAgilityPack
         public static string GetOption(string name, string def)
         {
             string p = def;
-            var args = Environment.GetCommandLineArgs();
+            string[] args = Environment.GetCommandLineArgs();
             for (int i = 1; i < args.Length; i++)
             {
                 GetStringArg(args[i], name, ref p);
@@ -52,7 +45,7 @@ namespace HtmlAgilityPack
         public static string GetOption(int index, string def)
         {
             string p = def;
-            var args = Environment.GetCommandLineArgs();
+            string[] args = Environment.GetCommandLineArgs();
             int j = 0;
             for (int i = 1; i < args.Length; i++)
             {
@@ -72,7 +65,7 @@ namespace HtmlAgilityPack
         public static bool GetOption(string name, bool def)
         {
             bool p = def;
-            var args = Environment.GetCommandLineArgs();
+            string[] args = Environment.GetCommandLineArgs();
             for (int i = 1; i < args.Length; i++)
             {
                 GetBoolArg(args[i], name, ref p);
@@ -84,7 +77,7 @@ namespace HtmlAgilityPack
         public static int GetOption(string name, int def)
         {
             int p = def;
-            var args = Environment.GetCommandLineArgs();
+            string[] args = Environment.GetCommandLineArgs();
             for (int i = 1; i < args.Length; i++)
             {
                 GetIntArg(args[i], name, ref p);
@@ -145,7 +138,7 @@ namespace HtmlAgilityPack
 
         private static void ParseArgs()
         {
-            var args = Environment.GetCommandLineArgs();
+            string[] args = Environment.GetCommandLineArgs();
             for (int i = 1; i < args.Length; i++)
             {
                 // help

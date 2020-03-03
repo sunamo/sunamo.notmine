@@ -4,10 +4,4 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="fmdev.ResX">
-      <HintPath>..\..\sunamo\dll\net45\fmdev.ResX.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>

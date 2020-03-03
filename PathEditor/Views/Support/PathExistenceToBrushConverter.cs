@@ -21,7 +21,7 @@ namespace PathEditor.Views.Support
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return false;
+            throw new NotImplementedException();
         }
     }
 }

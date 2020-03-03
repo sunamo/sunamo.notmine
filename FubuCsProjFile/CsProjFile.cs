@@ -19,6 +19,42 @@ namespace FubuCsProjFile
 
     public class CsProjFile
     {
+        /// <summary>
+        /// Creates a new CsProjFile in a folder relative to the solution folder
+        /// </summary>
+        /// <param name="assemblyName"></param>
+        /// <param name="directory"></param>
+        public static CsProjFile CreateAtSolutionDirectory(string assemblyName, string directory)
+        {
+            var fileName = directory.AppendPath(assemblyName).AppendPath(assemblyName) + ".csproj";
+            var project = MSBuildProject.Create(assemblyName);
+            return CreateCore(project, fileName);
+        }
+
+        /// <summary>
+        /// Creates a new class library project at the given filename
+        /// and assembly name
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="assemblyName"></param>
+        public static CsProjFile CreateAtLocation(string fileName, string assemblyName)
+        {
+            return CreateCore(MSBuildProject.Create(assemblyName), fileName);
+        }
+
+        private static CsProjFile CreateCore(MSBuildProject project, string fileName)
+        {
+            var group = project.PropertyGroups.FirstOrDefault(x => x.Properties.Any(p => p.Name == PROJECTGUID)) ??
+                        project.PropertyGroups.FirstOrDefault() ?? project.AddNewPropertyGroup(true);
+
+            @group.SetPropertyValue(PROJECTGUID, Guid.NewGuid().ToString().ToUpper(), true);
+
+            var file = new CsProjFile(fileName, project);
+            file.AssemblyName = file.RootNamespace = file.ProjectName;
+            return file;
+        }
+
+
         /*
              <RootNamespace>MyProject</RootNamespace>
     <AssemblyName>MyProject</AssemblyName>
@@ -54,7 +90,7 @@ namespace FubuCsProjFile
                 return raw.IsEmpty() ? Guid.Empty : Guid.Parse(raw.TrimStart('{').TrimEnd('}'));
 
             }
-             set
+            set
             {
                 var group = _project.PropertyGroups.FirstOrDefault(x => x.Properties.Any(p => p.Name == PROJECTGUID))
                             ?? _project.PropertyGroups.FirstOrDefault() ?? _project.AddNewPropertyGroup(true);
@@ -106,15 +142,15 @@ namespace FubuCsProjFile
 
         public T Add<T>(string include) where T : ProjectItem, new()
         {
-            var item = new T {Include = include};
+            var item = new T { Include = include };
 
-            _projectItemCache.Remove(item.Include);            
+            _projectItemCache.Remove(item.Include);
             _projectItemCache.Add(include, item);
             Add(item);
 
             return item;
         }
-        
+
         public IEnumerable<T> All<T>() where T : ProjectItem, new()
         {
             var name = new T().Name;
@@ -125,12 +161,12 @@ namespace FubuCsProjFile
                                T projectItem;
                                if (_projectItemCache.ContainsKey(item.Include))
                                {
-                                   projectItem = (T) _projectItemCache[item.Include];
+                                   projectItem = (T)_projectItemCache[item.Include];
                                }
                                else
                                {
                                    projectItem = new T();
-                                   projectItem.Read(item);                               
+                                   projectItem.Read(item);
                                    _projectItemCache.Add(item.Include, projectItem);
                                }
 
@@ -139,14 +175,14 @@ namespace FubuCsProjFile
         }
 
 
-        
+
 
         /// <summary>
         /// Creates a new CsProjFile in a folder relative to the solution folder
         /// </summary>
         /// <param name="assemblyName"></param>
         /// <param name="directory"></param>
-        
+
         public static CsProjFile LoadFrom(string filename)
         {
             var project = MSBuildProject.LoadFrom(filename);
@@ -213,7 +249,7 @@ namespace FubuCsProjFile
                 }
 
                 return assemblyInfo;
-            } 
+            }
         }
 
         public TargetFrameworkVersion TargetFrameworkVersion
@@ -306,8 +342,9 @@ namespace FubuCsProjFile
         public string PathTo(CodeFile codeFile)
         {
             var path = codeFile.Include;
-            if (FubuCore.Platform.IsUnix ()) {
-                path = path.Replace ('\\', Path.DirectorySeparatorChar);
+            if (FubuCore.Platform.IsUnix())
+            {
+                path = path.Replace('\\', Path.DirectorySeparatorChar);
             }
             return _fileName.ParentDirectory().AppendPath(path);
         }
@@ -315,9 +352,9 @@ namespace FubuCsProjFile
         public void Remove<T>(string include) where T : ProjectItem, new()
         {
             var name = new T().Name;
-            
+
             _projectItemCache.Remove(include);
-            
+
             var element = _project.GetAllItems(name).FirstOrDefault(x => x.Include == include);
             if (element != null)
             {
@@ -328,7 +365,7 @@ namespace FubuCsProjFile
         public void Remove<T>(T item) where T : ProjectItem, new()
         {
             _projectItemCache.Remove(item.Include);
-                
+
             var element = _project.GetAllItems(item.Name).FirstOrDefault(x => x.Include == item.Include);
             if (element != null)
             {
@@ -342,5 +379,3 @@ namespace FubuCsProjFile
         }
     }
 }
-
-

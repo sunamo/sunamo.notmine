@@ -17,9 +17,9 @@ namespace GoogleTranslateFreeApi.TranslationData
 		public sealed class ExtraTranslation
 		{
 			[DataMember] public string Phrase { get; private set; }
-			[DataMember] public List<string> PhraseTranslations { get; private set; }
+			[DataMember] public string[] PhraseTranslations { get; private set; }
 
-			public ExtraTranslation(string phrase, List<string> phraseTranslations)
+			public ExtraTranslation(string phrase, string[] phraseTranslations)
 			{
 				Phrase = phrase;
 				PhraseTranslations = phraseTranslations;
@@ -90,7 +90,7 @@ namespace GoogleTranslateFreeApi.TranslationData
 
 			for (int i = 0; i < parseInformation.Count(); i++)
 				extraTranslations[i] = new ExtraTranslation(
-					(string) parseInformation[i][0], parseInformation[i][1].ToObject<List<string>>());
+					(string) parseInformation[i][0], parseInformation[i][1].ToObject<string[]>());
 
 			property.SetMethod.Invoke(this,
 				new object[] { extraTranslations } );

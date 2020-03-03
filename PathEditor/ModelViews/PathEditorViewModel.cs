@@ -89,7 +89,7 @@ namespace PathEditor.ModelViews
             {
                 return new DelegateCommand(arg =>
                 {
-                    _repository.SetPathFromParts(PathParts.Select(p => p.Path).ToList());
+                    _repository.SetPathFromParts(PathParts.Select(p => p.Path).ToArray());
                     Application.Current.Shutdown();
                 });
             }

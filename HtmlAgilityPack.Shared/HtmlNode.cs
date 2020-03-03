@@ -863,7 +863,369 @@ namespace HtmlAgilityPack
 		/// <summary>
 		/// Returns a collection of all ancestor nodes of this element.
 		/// </summary>
-		
+		public IEnumerable<HtmlNode> Ancestors()
+		{
+			HtmlNode node = ParentNode;
+			if (node != null)
+			{
+				yield return node; //return the immediate parent node
+
+				//now look at it's parent and walk up the tree of parents
+				while (node.ParentNode != null)
+				{
+					yield return node.ParentNode;
+					node = node.ParentNode;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get Ancestors with matching name
+		/// </summary>
+		/// <param name="name"></param>
+		public IEnumerable<HtmlNode> Ancestors(string name)
+		{
+			for (HtmlNode n = ParentNode; n != null; n = n.ParentNode)
+				if (n.Name == name)
+					yield return n;
+		}
+
+		/// <summary>
+		/// Returns a collection of all ancestor nodes of this element.
+		/// </summary>
+		public IEnumerable<HtmlNode> AncestorsAndSelf()
+		{
+			for (HtmlNode n = this; n != null; n = n.ParentNode)
+				yield return n;
+		}
+
+		/// <summary>
+		/// Gets all anscestor nodes and the current node
+		/// </summary>
+		/// <param name="name"></param>
+		public IEnumerable<HtmlNode> AncestorsAndSelf(string name)
+		{
+			for (HtmlNode n = this; n != null; n = n.ParentNode)
+				if (n.Name == name)
+					yield return n;
+		}
+
+		/// <summary>
+		/// Adds the specified node to the end of the list of children of this node.
+		/// </summary>
+		/// <param name="newChild">The node to add. May not be null.</param>
+		/// <returns>The node added.</returns>
+		public HtmlNode AppendChild(HtmlNode newChild)
+		{
+			if (newChild == null)
+			{
+				throw new ArgumentNullException("newChild");
+			}
+
+			ChildNodes.Append(newChild);
+			_ownerdocument.SetIdForNode(newChild, newChild.GetId());
+			SetChildNodesId(newChild);
+
+			SetChanged();
+			return newChild;
+		}
+
+		/// <summary>Sets child nodes identifier.</summary>
+		/// <param name="chilNode">The chil node.</param>
+		public void SetChildNodesId(HtmlNode chilNode)
+		{
+			foreach (HtmlNode child in chilNode.ChildNodes)
+			{
+				_ownerdocument.SetIdForNode(child, child.GetId());
+				SetChildNodesId(child);
+			}
+		}
+
+		/// <summary>
+		/// Adds the specified node to the end of the list of children of this node.
+		/// </summary>
+		/// <param name="newChildren">The node list to add. May not be null.</param>
+		public void AppendChildren(HtmlNodeCollection newChildren)
+		{
+			if (newChildren == null)
+				throw new ArgumentNullException("newChildren");
+
+			foreach (HtmlNode newChild in newChildren)
+			{
+				AppendChild(newChild);
+			}
+		}
+
+		/// <summary>
+		/// Gets all Attributes with name
+		/// </summary>
+		/// <param name="name"></param>
+		public IEnumerable<HtmlAttribute> ChildAttributes(string name)
+		{
+			return Attributes.AttributesWithName(name);
+		}
+
+		/// <summary>
+		/// Creates a duplicate of the node
+		/// </summary>
+		public HtmlNode Clone()
+		{
+			return CloneNode(true);
+		}
+
+		/// <summary>
+		/// Creates a duplicate of the node and changes its name at the same time.
+		/// </summary>
+		/// <param name="newName">The new name of the cloned node. May not be <c>null</c>.</param>
+		/// <returns>The cloned node.</returns>
+		public HtmlNode CloneNode(string newName)
+		{
+			return CloneNode(newName, true);
+		}
+
+		/// <summary>
+		/// Creates a duplicate of the node and changes its name at the same time.
+		/// </summary>
+		/// <param name="newName">The new name of the cloned node. May not be null.</param>
+		/// <param name="deep">true to recursively clone the subtree under the specified node; false to clone only the node itself.</param>
+		/// <returns>The cloned node.</returns>
+		public HtmlNode CloneNode(string newName, bool deep)
+		{
+			if (newName == null)
+			{
+				throw new ArgumentNullException("newName");
+			}
+
+			HtmlNode node = CloneNode(deep);
+			node.Name = newName;
+			return node;
+		}
+
+		/// <summary>
+		/// Creates a duplicate of the node.
+		/// </summary>
+		/// <param name="deep">true to recursively clone the subtree under the specified node; false to clone only the node itself.</param>
+		/// <returns>The cloned node.</returns>
+		public HtmlNode CloneNode(bool deep)
+		{
+			HtmlNode node = _ownerdocument.CreateNode(_nodetype);
+			node.Name = OriginalName;
+
+			switch (_nodetype)
+			{
+				case HtmlNodeType.Comment:
+					((HtmlCommentNode) node).Comment = ((HtmlCommentNode) this).Comment;
+					return node;
+
+				case HtmlNodeType.Text:
+					((HtmlTextNode) node).Text = ((HtmlTextNode) this).Text;
+					return node;
+			}
+
+			// attributes
+			if (HasAttributes)
+			{
+				foreach (HtmlAttribute att in _attributes)
+				{
+					HtmlAttribute newatt = att.Clone();
+					node.Attributes.Append(newatt);
+				}
+			}
+
+			// closing attributes
+			if (HasClosingAttributes)
+			{
+				node._endnode = _endnode.CloneNode(false);
+				foreach (HtmlAttribute att in _endnode._attributes)
+				{
+					HtmlAttribute newatt = att.Clone();
+					node._endnode._attributes.Append(newatt);
+				}
+			}
+
+			if (!deep)
+			{
+				return node;
+			}
+
+			if (!HasChildNodes)
+			{
+				return node;
+			}
+
+			// child nodes
+			foreach (HtmlNode child in _childnodes)
+			{
+				HtmlNode newchild = child.CloneNode(deep);
+				node.AppendChild(newchild);
+			}
+
+			return node;
+		}
+
+		/// <summary>
+		/// Creates a duplicate of the node and the subtree under it.
+		/// </summary>
+		/// <param name="node">The node to duplicate. May not be <c>null</c>.</param>
+		public void CopyFrom(HtmlNode node)
+		{
+			CopyFrom(node, true);
+		}
+
+		/// <summary>
+		/// Creates a duplicate of the node.
+		/// </summary>
+		/// <param name="node">The node to duplicate. May not be <c>null</c>.</param>
+		/// <param name="deep">true to recursively clone the subtree under the specified node, false to clone only the node itself.</param>
+		public void CopyFrom(HtmlNode node, bool deep)
+		{
+			if (node == null)
+			{
+				throw new ArgumentNullException("node");
+			}
+
+			Attributes.RemoveAll();
+			if (node.HasAttributes)
+			{
+				foreach (HtmlAttribute att in node.Attributes)
+				{
+					HtmlAttribute newatt = att.Clone();
+					Attributes.Append(newatt);
+				}
+			}
+
+			if (deep)
+			{
+				RemoveAllChildren();
+				if (node.HasChildNodes)
+				{
+					foreach (HtmlNode child in node.ChildNodes)
+					{
+						AppendChild(child.CloneNode(true));
+					}
+				}
+			}
+		}
+
+
+		/// <summary>
+		/// Gets all Descendant nodes for this node and each of child nodes
+		/// </summary>
+		/// <param name="level">The depth level of the node to parse in the html tree</param>
+		/// <returns>the current element as an HtmlNode</returns>
+		[Obsolete("Use Descendants() instead, the results of this function will change in a future version")]
+		public IEnumerable<HtmlNode> DescendantNodes(int level = 0)
+		{
+			if (level > HtmlDocument.MaxDepthLevel)
+			{
+				throw new ArgumentException(HtmlNode.DepthLevelExceptionMessage);
+			}
+
+			foreach (HtmlNode node in ChildNodes)
+			{
+				yield return node;
+
+				foreach (HtmlNode descendant in node.DescendantNodes(level + 1))
+				{
+					yield return descendant;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Returns a collection of all descendant nodes of this element, in document order
+		/// </summary>
+		[Obsolete("Use DescendantsAndSelf() instead, the results of this function will change in a future version")]
+		public IEnumerable<HtmlNode> DescendantNodesAndSelf()
+		{
+			return DescendantsAndSelf();
+		}
+
+		/// <summary>
+		/// Gets all Descendant nodes in enumerated list
+		/// </summary>
+		public IEnumerable<HtmlNode> Descendants()
+		{
+			// DO NOT REMOVE, the empty method is required for Fizzler third party library
+			return Descendants(0);
+		}
+
+		/// <summary>
+		/// Gets all Descendant nodes in enumerated list
+		/// </summary>
+		public IEnumerable<HtmlNode> Descendants(int level)
+		{
+			if (level > HtmlDocument.MaxDepthLevel)
+			{
+				throw new ArgumentException(HtmlNode.DepthLevelExceptionMessage);
+			}
+
+			foreach (HtmlNode node in ChildNodes)
+			{
+				yield return node;
+
+				foreach (HtmlNode descendant in node.Descendants(level + 1))
+				{
+					yield return descendant;
+				}
+			}
+		}
+
+		/// <summary>
+		/// Get all descendant nodes with matching name
+		/// </summary>
+		/// <param name="name"></param>
+		public IEnumerable<HtmlNode> Descendants(string name)
+		{
+			foreach (HtmlNode node in Descendants())
+				if (String.Equals(node.Name, name, StringComparison.OrdinalIgnoreCase))
+					yield return node;
+		}
+
+		/// <summary>
+		/// Returns a collection of all descendant nodes of this element, in document order
+		/// </summary>
+		public IEnumerable<HtmlNode> DescendantsAndSelf()
+		{
+			yield return this;
+
+			foreach (HtmlNode n in Descendants())
+			{
+				HtmlNode el = n;
+				if (el != null)
+					yield return el;
+			}
+		}
+
+		/// <summary>
+		/// Gets all descendant nodes including this node
+		/// </summary>
+		/// <param name="name"></param>
+		public IEnumerable<HtmlNode> DescendantsAndSelf(string name)
+		{
+			yield return this;
+
+			foreach (HtmlNode node in Descendants())
+				if (node.Name == name)
+					yield return node;
+		}
+
+		/// <summary>
+		/// Gets first generation child node matching name
+		/// </summary>
+		/// <param name="name"></param>
+		public HtmlNode Element(string name)
+		{
+			foreach (HtmlNode node in ChildNodes)
+				if (node.Name == name)
+					return node;
+			return null;
+		}
+
+		/// <summary>
+		/// Gets matching first generation child nodes matching name
+		/// </summary>
+		/// <param name="name"></param>
 		public IEnumerable<HtmlNode> Elements(string name)
 		{
 			foreach (HtmlNode node in ChildNodes)
@@ -1975,7 +2337,7 @@ namespace HtmlAgilityPack
 					}
 					else if (att.Value.Contains(name))
 					{
-						var classNames = att.Value.Split(' ');
+						string[] classNames = att.Value.Split(' ');
 
 						string newClassNames = "";
 
