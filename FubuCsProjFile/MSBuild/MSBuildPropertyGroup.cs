@@ -64,7 +64,7 @@ namespace FubuCsProjFile.MSBuild
         /// <param name="name"></param>
         /// <param name="value"></param>
         /// <param name="preserveExistingCase"></param>
-        /// <returns></returns>
+        
         public MSBuildProperty SetPropertyValue(string name, string value, bool preserveExistingCase)
         {
             MSBuildProperty prop = GetProperty(name);

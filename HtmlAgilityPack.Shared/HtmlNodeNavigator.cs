@@ -772,7 +772,7 @@ namespace HtmlAgilityPack
         /// <summary>
         /// Moves to the next HTML attribute.
         /// </summary>
-        /// <returns></returns>
+        
         public override bool MoveToNextAttribute()
         {
 #if TRACE_NAVIGATOR

@@ -59,7 +59,7 @@ namespace PathEditor
         /// </summary>
         /// <param name="tag"></param>
         /// <param name="fullPathFolder"></param>
-        /// <returns></returns>
+        
         public static FrameworkElement Get(string tag, string fullPathFolder)
         {
             SuggestTextBoxPath txt = new SuggestTextBoxPath();
