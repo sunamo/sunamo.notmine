@@ -132,7 +132,7 @@ namespace FubuCsProjFile.Templating.Planning
                 Logger.Trace("---------------");
                 _missingInputs.Each(x => Console.WriteLine(x));
 
-                throw new MissingInputException(_missingInputs.ToArray());
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),MissingInputException(_missingInputs.ToArray());
             }
 
             Logger.Starting(_steps.Count);

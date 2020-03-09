@@ -103,7 +103,7 @@ namespace FlvExtract
                     }
                     else
                     {
-                        throw new ExtractionException("Samples written differs from the expected sample count.");
+                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Samples written differs from the expected sample count.");
                     }
                 }
             }

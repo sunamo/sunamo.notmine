@@ -11,12 +11,12 @@
         {
             if (outputDirectory == null)
             {
-                throw new ArgumentNullException("outputDirectory");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("outputDirectory");
             }
 
             if (!outputDirectory.Exists)
             {
-                throw new ArgumentException("Output directory does not exist", "outputDirectory");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException("Output directory does not exist", "outputDirectory");
             }
 
             this.OutputDirectory = outputDirectory;

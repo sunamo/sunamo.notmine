@@ -18,7 +18,7 @@ namespace PathEditor.ModelViews
         [DebuggerStepThrough]
         public PathEditorViewModel(PathRepository repository)
         {
-            if (repository == null) throw new ArgumentNullException("repository");
+            if (repository == null) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("repository");
             _repository = repository;
 
             PathParts = new ObservableCollection<PathPartViewModel>(_repository.GetPathParts().Select(p => new PathPartViewModel(p)));

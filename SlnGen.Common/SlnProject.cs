@@ -53,8 +53,8 @@ namespace SlnGen.Common
 
         public SlnProject(string fullPath, string name, Guid projectGuid, Guid projectTypeGuid, IEnumerable<string> configurations, IEnumerable<string> platforms, bool isMainProject, bool isDeployable)
         {
-            FullPath = fullPath ?? throw new ArgumentNullException(nameof(fullPath));
-            Name = name ?? throw new ArgumentNullException(nameof(name));
+            FullPath = fullPath ?? ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(fullPath));
+            Name = name ?? ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(name));
             ProjectGuid = projectGuid;
             ProjectTypeGuid = projectTypeGuid;
             IsDeployable = isDeployable;
@@ -83,12 +83,12 @@ namespace SlnGen.Common
         {
             if (project == null)
             {
-                throw new ArgumentNullException(nameof(project));
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(project));
             }
 
             if (customProjectTypeGuids == null)
             {
-                throw new ArgumentNullException(nameof(customProjectTypeGuids));
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(customProjectTypeGuids));
             }
 
             if (!ShouldIncludeInSolution(project))
@@ -111,7 +111,7 @@ namespace SlnGen.Common
 
             if (!isUsingMicrosoftNetSdk && !Guid.TryParse(project.GetPropertyValueOrDefault(SlnConstants.ProjectGuid, projectGuid.ToString()), out projectGuid))
             {
-                throw new FormatException($"property ProjectGuid has an invalid format in {project.FullPath}");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException($"property ProjectGuid has an invalid format in {project.FullPath}");
             }
 
             string isDeployableStr = project.GetPropertyValue("SlnGenIsDeployable");

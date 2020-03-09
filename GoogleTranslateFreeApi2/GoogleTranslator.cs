@@ -185,11 +185,11 @@ namespace GoogleTranslateFreeApi
 		  Language toLanguage, bool additionInfo)
 	  {
 		  if (!IsLanguageSupported(fromLanguage))
-				throw new LanguageIsNotSupportedException(fromLanguage);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),LanguageIsNotSupportedException(fromLanguage);
 			if (!IsLanguageSupported(toLanguage))
-				throw new LanguageIsNotSupportedException(toLanguage);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),LanguageIsNotSupportedException(toLanguage);
 			if (toLanguage.Equals(Language.Auto))
-				throw new InvalidOperationException("A destination Language is auto");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException("A destination Language is auto");
 
 			if (originalText.Trim() == String.Empty)
 				return new TranslationResult();
@@ -218,7 +218,7 @@ namespace GoogleTranslateFreeApi
 			}
 			catch (HttpRequestException ex) when (ex.Message.Contains("503"))
 			{
-				throw new GoogleTranslateIPBannedException(GoogleTranslateIPBannedException.Operation.Translation);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),GoogleTranslateIPBannedException(GoogleTranslateIPBannedException.Operation.Translation);
 			}
 			catch
 			{

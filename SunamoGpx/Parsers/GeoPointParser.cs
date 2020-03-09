@@ -16,7 +16,7 @@ namespace csGeoTools.Parsers
         public static GeoPointParser getParserFor(String coordinates)
         {
             return registeredParsers.Where(parser => parser.CanParse(coordinates)).First();
-            throw new Exception("Could not find a parser for the given input");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Could not find a parser for the given input");
         }
         
         public abstract bool CanParse(String input);

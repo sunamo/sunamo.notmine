@@ -42,7 +42,7 @@ namespace HtmlAgilityPack
 
             if (targetType == null)
             {
-                throw new ArgumentNullException("Parameter targetType is null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter targetType is null");
             }
 
             HtmlDocument source = null;
@@ -62,7 +62,7 @@ namespace HtmlAgilityPack
 
             if (targetType.IsInstantiable() == false) // if it can not create instanse of T because of lack of constructor in type T.
             {
-                throw new MissingMethodException("Parameterless Constructor excpected for " + targetType.FullName);
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),MissingMethodException("Parameterless Constructor excpected for " + targetType.FullName);
             }
             else
             {
@@ -79,7 +79,7 @@ namespace HtmlAgilityPack
                 IEnumerable<PropertyInfo> validProperties = targetType.GetPropertiesDefinedXPath();
                 if (validProperties.CountOfIEnumerable() == 0) // if no XPath property exist in type T while T defined HasXpath attribute.
                 {
-                    throw new MissingXPathException("Type " + targetType.FullName +
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),MissingXPathException("Type " + targetType.FullName +
                         " defined HasXPath Attribute but it does not have any property with XPath Attribte.");
                 }
                 else
@@ -105,12 +105,12 @@ namespace HtmlAgilityPack
                             }
                             catch // if it can not select node based on given xpath
                             {
-                                throw new NodeNotFoundException("Cannot find node with giving XPath to bind to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
+                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NodeNotFoundException("Cannot find node with giving XPath to bind to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
                             }
 
                             if (htmlNode == null)
                             {
-                                throw new NodeNotFoundException("Cannot find node with givig XPath to bind to " +
+                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NodeNotFoundException("Cannot find node with givig XPath to bind to " +
                                     propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
                             }
 
@@ -147,7 +147,7 @@ namespace HtmlAgilityPack
 
                                 if (result == null)
                                 {
-                                    throw new NodeAttributeNotFoundException("Can not find " +
+                                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NodeAttributeNotFoundException("Can not find " +
                                         xPathAttribute.AttributeName + " Attribute in " + htmlNode.Name +
                                         " related to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
                                 }
@@ -161,11 +161,11 @@ namespace HtmlAgilityPack
                                 }
                                 catch (FormatException)
                                 {
-                                    throw new FormatException("Can not convert Invalid string to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
+                                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException("Can not convert Invalid string to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
                                 }
                                 catch (Exception ex)
                                 {
-                                    throw new Exception("Unhandled Exception : " + ex.Message);
+                                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Unhandled Exception : " + ex.Message);
                                 }
 
 
@@ -184,12 +184,12 @@ namespace HtmlAgilityPack
 
                             if (T_Types == null || T_Types.Count == 0)
                             {
-                                throw new ArgumentException(propertyInfo.Name + " should have one generic argument.");
+                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(propertyInfo.Name + " should have one generic argument.");
                             }
 
                             else if (T_Types.Count > 1)
                             {
-                                throw new ArgumentException(propertyInfo.Name + " should have one generic argument.");
+                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(propertyInfo.Name + " should have one generic argument.");
                             }
 
                             else if (T_Types.Count == 1) // It is NOT something like Dictionary<Tkey , Tvalue>
@@ -204,12 +204,12 @@ namespace HtmlAgilityPack
                                 }
                                 catch
                                 {
-                                    throw new NodeNotFoundException("Cannot find node with givig XPath to bind to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
+                                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NodeNotFoundException("Cannot find node with givig XPath to bind to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
                                 }
 
                                 if (nodeCollection == null || nodeCollection.Count == 0)
                                 {
-                                    throw new NodeNotFoundException("Cannot find node with givig XPath to bind to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
+                                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NodeNotFoundException("Cannot find node with givig XPath to bind to " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
                                 }
 
 
@@ -241,11 +241,11 @@ namespace HtmlAgilityPack
                                         }
                                         catch (FormatException)
                                         {
-                                            throw new FormatException("Can not convert Invalid string in node collection to " + T_Types[0].FullName + " " + propertyInfo.Name);
+                                            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException("Can not convert Invalid string in node collection to " + T_Types[0].FullName + " " + propertyInfo.Name);
                                         }
                                         catch (Exception ex)
                                         {
-                                            throw new Exception("Unhandled Exception : " + ex.Message);
+                                            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Unhandled Exception : " + ex.Message);
                                         }
                                     }
                                     else // It target attribute
@@ -255,7 +255,7 @@ namespace HtmlAgilityPack
                                             string nodeAttributeValue = node.GetAttributeValue(xPathAttribute.AttributeName, null);
                                             if (nodeAttributeValue == null)
                                             {
-                                                throw new NodeAttributeNotFoundException("Can not find " + xPathAttribute.AttributeName + " Attribute in " + node.Name + " related to " +
+                                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NodeAttributeNotFoundException("Can not find " + xPathAttribute.AttributeName + " Attribute in " + node.Name + " related to " +
                                                 propertyInfo.PropertyType.FullName + " " + propertyInfo.Name);
                                             }
 
@@ -268,11 +268,11 @@ namespace HtmlAgilityPack
                                             }
                                             catch (FormatException) // if it can not cast result(string) to type of property.
                                             {
-                                                throw new FormatException("Can not convert Invalid string to " + T_Types[0].FullName + " " + propertyInfo.Name);
+                                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException("Can not convert Invalid string to " + T_Types[0].FullName + " " + propertyInfo.Name);
                                             }
                                             catch (Exception ex)
                                             {
-                                                throw new Exception("Unhandled Exception : " + ex.Message);
+                                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Unhandled Exception : " + ex.Message);
                                             }
 
 
@@ -284,7 +284,7 @@ namespace HtmlAgilityPack
 
                                 if (result == null || result.Count == 0)
                                 {
-                                    throw new Exception("Cannot fill " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name + " because it is null.");
+                                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Cannot fill " + propertyInfo.PropertyType.FullName + " " + propertyInfo.Name + " because it is null.");
                                 }
 
                                 propertyInfo.SetValue(targetObject, result, null);
@@ -301,7 +301,7 @@ namespace HtmlAgilityPack
             #region targetObject_NOTDefined_XPath
             else // Object doesen't have xpath attribute
             {
-                throw new MissingXPathException("Type T must define HasXPath attribute and include properties with XPath attribute.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),MissingXPathException("Type T must define HasXPath attribute and include properties with XPath attribute.");
             }
             #endregion targetObject_NOTDefined_XPath
         }
@@ -329,12 +329,12 @@ namespace HtmlAgilityPack
 
             if (type == null)
             {
-                throw new ArgumentNullException("Parameter type is null when checking type defined attributeType or not.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter type is null when checking type defined attributeType or not.");
             }
 
             if (attributeType == null)
             {
-                throw new ArgumentNullException("Parameter attributeType is null when checking type defined attributeType or not.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter attributeType is null when checking type defined attributeType or not.");
             }
 
 #if !(NETSTANDARD1_3 || NETSTANDARD1_6)
@@ -360,7 +360,7 @@ namespace HtmlAgilityPack
             }
 #endif
 
-            throw new NotImplementedException("Can't Target any platform when checking " + type.FullName + " is a " + attributeType.FullName + " or not.");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Can't Target any platform when checking " + type.FullName + " is a " + attributeType.FullName + " or not.");
         }
 
 
@@ -373,7 +373,7 @@ namespace HtmlAgilityPack
         {
             if (type == null)
             {
-                throw new ArgumentNullException("Parameter type is null while retrieving properties defined XPathAttribute of Type type.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter type is null while retrieving properties defined XPathAttribute of Type type.");
             }
 
             PropertyInfo[] properties = null;
@@ -391,7 +391,7 @@ namespace HtmlAgilityPack
 
             return properties.HAPWhere(x => x.IsDefined(typeof(XPathAttribute), false) == true);
 
-            throw new NotImplementedException("Can't Target any platform while retrieving properties defined XPathAttribute of Type type.");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Can't Target any platform while retrieving properties defined XPathAttribute of Type type.");
         }
 
 
@@ -406,7 +406,7 @@ namespace HtmlAgilityPack
 
             if (propertyInfo == null)
             {
-                throw new ArgumentNullException("Parameter propertyInfo is null while checking propertyInfo for being IEnumerable or not.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter propertyInfo is null while checking propertyInfo for being IEnumerable or not.");
             }
 
 
@@ -425,7 +425,7 @@ namespace HtmlAgilityPack
                 return typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(propertyInfo.PropertyType);
 #endif
 
-                throw new NotImplementedException("Can't Target any platform while checking propertyInfo for being IEnumerable or not.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Can't Target any platform while checking propertyInfo for being IEnumerable or not.");
             }
         }
 
@@ -440,7 +440,7 @@ namespace HtmlAgilityPack
 
             if (propertyInfo == null)
             {
-                throw new ArgumentNullException("Parameter propertyInfo is null while Getting generic types of Property.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter propertyInfo is null while Getting generic types of Property.");
             }
 
 #if !(NETSTANDARD1_3 || NETSTANDARD1_6)
@@ -452,7 +452,7 @@ namespace HtmlAgilityPack
             return propertyInfo.PropertyType.GetTypeInfo().GetGenericArguments();
 #endif
 
-            throw new NotImplementedException("Can't Target any platform while Getting generic types of Property.");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Can't Target any platform while Getting generic types of Property.");
         }
 
 
@@ -466,12 +466,12 @@ namespace HtmlAgilityPack
         {
             if (type == null)
             {
-                throw new ArgumentNullException("Parameter type is null while Getting method from it.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter type is null while Getting method from it.");
             }
 
             if (methodName == null || methodName == "")
             {
-                throw new ArgumentNullException("Parameter methodName is null while Getting method from Type type.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter methodName is null while Getting method from Type type.");
             }
 
 #if !(NETSTANDARD1_3 || NETSTANDARD1_6)
@@ -483,7 +483,7 @@ namespace HtmlAgilityPack
             return type.GetTypeInfo().GetMethod(methodName);
 #endif
 
-            throw new NotImplementedException("Can't Target any platform while getting Method methodName from Type type.");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Can't Target any platform while getting Method methodName from Type type.");
         }
 
 
@@ -496,7 +496,7 @@ namespace HtmlAgilityPack
         {
             if (type == null)
             {
-                throw new ArgumentNullException("Parameter type is null while creating List<type>.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter type is null while creating List<type>.");
             }
 
             Type listType = typeof(List<>);
@@ -518,12 +518,12 @@ namespace HtmlAgilityPack
         {
             if (htmlNode == null)
             {
-                throw new ArgumentNullException("parameter html node is null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("parameter html node is null");
             }
 
             if (xPathAttribute == null)
             {
-                throw new ArgumentNullException("parameter xpathAttribute is null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("parameter xpathAttribute is null");
             }
 
             object result;
@@ -550,7 +550,7 @@ namespace HtmlAgilityPack
                     }
                     break;
 
-                default: throw new NotImplementedException();
+                default: ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException();
             }
 
             return (T)result;
@@ -567,12 +567,12 @@ namespace HtmlAgilityPack
         {
             if (htmlNodeCollection == null || htmlNodeCollection.Count == 0)
             {
-                throw new ArgumentNullException("parameter htmlNodeCollection is null or empty.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("parameter htmlNodeCollection is null or empty.");
             }
 
             if (xPathAttribute == null)
             {
-                throw new ArgumentNullException("parameter xpathAttribute is null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("parameter xpathAttribute is null");
             }
 
 
@@ -651,7 +651,7 @@ namespace HtmlAgilityPack
         {
             if (type == null)
             {
-                throw new ArgumentNullException("type is null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("type is null");
             }
 
 
@@ -680,7 +680,7 @@ namespace HtmlAgilityPack
             }
 #endif
 
-            throw new NotImplementedException("Can't Target any platform while getting Method methodName from Type type.");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Can't Target any platform while getting Method methodName from Type type.");
 
 
         }
@@ -695,7 +695,7 @@ namespace HtmlAgilityPack
         {
             if (source == null)
             {
-                throw new ArgumentNullException("Parameter source is null while counting the IEnumerable");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("Parameter source is null while counting the IEnumerable");
             }
 
             int counter = 0;

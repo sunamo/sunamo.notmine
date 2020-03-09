@@ -59,7 +59,7 @@ namespace FlvExtract
                         return ".wav";
                 }
 
-                throw new NotImplementedException("Something is wrong here");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Something is wrong here");
             }
         }
 
@@ -81,7 +81,7 @@ namespace FlvExtract
                         return ".mp4";
                 }
 
-                throw new NotImplementedException("Something is wrong here");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Something is wrong here");
             }
         }
 

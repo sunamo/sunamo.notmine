@@ -56,11 +56,11 @@ namespace FlvExtract
                 _channelConfig = BitHelper.Read(ref bits, 4);
 
                 if ((_aacProfile < 0) || (_aacProfile > 3))
-                    throw new ExtractionException("Unsupported AAC profile.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Unsupported AAC profile.");
                 if (_sampleRateIndex > 12)
-                    throw new ExtractionException("Invalid AAC sample rate index.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Invalid AAC sample rate index.");
                 if (_channelConfig > 6)
-                    throw new ExtractionException("Invalid AAC channel configuration.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Invalid AAC channel configuration.");
             }
             else
             { // Audio data

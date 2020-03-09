@@ -89,7 +89,7 @@
                 switch (addMode)
                 {
                     case AddMode.FailIfExists:
-                        throw new InvalidOperationException($"There is already a trans-unit with id={id}");
+                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException($"There is already a trans-unit with id={id}");
 
                     case AddMode.SkipExisting:
                         return resultUnit;

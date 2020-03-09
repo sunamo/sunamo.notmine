@@ -158,7 +158,7 @@ namespace csGeoTools
             {
                 return this;
             }
-            throw new NotImplementedException("Conversion between different reference ellipsoids is not yet implemented");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Conversion between different reference ellipsoids is not yet implemented");
         }
 
         public virtual Bearing BearingTo(GeoPoint that)

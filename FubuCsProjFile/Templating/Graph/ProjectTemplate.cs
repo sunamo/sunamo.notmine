@@ -55,7 +55,7 @@ namespace FubuCsProjFile.Templating.Graph
                         if (!tryResolveSelection(o, choices))
                         {
                             if (opt == null)
-                                throw new Exception("Unknown option '{0}' for project type {1}".ToFormat(o, Name));
+                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Unknown option '{0}' for project type {1}".ToFormat(o, Name));
                         }
                     }
                     else

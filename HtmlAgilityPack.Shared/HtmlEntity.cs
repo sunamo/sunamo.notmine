@@ -714,7 +714,7 @@ namespace HtmlAgilityPack
         {
             if (node == null)
             {
-                throw new ArgumentNullException("node");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("node");
             }
 
             HtmlNode result = node.CloneNode(true);

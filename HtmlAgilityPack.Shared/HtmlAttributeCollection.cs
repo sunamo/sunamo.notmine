@@ -85,7 +85,7 @@ namespace HtmlAgilityPack
             {
                 if (name == null)
                 {
-                    throw new ArgumentNullException("name");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
                 }
 
                 HtmlAttribute value;
@@ -206,7 +206,7 @@ namespace HtmlAgilityPack
         {
             if (item == null)
             {
-                throw new ArgumentNullException("item");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("item");
             }
 
             Hashitems[item.Name] = item;
@@ -251,12 +251,12 @@ namespace HtmlAgilityPack
         {
 	        if (_ownernode.NodeType == HtmlNodeType.Text || _ownernode.NodeType == HtmlNodeType.Comment)
 	        {
-				throw new Exception("A Text or Comment node cannot have attributes.");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"A Text or Comment node cannot have attributes.");
 	        }
 				  
 			if (newAttribute == null)
             {
-                throw new ArgumentNullException("newAttribute");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newAttribute");
             }
 
             Hashitems[newAttribute.Name] = newAttribute;
@@ -324,13 +324,13 @@ namespace HtmlAgilityPack
         {
             if (attribute == null)
             {
-                throw new ArgumentNullException("attribute");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("attribute");
             }
 
             int index = GetAttributeIndex(attribute);
             if (index == -1)
             {
-                throw new IndexOutOfRangeException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException();
             }
 
             RemoveAt(index);
@@ -344,7 +344,7 @@ namespace HtmlAgilityPack
         {
             if (name == null)
             {
-                throw new ArgumentNullException("name");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
             }
 
             for (int i = 0; i < items.Count; i++)
@@ -410,7 +410,7 @@ namespace HtmlAgilityPack
         {
             if (attribute == null)
             {
-                throw new ArgumentNullException("attribute");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("attribute");
             }
 
             for (int i = 0; i < items.Count; i++)
@@ -426,7 +426,7 @@ namespace HtmlAgilityPack
         {
             if (name == null)
             {
-                throw new ArgumentNullException("name");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
             }
 
             for (int i = 0; i < items.Count; i++)

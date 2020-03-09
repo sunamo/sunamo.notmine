@@ -33,7 +33,7 @@ namespace HtmlAgilityPack
         {
             if (path == null)
             {
-                throw new ArgumentNullException("path");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
             }
 
             Encoding enc;
@@ -65,7 +65,7 @@ namespace HtmlAgilityPack
         {
             if (path == null)
             {
-                throw new ArgumentNullException("path");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
             }
 
 #if NETSTANDARD1_3 || NETSTANDARD1_6
@@ -86,7 +86,7 @@ namespace HtmlAgilityPack
         public void Load(string path)
         {
             if (path == null)
-                throw new ArgumentNullException("path");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
 
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), OptionDefaultStreamEncoding))
@@ -106,7 +106,7 @@ namespace HtmlAgilityPack
         public void Load(string path, bool detectEncodingFromByteOrderMarks)
         {
             if (path == null)
-                throw new ArgumentNullException("path");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
 
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), detectEncodingFromByteOrderMarks))
@@ -126,10 +126,10 @@ namespace HtmlAgilityPack
         public void Load(string path, Encoding encoding)
         {
             if (path == null)
-                throw new ArgumentNullException("path");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
 
             if (encoding == null)
-                throw new ArgumentNullException("encoding");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
 
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), encoding))
@@ -150,10 +150,10 @@ namespace HtmlAgilityPack
         public void Load(string path, Encoding encoding, bool detectEncodingFromByteOrderMarks)
         {
             if (path == null)
-                throw new ArgumentNullException("path");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
 
             if (encoding == null)
-                throw new ArgumentNullException("encoding");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
 
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), encoding, detectEncodingFromByteOrderMarks))
@@ -175,10 +175,10 @@ namespace HtmlAgilityPack
         public void Load(string path, Encoding encoding, bool detectEncodingFromByteOrderMarks, int buffersize)
         {
             if (path == null)
-                throw new ArgumentNullException("path");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
 
             if (encoding == null)
-                throw new ArgumentNullException("encoding");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
 
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), encoding, detectEncodingFromByteOrderMarks, buffersize))
@@ -216,12 +216,12 @@ namespace HtmlAgilityPack
         {
             if (filename == null)
             {
-                throw new ArgumentNullException("filename");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("filename");
             }
 
             if (encoding == null)
             {
-                throw new ArgumentNullException("encoding");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
             }
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamWriter sw = new StreamWriter(File.OpenWrite(filename), encoding))

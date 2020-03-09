@@ -39,12 +39,12 @@
         {
             if (value < 0)
             {
-                throw new ArgumentOutOfRangeException("value", "Value must be greater or equal 0");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("value", "Value must be greater or equal 0");
             }
 
             if (value > 100)
             {
-                throw new ArgumentOutOfRangeException("value", "Value must be less or equal 100");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("value", "Value must be less or equal 100");
             }
         }
     }

@@ -15,7 +15,7 @@ namespace GoogleTranslateFreeApi
 		public LanguageAttribute(string iso, [CallerMemberName] string fullName = "")
 		{
 			if (string.IsNullOrWhiteSpace(iso))
-				throw new ArgumentException(nameof(iso));
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(nameof(iso));
 
 			Iso639 = iso;
 			FullName = fullName;

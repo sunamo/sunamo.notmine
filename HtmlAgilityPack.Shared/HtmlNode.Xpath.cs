@@ -90,7 +90,7 @@ namespace HtmlAgilityPack
         {
             if (xpath == null)
             {
-                throw new ArgumentNullException("xpath");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("xpath");
             }
 
             HtmlNodeNavigator nav = new HtmlNodeNavigator(OwnerDocument, this);
@@ -113,7 +113,7 @@ namespace HtmlAgilityPack
         {
             if (xpath == null)
             {
-                throw new ArgumentNullException("xpath");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("xpath");
             }
 
             HtmlNodeNavigator nav = new HtmlNodeNavigator(OwnerDocument, this);

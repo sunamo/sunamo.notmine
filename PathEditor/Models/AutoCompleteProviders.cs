@@ -48,7 +48,7 @@ namespace PathEditor.Models
 
         public EnvironmentVariableAutoCompleteProvider(string textToAppend)
         {
-            if (string.IsNullOrEmpty(textToAppend)) throw new ArgumentNullException("textToAppend");
+            if (string.IsNullOrEmpty(textToAppend)) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("textToAppend");
 
             // remove leading '%'
             _variableNamePrefix = textToAppend.Substring(1);

@@ -92,17 +92,17 @@ namespace fmdev.ResX
         {
             if (!File.Exists(resXFile))
             {
-                throw new FileNotFoundException($"The file '{resXFile}' could not be found");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FileNotFoundException($"The file '{resXFile}' could not be found");
             }
 
             if (string.IsNullOrEmpty(className))
             {
-                throw new ArgumentException($"The class name must not be empty or null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException($"The class name must not be empty or null");
             }
 
             if (string.IsNullOrEmpty(namespaceName))
             {
-                throw new ArgumentException($"The namespace name must not be empty or null");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException($"The namespace name must not be empty or null");
             }
 
             string[] unmatchedElements;

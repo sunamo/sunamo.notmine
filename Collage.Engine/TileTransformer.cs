@@ -16,12 +16,12 @@
         {
             if (settings == null)
             {
-                throw new ArgumentNullException("settings");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("settings");
             }
 
             if (tile == null)
             {
-                throw new ArgumentNullException("tile");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("tile");
             }
 
             var tileScaled = tile.Scale(settings.ScalePercent);

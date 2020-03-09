@@ -13,7 +13,7 @@
         {
             if (node == null)
             {
-                throw new ArgumentNullException(nameof(node));
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(node));
             }
 
             var a = node.Attribute(name);
@@ -24,7 +24,7 @@
         {
             if (node == null)
             {
-                throw new ArgumentNullException(nameof(node));
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(node));
             }
 
             var a = node.Attribute(name);

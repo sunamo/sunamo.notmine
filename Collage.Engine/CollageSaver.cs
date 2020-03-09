@@ -13,7 +13,7 @@
         {
             if (outputDirectory == null)
             {
-                throw new ArgumentNullException("outputDirectory");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("outputDirectory");
             }
             
             this.fileNameCreator = new FileNameCreator(outputDirectory);
@@ -23,7 +23,7 @@
         {
             if (bitmap == null)
             {
-                throw new ArgumentNullException("bitmap");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("bitmap");
             }
 
             var fileName = this.fileNameCreator.CreateFileName();

@@ -18,7 +18,7 @@
         {
             if (settings == null)
             {
-                throw new ArgumentNullException("settings");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("settings");
             }
 
             this.settings = settings;
@@ -65,7 +65,7 @@
             {
                 if (this.isBusy)
                 {
-                    throw new InvalidOperationException("The engine is currently busy.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException("The engine is currently busy.");
                 }
                     
                 AsyncOperation async = AsyncOperationManager.CreateOperation(null);

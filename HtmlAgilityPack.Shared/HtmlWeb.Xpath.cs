@@ -70,7 +70,7 @@ namespace HtmlAgilityPack
             }
             catch (InvalidOperationException ex)
             {
-                throw new Exception(ex + ", --- xml:" + sw);
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ex + ", --- xml:" + sw);
             }
 
             return o;
@@ -101,7 +101,7 @@ namespace HtmlAgilityPack
         {
             if (htmlUrl == null)
             {
-                throw new ArgumentNullException("htmlUrl");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("htmlUrl");
             }
 
             HtmlDocument doc = Load(htmlUrl);

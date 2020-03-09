@@ -29,7 +29,7 @@ namespace FlvExtract
         {
             if ((codecID != 2) && (codecID != 4) && (codecID != 5))
             {
-                throw new ExtractionException("Unsupported video codec.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Unsupported video codec.");
             }
 
             _bw = new BinaryWriter(outputStream);
@@ -341,7 +341,7 @@ namespace FlvExtract
             byte[] bytes = General.StringToAscii(fourCC);
             if (bytes.Length != 4)
             {
-                throw new ExtractionException("Invalid FourCC length.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Invalid FourCC length.");
             }
             _bw.Write(bytes);
         }

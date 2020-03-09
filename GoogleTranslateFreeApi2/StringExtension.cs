@@ -12,13 +12,13 @@ namespace GoogleTranslateFreeApi
 		public static string GetTextBetween(this string src, string from, string to, int startIndex = 0)
 		{
 			if (src == null)
-				throw new ArgumentNullException(nameof(src));
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(src));
 			if (from == null)
-				throw new ArgumentNullException(nameof(from));
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(from));
 			if (to == null)
-				throw new ArgumentNullException(nameof(to));
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(to));
 			if (startIndex < 0 || startIndex > src.Length - 1)
-				throw new ArgumentOutOfRangeException(nameof(to));
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException(nameof(to));
 			
 			int index = src.IndexOf(from, startIndex, StringComparison.Ordinal);
 			if (index == -1)

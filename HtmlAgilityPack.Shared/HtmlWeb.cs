@@ -812,7 +812,7 @@ namespace HtmlAgilityPack
             {
                 if ((value) && !UsingCache)
                 {
-                    throw new HtmlWebException("Cache is not enabled. Set UsingCache to true first.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Cache is not enabled. Set UsingCache to true first.");
                 }
 
                 _cacheOnly = value;
@@ -880,7 +880,7 @@ namespace HtmlAgilityPack
             {
                 if (_streamBufferSize <= 0)
                 {
-                    throw new ArgumentException("Size must be greater than zero.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException("Size must be greater than zero.");
                 }
 
                 _streamBufferSize = value;
@@ -919,7 +919,7 @@ namespace HtmlAgilityPack
             {
                 if ((value) && (_cachePath == null))
                 {
-                    throw new HtmlWebException("You need to define a CachePath first.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("You need to define a CachePath first.");
                 }
 
                 _usingCache = value;
@@ -975,7 +975,7 @@ namespace HtmlAgilityPack
 
 	        if (contentType.StartsWith("."))
 	        {
-		        throw new ArgumentException("Requested mime type is not valid: " + contentType);
+		        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException("Requested mime type is not valid: " + contentType);
 	        }
 
 			string ext = "";
@@ -1064,7 +1064,7 @@ namespace HtmlAgilityPack
             }
             else
             {
-                throw new HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
             }
         }
 
@@ -1087,7 +1087,7 @@ namespace HtmlAgilityPack
             }
             else
             {
-                throw new HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
             }
         }
 #endif
@@ -1117,7 +1117,7 @@ namespace HtmlAgilityPack
             }
             else
             {
-                throw new HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
             }
         }
 #endif
@@ -1131,12 +1131,12 @@ namespace HtmlAgilityPack
         {
             if (uri == null)
             {
-                throw new ArgumentNullException("uri");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("uri");
             }
 
             if (!UsingCache)
             {
-                throw new HtmlWebException("Cache is not enabled. Set UsingCache to true first.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Cache is not enabled. Set UsingCache to true first.");
             }
 
 			string cachePath;
@@ -1308,7 +1308,7 @@ namespace HtmlAgilityPack
                 }
                 else
                 {
-                    throw new HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
                 }
             }
 
@@ -1370,7 +1370,7 @@ namespace HtmlAgilityPack
                 }
                 else
                 {
-                    throw new HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
                 }
             }
 
@@ -1440,7 +1440,7 @@ namespace HtmlAgilityPack
                 }
                 else
                 {
-                    throw new HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Unsupported uri scheme: '" + uri.Scheme + "'.");
                 }
             }
             if (PreHandleDocument != null)
@@ -1605,7 +1605,7 @@ namespace HtmlAgilityPack
                 }
                 else if (_cacheOnly)
                 {
-                    throw new HtmlWebException("File was not found at cache path: '" + cachePath + "'");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("File was not found at cache path: '" + cachePath + "'");
                 }
             }
 
@@ -1718,7 +1718,7 @@ namespace HtmlAgilityPack
                 }
 
                 // this should *never* happen...
-                throw new HtmlWebException("Server has send a NotModifed code, without cache enabled.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Server has send a NotModifed code, without cache enabled.");
             }
 
             Stream s = resp.GetResponseStream();
@@ -1848,7 +1848,7 @@ namespace HtmlAgilityPack
 	                }
 	                else if (_cacheOnly)
 	                {
-		                throw new HtmlWebException("File was not found at cache path: '" + cachePath + "'");
+		                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("File was not found at cache path: '" + cachePath + "'");
 	                }
                 }
 
@@ -1945,7 +1945,7 @@ namespace HtmlAgilityPack
                         return response.StatusCode;
                     }
                     // this should *never* happen...
-                    throw new HtmlWebException("Server has send a NotModifed code, without cache enabled.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlWebException("Server has send a NotModifed code, without cache enabled.");
                 }
                 Stream s = response.Content.ReadAsStreamAsync().Result;
                 if (s != null)
@@ -2475,7 +2475,7 @@ namespace HtmlAgilityPack
 
                 if (system_windows_forms == null)
                 {
-                    throw new Exception(
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),
                         "Oops! No reference to System.Windows.Forms have been loaded. Make sure your project load any type from this assembly to make sure the reference is added to the domain assemblies list. Example: `var webBrowserType = typeof(WebBrowser);`");
                 }
             }
@@ -2509,7 +2509,7 @@ namespace HtmlAgilityPack
                     // ENSURE we didn't reach the timeout
                     if (BrowserTimeout.TotalMilliseconds != 0 && clock.ElapsedMilliseconds > BrowserTimeout.TotalMilliseconds)
                     {
-                        throw new Exception(timeoutError);
+                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),timeoutError);
                     }
 
                     doEventsMethod.Invoke(null, new object[0]);
@@ -2525,7 +2525,7 @@ namespace HtmlAgilityPack
                         if (BrowserTimeout.TotalMilliseconds != 0 && clock.ElapsedMilliseconds > BrowserTimeout.TotalMilliseconds)
                         {
                             var documentTextError = WebBrowserOuterHtml(webBrowser);
-                            throw new Exception(timeoutError);
+                            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),timeoutError);
                         }
 
                         doEventsMethod.Invoke(null, new object[0]);

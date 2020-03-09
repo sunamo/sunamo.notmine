@@ -389,7 +389,7 @@ namespace FubuCsProjFile
             var existing = FindProject(projectName);
             if (existing != null)
             {
-                throw new ArgumentOutOfRangeException("projectName", "Project with this name ({0}) already exists in the solution".ToFormat(projectName));
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("projectName", "Project with this name ({0}) already exists in the solution".ToFormat(projectName));
             }
 
 

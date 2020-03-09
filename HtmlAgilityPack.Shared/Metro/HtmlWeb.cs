@@ -134,7 +134,7 @@ namespace HtmlAgilityPack
                 return doc;
             }
 
-            throw new Exception("Error downloading html");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Error downloading html");
         }
 
         #endregion

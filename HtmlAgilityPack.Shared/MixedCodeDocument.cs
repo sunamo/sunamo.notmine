@@ -393,7 +393,7 @@ namespace HtmlAgilityPack
                     return new MixedCodeDocumentCodeFragment(this);
 
                 default:
-                    throw new NotSupportedException();
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException();
             }
         }
 

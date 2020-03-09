@@ -47,7 +47,7 @@ namespace HtmlAgilityPack
             {
                 int index = GetNodeIndex(node);
                 if (index == -1)
-                    throw new ArgumentOutOfRangeException("node",
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("node",
                         "Node \"" + node.CloneNode(false).OuterHtml +
                         "\" was not found in the collection");
                 return index;
@@ -203,7 +203,7 @@ namespace HtmlAgilityPack
             if (prev != null)
             {
                 if (node == prev)
-                    throw new InvalidProgramException("Unexpected error.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidProgramException("Unexpected error.");
 
                 prev._nextnode = node;
             }
@@ -213,7 +213,7 @@ namespace HtmlAgilityPack
 
             node._prevnode = prev;
             if (next == node)
-                throw new InvalidProgramException("Unexpected error.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidProgramException("Unexpected error.");
 
             node._nextnode = next; 
 			node.SetParent(_parentnode);
@@ -254,7 +254,7 @@ namespace HtmlAgilityPack
             if (prev != null)
             {
                 if (next == prev)
-                    throw new InvalidProgramException("Unexpected error.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidProgramException("Unexpected error.");
                 prev._nextnode = next;
             }
 
@@ -311,7 +311,7 @@ namespace HtmlAgilityPack
 	        node.SetParent(_parentnode);
 			if (last == null) return;
             if (last == node)
-                throw new InvalidProgramException("Unexpected error.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidProgramException("Unexpected error.");
 
             last._nextnode = node;
         }
@@ -351,7 +351,7 @@ namespace HtmlAgilityPack
             _items.Insert(0, node);
 
             if (node == first)
-                throw new InvalidProgramException("Unexpected error.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidProgramException("Unexpected error.");
             node._nextnode = first;
             node._prevnode = null;
 	        node.SetParent(_parentnode);
@@ -392,7 +392,7 @@ namespace HtmlAgilityPack
             if (prev != null)
             {
                 if (node == prev)
-                    throw new InvalidProgramException("Unexpected error.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidProgramException("Unexpected error.");
                 prev._nextnode = node;
             }
 
@@ -402,7 +402,7 @@ namespace HtmlAgilityPack
             node._prevnode = prev;
 
             if (next == node)
-                throw new InvalidProgramException("Unexpected error.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidProgramException("Unexpected error.");
 
             node._nextnode = next;
 	        node.SetParent(_parentnode);

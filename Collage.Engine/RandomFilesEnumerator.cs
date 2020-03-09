@@ -13,7 +13,7 @@
         {
             if (filesList == null)
             {
-                throw new ArgumentNullException("filesList");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("filesList");
             }
             
             this.filesList = filesList;

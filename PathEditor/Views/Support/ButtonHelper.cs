@@ -24,7 +24,7 @@ namespace PathEditor.Views.Support
             // Implementation of DialogResult functionality
             Button button = d as Button;
             if (button == null)
-                throw new InvalidOperationException("Can only use ButtonHelper.DialogResult on a Button control");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException("Can only use ButtonHelper.DialogResult on a Button control");
             button.Click += (sender, e2) =>
             {
                 var window = Window.GetWindow(button);

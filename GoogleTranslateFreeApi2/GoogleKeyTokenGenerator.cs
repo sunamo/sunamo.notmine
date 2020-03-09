@@ -102,7 +102,7 @@ namespace GoogleTranslateFreeApi
 				}
 				catch (ExternalKeyParseException)
 				{
-					throw new NotSupportedException("The method is no longer valid, or something went wrong");
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("The method is no longer valid, or something went wrong");
 				}
 
 			long time = DecrypthAlgorythm(source);
@@ -143,7 +143,7 @@ namespace GoogleTranslateFreeApi
 				}
 				catch (HttpRequestException ex) when (ex.Message.Contains("503"))
 				{
-					throw new GoogleTranslateIPBannedException(
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),GoogleTranslateIPBannedException(
 						GoogleTranslateIPBannedException.Operation.TokenGeneration);
 				}
 				
@@ -157,16 +157,16 @@ namespace GoogleTranslateFreeApi
 				var tkkText = result.GetTextBetween(@"tkk:'", "',");
 
 				if (tkkText == null)
-					throw new ExternalKeyParseException("Unknown TKK position");
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExternalKeyParseException("Unknown TKK position");
 
 				var splitted = tkkText.Split('.');
 				if (splitted.Length != 2 || !long.TryParse(splitted[1], out tkk))
-					throw new ExternalKeyParseException($"Unknown TKK format. TKK: {tkkText}");
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExternalKeyParseException($"Unknown TKK format. TKK: {tkkText}");
 
 			}
 			catch (ArgumentException)
 			{
-				throw new ExternalKeyParseException();
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExternalKeyParseException();
 			}
 
 			ExternalKey newExternalKey = new ExternalKey(UnixTotalHours, tkk);

@@ -21,7 +21,7 @@ namespace GoogleTranslateFreeApi.TranslationData
       if (type == typeof(Synonyms))
         return new Synonyms() as T;
 
-      throw new NotSupportedException("type");
+      ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotSupportedException("type");
     }
   }
 }

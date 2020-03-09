@@ -10,8 +10,8 @@ namespace FubuCsProjFile.Templating.Graph
 
         public ProjectRequest(string name, string template)
         {
-            if (name == null) throw new ArgumentNullException("name");
-            if (template == null) throw new ArgumentNullException("template");
+            if (name == null) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
+            if (template == null) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("template");
 
             Name = name;
             Template = template;

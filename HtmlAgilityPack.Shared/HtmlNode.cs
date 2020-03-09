@@ -323,17 +323,17 @@ namespace HtmlAgilityPack
 			get
 			{
 				if (_ownerdocument.Nodesid == null)
-					throw new Exception(HtmlDocument.HtmlExceptionUseIdAttributeFalse);
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlDocument.HtmlExceptionUseIdAttributeFalse);
 
 				return GetId();
 			}
 			set
 			{
 				if (_ownerdocument.Nodesid == null)
-					throw new Exception(HtmlDocument.HtmlExceptionUseIdAttributeFalse);
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlDocument.HtmlExceptionUseIdAttributeFalse);
 
 				if (value == null)
-					throw new ArgumentNullException("value");
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("value");
 
 				SetId(value);
 			}
@@ -715,7 +715,7 @@ namespace HtmlAgilityPack
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 			}
 
 			HtmlElementFlag flag;
@@ -739,7 +739,7 @@ namespace HtmlAgilityPack
 			doc.LoadHtml(html);
 			if (!doc.DocumentNode.IsSingleElementNode())
 			{
-				throw new Exception("Multiple node elments can't be created.");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Multiple node elments can't be created.");
 			}
 
 			var element = doc.DocumentNode.FirstChild;
@@ -764,7 +764,7 @@ namespace HtmlAgilityPack
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 			}
 
 			HtmlElementFlag flag;
@@ -785,7 +785,7 @@ namespace HtmlAgilityPack
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 			}
 
 			HtmlElementFlag flag;
@@ -806,7 +806,7 @@ namespace HtmlAgilityPack
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 			}
 
 			if (name.Length == 0)
@@ -844,7 +844,7 @@ namespace HtmlAgilityPack
 		{
 			if (text == null)
 			{
-				throw new ArgumentNullException("text");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("text");
 			}
 
 			// min is </x>: 4
@@ -919,7 +919,7 @@ namespace HtmlAgilityPack
 		{
 			if (newChild == null)
 			{
-				throw new ArgumentNullException("newChild");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newChild");
 			}
 
 			ChildNodes.Append(newChild);
@@ -948,7 +948,7 @@ namespace HtmlAgilityPack
 		public void AppendChildren(HtmlNodeCollection newChildren)
 		{
 			if (newChildren == null)
-				throw new ArgumentNullException("newChildren");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newChildren");
 
 			foreach (HtmlNode newChild in newChildren)
 			{
@@ -993,7 +993,7 @@ namespace HtmlAgilityPack
 		{
 			if (newName == null)
 			{
-				throw new ArgumentNullException("newName");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newName");
 			}
 
 			HtmlNode node = CloneNode(deep);
@@ -1081,7 +1081,7 @@ namespace HtmlAgilityPack
 		{
 			if (node == null)
 			{
-				throw new ArgumentNullException("node");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("node");
 			}
 
 			Attributes.RemoveAll();
@@ -1118,7 +1118,7 @@ namespace HtmlAgilityPack
 		{
 			if (level > HtmlDocument.MaxDepthLevel)
 			{
-				throw new ArgumentException(HtmlNode.DepthLevelExceptionMessage);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlNode.DepthLevelExceptionMessage);
 			}
 
 			foreach (HtmlNode node in ChildNodes)
@@ -1157,7 +1157,7 @@ namespace HtmlAgilityPack
 		{
 			if (level > HtmlDocument.MaxDepthLevel)
 			{
-				throw new ArgumentException(HtmlNode.DepthLevelExceptionMessage);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlNode.DepthLevelExceptionMessage);
 			}
 
 			foreach (HtmlNode node in ChildNodes)
@@ -1243,7 +1243,7 @@ namespace HtmlAgilityPack
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 			}
 
 			if (!HasAttributes)
@@ -1270,7 +1270,7 @@ namespace HtmlAgilityPack
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 			}
 
 			if (!HasAttributes)
@@ -1304,7 +1304,7 @@ namespace HtmlAgilityPack
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 			}
 
 			if (!HasAttributes)
@@ -1338,7 +1338,7 @@ namespace HtmlAgilityPack
 		{
 			if (newChild == null)
 			{
-				throw new ArgumentNullException("newChild");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newChild");
 			}
 
 			if (refChild == null)
@@ -1360,7 +1360,7 @@ namespace HtmlAgilityPack
 
 			if (index == -1)
 			{
-				throw new ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
 			}
 
 			if (_childnodes != null) _childnodes.Insert(index + 1, newChild);
@@ -1381,7 +1381,7 @@ namespace HtmlAgilityPack
 		{
 			if (newChild == null)
 			{
-				throw new ArgumentNullException("newChild");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newChild");
 			}
 
 			if (refChild == null)
@@ -1403,7 +1403,7 @@ namespace HtmlAgilityPack
 
 			if (index == -1)
 			{
-				throw new ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
 			}
 
 			if (_childnodes != null) _childnodes.Insert(index, newChild);
@@ -1423,7 +1423,7 @@ namespace HtmlAgilityPack
 		{
 			if (newChild == null)
 			{
-				throw new ArgumentNullException("newChild");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newChild");
 			}
 
 			ChildNodes.Prepend(newChild);
@@ -1441,7 +1441,7 @@ namespace HtmlAgilityPack
 		{
 		    if (newChildren == null)
 		    {
-		        throw new ArgumentNullException("newChildren");
+		        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newChildren");
 		    }
 
 		    for (int i = newChildren.Count - 1; i >= 0; i--)
@@ -1528,7 +1528,7 @@ namespace HtmlAgilityPack
 		{
 			if (oldChild == null)
 			{
-				throw new ArgumentNullException("oldChild");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("oldChild");
 			}
 
 			int index = -1;
@@ -1540,7 +1540,7 @@ namespace HtmlAgilityPack
 
 			if (index == -1)
 			{
-				throw new ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
 			}
 
 			if (_childnodes != null)
@@ -1562,7 +1562,7 @@ namespace HtmlAgilityPack
 		{
 			if (oldChild == null)
 			{
-				throw new ArgumentNullException("oldChild");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("oldChild");
 			}
 
 			if ((oldChild._childnodes != null) && keepGrandChildren)
@@ -1609,7 +1609,7 @@ namespace HtmlAgilityPack
 
 			if (index == -1)
 			{
-				throw new ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
 			}
 
 			if (_childnodes != null) _childnodes.Replace(index, newChild);
@@ -1634,7 +1634,7 @@ namespace HtmlAgilityPack
 		{
 			if (name == null)
 			{
-				throw new ArgumentNullException("name");
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 			}
 
 			HtmlAttribute att = Attributes[name];
@@ -1656,7 +1656,7 @@ namespace HtmlAgilityPack
 		{
 			if (level > HtmlDocument.MaxDepthLevel)
 			{
-				throw new ArgumentException(HtmlNode.DepthLevelExceptionMessage);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlNode.DepthLevelExceptionMessage);
 			}
 
 			if (_childnodes == null)
@@ -1942,7 +1942,7 @@ namespace HtmlAgilityPack
 			{
 				Depth = parent.Depth + 1;
 				if (Depth > OwnerDocument.OptionMaxNestedChildNodes)
-					throw new Exception(string.Format("Document has more than {0} nested tags. This is likely due to the page not closing tags properly.", OwnerDocument.OptionMaxNestedChildNodes));
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),string.Format("Document has more than {0} nested tags. This is likely due to the page not closing tags properly.", OwnerDocument.OptionMaxNestedChildNodes));
 			}
 		}
 
@@ -2023,7 +2023,7 @@ namespace HtmlAgilityPack
 		{
 			if (level > HtmlDocument.MaxDepthLevel)
 			{
-				throw new ArgumentException(HtmlNode.DepthLevelExceptionMessage);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlNode.DepthLevelExceptionMessage);
 			}
 
 			if (!_ownerdocument.OptionAutoCloseOnEnd)
@@ -2258,7 +2258,7 @@ namespace HtmlAgilityPack
 					{
 						if (throwError)
 						{
-							throw new Exception(HtmlDocument.HtmlExceptionClassExists);
+							ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlDocument.HtmlExceptionClassExists);
 						}
 					}
 					else
@@ -2291,7 +2291,7 @@ namespace HtmlAgilityPack
 			var classAttributes = Attributes.AttributesWithName("class");
 			if (IsEmpty(classAttributes) && throwError)
 			{
-				throw new Exception(HtmlDocument.HtmlExceptionClassDoesNotExist);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlDocument.HtmlExceptionClassDoesNotExist);
 			}
 
 			foreach (var att in classAttributes)
@@ -2319,7 +2319,7 @@ namespace HtmlAgilityPack
 			var classAttributes = Attributes.AttributesWithName("class");
 			if (IsEmpty(classAttributes) && throwError)
 			{
-				throw new Exception(HtmlDocument.HtmlExceptionClassDoesNotExist);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlDocument.HtmlExceptionClassDoesNotExist);
 			}
 
 			else
@@ -2354,7 +2354,7 @@ namespace HtmlAgilityPack
 					{
 						if (throwError)
 						{
-							throw new Exception(HtmlDocument.HtmlExceptionClassDoesNotExist);
+							ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlDocument.HtmlExceptionClassDoesNotExist);
 						}
 					}
 
@@ -2398,7 +2398,7 @@ namespace HtmlAgilityPack
 
 			if (IsEmpty(classAttributes) && throwError)
 			{
-				throw new Exception(HtmlDocument.HtmlExceptionClassDoesNotExist);
+				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlDocument.HtmlExceptionClassDoesNotExist);
 			}
 
 			foreach (var att in classAttributes)
@@ -2415,7 +2415,7 @@ namespace HtmlAgilityPack
 				}
 				else if (throwError)
 				{
-					throw new Exception(HtmlDocument.HtmlExceptionClassDoesNotExist);
+					ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlDocument.HtmlExceptionClassDoesNotExist);
 				}
 			}
 		}

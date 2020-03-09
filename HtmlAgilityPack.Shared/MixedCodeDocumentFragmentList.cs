@@ -84,7 +84,7 @@ namespace HtmlAgilityPack
         {
             if (newFragment == null)
             {
-                throw new ArgumentNullException("newFragment");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newFragment");
             }
 
             _items.Add(newFragment);
@@ -106,7 +106,7 @@ namespace HtmlAgilityPack
         {
             if (newFragment == null)
             {
-                throw new ArgumentNullException("newFragment");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("newFragment");
             }
 
             _items.Insert(0, newFragment);
@@ -120,13 +120,13 @@ namespace HtmlAgilityPack
         {
             if (fragment == null)
             {
-                throw new ArgumentNullException("fragment");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("fragment");
             }
 
             int index = GetFragmentIndex(fragment);
             if (index == -1)
             {
-                throw new IndexOutOfRangeException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),IndexOutOfRangeException();
             }
 
             RemoveAt(index);
@@ -163,7 +163,7 @@ namespace HtmlAgilityPack
         {
             if (fragment == null)
             {
-                throw new ArgumentNullException("fragment");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("fragment");
             }
 
             for (int i = 0; i < _items.Count; i++)

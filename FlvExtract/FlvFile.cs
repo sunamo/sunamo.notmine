@@ -37,10 +37,10 @@ namespace FlvExtract
         public FLVFile(Stream inputStream, Stream audioOutputStream = null, Stream videoOutputStream = null)
         {
             if (inputStream == null)
-                throw new ArgumentNullException("inputStream");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("inputStream");
 
             if (audioOutputStream == null && videoOutputStream == null)
-                throw new ArgumentNullException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException();
 
             _warnings = new List<string>();
             _fs = inputStream;
@@ -98,10 +98,10 @@ namespace FlvExtract
             {
                 if (_fileLength >= 8 && ReadUInt32() == 0x66747970)
                 {
-                    throw new ExtractionException("This is a MP4 file. YAMB or MP4Box can be used to extract streams.");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("This is a MP4 file. YAMB or MP4Box can be used to extract streams.");
                 }
 
-                throw new ExtractionException("This isn't a FLV file.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("This isn't a FLV file.");
             }
 
             ReadUInt8();
@@ -297,7 +297,7 @@ namespace FlvExtract
                     break;
             }
 
-            throw new ExtractionException("Unable to extract audio (" + typeStr + " is unsupported).");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Unable to extract audio (" + typeStr + " is unsupported).");
         }
 
         private IVideoWriter GetVideoWriter(uint mediaInfo)
@@ -324,7 +324,7 @@ namespace FlvExtract
             else
                 typeStr = "codecID=" + codecID;
 
-            throw new ExtractionException("Unable to extract video (" + typeStr + " is unsupported).");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Unable to extract video (" + typeStr + " is unsupported).");
         }
 
         private byte[] ReadBytes(int length)

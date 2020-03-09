@@ -16,7 +16,7 @@ namespace FubuCsProjFile
         {
             if (string.IsNullOrWhiteSpace(version))
             {
-                throw new ArgumentNullException("version");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("version");
             }
 
             this.version = new Version(version.TrimStart(new[] {'v'}));

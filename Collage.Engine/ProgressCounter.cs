@@ -11,12 +11,12 @@
         {
             if (totalNumberOfRows <= 0)
             {
-                throw new ArgumentOutOfRangeException("totalNumberOfRows", "Total number of rows must be a positive value");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("totalNumberOfRows", "Total number of rows must be a positive value");
             }
 
             if (totalNumberOfColumns <= 0)
             {
-                throw new ArgumentOutOfRangeException("totalNumberOfColumns", "Total number of columns must be a positive value");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("totalNumberOfColumns", "Total number of columns must be a positive value");
             }
 
             this.totalNumberOfRows = totalNumberOfRows;

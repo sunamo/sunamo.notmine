@@ -62,7 +62,7 @@ namespace SlnGen.Common
             _globalProperties = globalProperties;
             _toolsVersion = toolsVersion;
             _projectLoadSettings = projectLoadSettings;
-            _buildEngine = buildEngine ?? throw new ArgumentNullException(nameof(buildEngine));
+            _buildEngine = buildEngine ?? ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(buildEngine));
         }
 
         /// <summary>

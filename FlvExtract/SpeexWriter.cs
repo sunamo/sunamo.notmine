@@ -149,7 +149,7 @@ namespace FlvExtract
 
         private static void ThrowInvalidSpeexDataException()
         {
-            throw new ExtractionException("Invalid Speex data.");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Invalid Speex data.");
         }
 
         private void AddPacket(byte[] data, uint sampleLength, bool delayWrite)
@@ -157,7 +157,7 @@ namespace FlvExtract
             var packet = new OggPacket();
             if (data.Length >= 255)
             {
-                throw new ExtractionException("Packet exceeds maximum size.");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Packet exceeds maximum size.");
             }
             _granulePosition += sampleLength;
             packet.Data = data;

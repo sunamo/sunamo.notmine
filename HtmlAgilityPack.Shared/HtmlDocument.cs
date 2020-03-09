@@ -410,7 +410,7 @@ namespace HtmlAgilityPack
         {
             if (html == null)
             {
-                throw new ArgumentNullException("html");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("html");
             }
 
             // replace & by &amp; but only once!
@@ -442,7 +442,7 @@ namespace HtmlAgilityPack
         public HtmlAttribute CreateAttribute(string name)
         {
             if (name == null)
-                throw new ArgumentNullException("name");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
 
             HtmlAttribute att = CreateAttribute();
             att.Name = name;
@@ -459,7 +459,7 @@ namespace HtmlAgilityPack
         {
             if (name == null)
             {
-                throw new ArgumentNullException("name");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
             }
 
             HtmlAttribute att = CreateAttribute(name);
@@ -485,7 +485,7 @@ namespace HtmlAgilityPack
         {
             if (comment == null)
             {
-                throw new ArgumentNullException("comment");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("comment");
             }
 
             HtmlCommentNode c = CreateComment();
@@ -502,7 +502,7 @@ namespace HtmlAgilityPack
         {
             if (name == null)
             {
-                throw new ArgumentNullException("name");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
             }
 
             HtmlNode node = CreateNode(HtmlNodeType.Element);
@@ -528,7 +528,7 @@ namespace HtmlAgilityPack
         {
             if (text == null)
             {
-                throw new ArgumentNullException("text");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("text");
             }
 
             HtmlTextNode t = CreateTextNode();
@@ -558,7 +558,7 @@ namespace HtmlAgilityPack
 
             if (stream == null)
             {
-                throw new ArgumentNullException("stream");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("stream");
             }
 
             return DetectEncoding(new StreamReader(stream));
@@ -574,7 +574,7 @@ namespace HtmlAgilityPack
         {
             if (reader == null)
             {
-                throw new ArgumentNullException("reader");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("reader");
             }
 
             _onlyDetectEncoding = true;
@@ -633,7 +633,7 @@ namespace HtmlAgilityPack
         {
             if (html == null)
             {
-                throw new ArgumentNullException("html");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("html");
             }
 
             using (StringReader sr = new StringReader(html))
@@ -652,12 +652,12 @@ namespace HtmlAgilityPack
         {
             if (id == null)
             {
-                throw new ArgumentNullException("id");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("id");
             }
 
             if (Nodesid == null)
             {
-                throw new Exception(HtmlExceptionUseIdAttributeFalse);
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),HtmlExceptionUseIdAttributeFalse);
             }
 
             return Nodesid.ContainsKey(id) ? Nodesid[id] : null;
@@ -724,7 +724,7 @@ namespace HtmlAgilityPack
         {
             // all Load methods pass down to this one
             if (reader == null)
-                throw new ArgumentNullException("reader");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("reader");
 
             _onlyDetectEncoding = false;
 
@@ -811,7 +811,7 @@ namespace HtmlAgilityPack
         {
             if (html == null)
             {
-                throw new ArgumentNullException("html");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("html");
             }
 
             using (StringReader sr = new StringReader(html))
@@ -839,12 +839,12 @@ namespace HtmlAgilityPack
         {
             if (outStream == null)
             {
-                throw new ArgumentNullException("outStream");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("outStream");
             }
 
             if (encoding == null)
             {
-                throw new ArgumentNullException("encoding");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
             }
 
             StreamWriter sw = new StreamWriter(outStream, encoding);
@@ -869,7 +869,7 @@ namespace HtmlAgilityPack
         {
             if (writer == null)
             {
-                throw new ArgumentNullException("writer");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("writer");
             }
 
             DocumentNode.WriteTo(writer);
@@ -2132,7 +2132,7 @@ namespace HtmlAgilityPack
 
                 if (_onlyDetectEncoding)
                 {
-                    throw new EncodingFoundException(_declaredencoding);
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),EncodingFoundException(_declaredencoding);
                 }
 
                 if (_streamencoding != null)

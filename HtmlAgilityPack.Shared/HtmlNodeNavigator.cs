@@ -44,12 +44,12 @@ namespace HtmlAgilityPack
         {
             if (currentNode == null)
             {
-                throw new ArgumentNullException("currentNode");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("currentNode");
             }
 
             if (currentNode.OwnerDocument != doc)
             {
-                throw new ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException(HtmlDocument.HtmlExceptionRefNotChild);
             }
 
 #if TRACE_NAVIGATOR
@@ -65,7 +65,7 @@ namespace HtmlAgilityPack
         {
             if (nav == null)
             {
-                throw new ArgumentNullException("nav");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("nav");
             }
 #if TRACE_NAVIGATOR
             InternalTrace(null);
@@ -389,7 +389,7 @@ namespace HtmlAgilityPack
                     }
 
                     default:
-                        throw new NotImplementedException("Internal error: Unhandled HtmlNodeType: " +
+                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Internal error: Unhandled HtmlNodeType: " +
                                                           _currentnode.NodeType);
                 }
             }
@@ -454,7 +454,7 @@ namespace HtmlAgilityPack
                     }
 
                     default:
-                        throw new NotImplementedException("Internal error: Unhandled HtmlNodeType: " +
+                        ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Internal error: Unhandled HtmlNodeType: " +
                                                           _currentnode.NodeType);
                 }
             }

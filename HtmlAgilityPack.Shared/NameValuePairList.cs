@@ -56,7 +56,7 @@ namespace HtmlAgilityPack
         public string GetNameValuePairValue(string name)
         {
             if (name == null)
-                throw new ArgumentNullException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException();
             List<KeyValuePair<string, string>> al = GetNameValuePairs(name);
             if (al.Count == 0)
                 return string.Empty;

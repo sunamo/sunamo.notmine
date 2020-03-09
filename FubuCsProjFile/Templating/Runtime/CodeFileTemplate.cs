@@ -33,7 +33,7 @@ namespace FubuCsProjFile.Templating.Runtime
         {
             if (Path.GetExtension(relativePath) != ".cs")
             {
-                throw new ArgumentOutOfRangeException("relativePath", "Relative Path must have the .cs extension");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("relativePath", "Relative Path must have the .cs extension");
             }
 
             _relativePath = relativePath.Replace('\\', '/');

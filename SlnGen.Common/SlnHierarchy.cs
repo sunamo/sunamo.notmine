@@ -53,7 +53,7 @@ namespace SlnGen.Common
 
             if (!paths.Any())
             {
-                throw new InvalidOperationException();
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException();
             }
 
             // TODO: Unit tests, optimize

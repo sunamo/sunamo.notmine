@@ -51,19 +51,19 @@ namespace FubuCsProjFile.Templating.Graph
 
         public ProjectRequest BuildProjectRequest(TemplateChoices choices)
         {
-            if (choices.Category.IsEmpty()) throw new Exception("Category is required");
-            if (choices.ProjectName.IsEmpty()) throw new Exception("ProjectName is required");
+            if (choices.Category.IsEmpty()) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Category is required");
+            if (choices.ProjectName.IsEmpty()) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"ProjectName is required");
 
             var category = FindCategory(choices.Category);
             if (category == null)
             {
-                throw new Exception("Category '{0}' is unknown".ToFormat(choices.Category));
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Category '{0}' is unknown".ToFormat(choices.Category));
             }
 
             var project = category.FindTemplate(choices.ProjectType);
             if (project == null)
             {
-                throw new Exception("ProjectTemplate '{0}' for category {1} is unknown".ToFormat(choices.ProjectType, choices.Category));
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"ProjectTemplate '{0}' for category {1} is unknown".ToFormat(choices.ProjectType, choices.Category));
             }
 
             return project.BuildProjectRequest(choices);

@@ -13,7 +13,7 @@ namespace PathEditor.ModelViews
         [DebuggerStepThrough]
         public PathPartViewModel(string pathPart)
         {
-            if (pathPart == null) throw new ArgumentNullException("pathPart");
+            if (pathPart == null) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("pathPart");
             _pathPart = pathPart;
         }
 

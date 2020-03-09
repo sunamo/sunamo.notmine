@@ -103,7 +103,7 @@ namespace HtmlAgilityPack
             {
                 if (value == null)
                 {
-                    throw new ArgumentNullException("value");
+                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("value");
                 }
 
                 _name = value;
@@ -235,7 +235,7 @@ namespace HtmlAgilityPack
             HtmlAttribute att = obj as HtmlAttribute;
             if (att == null)
             {
-                throw new ArgumentException("obj");
+                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException("obj");
             }
 
             return Name.CompareTo(att.Name);
