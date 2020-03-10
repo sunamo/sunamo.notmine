@@ -1,17 +1,15 @@
 ﻿using System;
 using System.IO;
-
 namespace FlvExtract
 {
     public class FlvExtractor
     {
+static Type type = typeof(FlvExtractor);
         public EventHandler<ProgressEventArgs> ProgressChanged;
         private FLVFile file;
         private Func<ExtractionInfo> infoFunc;
-
         private FlvExtractor()
         { }
-
         /// <summary>
         /// Creates a <see cref="FlvExtractor"/> that extracts only the audio track.
         /// </summary>
@@ -20,15 +18,12 @@ namespace FlvExtract
         public static FlvExtractor CreateAudioExtractor(Stream inputStream, Stream outputStream)
         {
             if (inputStream == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("inputStream");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("inputStream");
             if (outputStream == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("outputStream");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("outputStream");
             var file = new FLVFile(inputStream, outputStream);
             return new FlvExtractor { file = file, infoFunc = () => new ExtractionInfo(file.AudioFormat) };
         }
-
         /// <summary>
         /// Creates a <see cref="FlvExtractor"/> that extracts the audio and video track.
         /// </summary>
@@ -38,18 +33,14 @@ namespace FlvExtract
         public static FlvExtractor CreateExtractor(Stream inputStream, Stream audioOutputStream, Stream videoOutputStream)
         {
             if (inputStream == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("inputStream");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("inputStream");
             if (audioOutputStream == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("audioOutputStream");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("audioOutputStream");
             if (videoOutputStream == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("videoOutputStream");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("videoOutputStream");
             var file = new FLVFile(inputStream, audioOutputStream, videoOutputStream);
             return new FlvExtractor { file = file, infoFunc = () => new ExtractionInfo(file.AudioFormat, file.VideoFormat) };
         }
-
         /// <summary>
         /// Creates a <see cref="FlvExtractor"/> that extracts only the video track.
         /// </summary>
@@ -58,15 +49,12 @@ namespace FlvExtract
         public static FlvExtractor CreateVideoExtractor(Stream inputStream, Stream outputStream)
         {
             if (inputStream == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("inputStream");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("inputStream");
             if (outputStream == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("outputStream");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException("outputStream");
             var file = new FLVFile(inputStream, videoOutputStream: outputStream);
             return new FlvExtractor { file = file, infoFunc = () => new ExtractionInfo(file.VideoFormat) };
         }
-
         /// <summary>
         /// Executes the audio extraction. This method runs synchronously but reports it's progress through the <see cref="ProgressChanged"/> event.
         /// </summary>
@@ -81,13 +69,11 @@ namespace FlvExtract
                     this.ProgressChanged(this, args);
                 }
             };
-
             try
             {
                 file.ExtractStreams();
                 return this.infoFunc();
             }
-
             finally
             {
                 file.Dispose();

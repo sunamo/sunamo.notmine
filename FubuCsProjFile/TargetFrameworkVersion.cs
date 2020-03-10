@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using SunamoExceptions;
 
 namespace FubuCsProjFile
 {
     public class TargetFrameworkVersion : IEquatable<TargetFrameworkVersion>, IComparable,
         IComparable<TargetFrameworkVersion>
     {
+        static Type type = typeof(TargetFrameworkVersion);
         private Version version;
 
         /// <summary>
@@ -16,7 +18,7 @@ namespace FubuCsProjFile
         {
             if (string.IsNullOrWhiteSpace(version))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("version");
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"version");
             }
 
             this.version = new Version(version.TrimStart(new[] {'v'}));

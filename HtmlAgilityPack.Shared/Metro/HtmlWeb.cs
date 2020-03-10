@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace HtmlAgilityPack
 {
     /// <summary>
@@ -13,13 +12,12 @@ namespace HtmlAgilityPack
     /// </summary>
     public class HtmlWeb
     {
+static Type type = typeof(HtmlWeb);
         /// <summary>
         /// Allows for setting document defaults before loading
         /// </summary>
         public Action<HtmlDocument> PreHandleDocument { get; set; }
-
         #region Instance Methods
-
         /// <summary>
         /// Begins the process of downloading an internet resource
         /// </summary>
@@ -28,7 +26,6 @@ namespace HtmlAgilityPack
         {
             return await LoadFromWebAsync(new Uri(url), null, null);
         }
-
         /// <summary>
         /// Begins the process of downloading an internet resource
         /// </summary>
@@ -38,7 +35,6 @@ namespace HtmlAgilityPack
         {
             return await LoadFromWebAsync(new Uri(url), encoding, null);
         }
-
         /// <summary>
         /// Begins the process of downloading an internet resource
         /// </summary>
@@ -50,7 +46,6 @@ namespace HtmlAgilityPack
         {
             return await LoadFromWebAsync(new Uri(url), encoding, new NetworkCredential(userName, password));
         }
-
         /// <summary>
         /// Begins the process of downloading an internet resource
         /// </summary>
@@ -63,7 +58,6 @@ namespace HtmlAgilityPack
         {
             return await LoadFromWebAsync(new Uri(url), encoding, new NetworkCredential(userName, password, domain));
         }
-
         /// <summary>
         /// Begins the process of downloading an internet resource
         /// </summary>
@@ -75,7 +69,6 @@ namespace HtmlAgilityPack
         {
             return await LoadFromWebAsync(new Uri(url), null, new NetworkCredential(userName, password, domain));
         }
-
         /// <summary>
         /// Begins the process of downloading an internet resource
         /// </summary>
@@ -86,7 +79,6 @@ namespace HtmlAgilityPack
         {
             return await LoadFromWebAsync(new Uri(url), null, new NetworkCredential(userName, password));
         }
-
         /// <summary>
         /// Begins the process of downloading an internet resource
         /// </summary>
@@ -96,7 +88,6 @@ namespace HtmlAgilityPack
         {
             return await LoadFromWebAsync(new Uri(url), null, credentials);
         }
-
         /// <summary>
         /// Begins the process of downloading an internet resource
         /// </summary>
@@ -110,9 +101,7 @@ namespace HtmlAgilityPack
                 clientHandler.UseDefaultCredentials = true;
             else
                 clientHandler.Credentials = credentials;
-
             var client = new HttpClient(clientHandler);
-
             var e = await client.GetAsync(uri);
             if (e.StatusCode == HttpStatusCode.OK)
             {
@@ -126,17 +115,14 @@ namespace HtmlAgilityPack
                 }
                 else
                     html = await e.Content.ReadAsStringAsync();
-
                 var doc = new HtmlDocument();
                 if (PreHandleDocument != null)
                     PreHandleDocument(doc);
                 doc.LoadHtml(html);
                 return doc;
             }
-
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Error downloading html");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Error downloading html");
         }
-
         #endregion
     }
 }

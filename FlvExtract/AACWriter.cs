@@ -14,61 +14,50 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
 using System.IO;
-
 namespace FlvExtract
 {
     public class AACWriter : IAudioWriter
     {
+static Type type = typeof(AACWriter);
         private int _aacProfile;
         private int _channelConfig;
         private Stream _fs;
         private int _sampleRateIndex;
-
         public AACWriter(Stream outputStream)
         {
             _fs = outputStream;
         }
-
         public AudioFormat AudioFormat
         {
             get { return AudioFormat.Aac; }
         }
-
         public void Dispose()
         {
             _fs.Dispose();
         }
-
         public void WriteChunk(byte[] chunk, uint timeStamp)
         {
             if (chunk.Length < 1) return;
-
             if (chunk[0] == 0)
             { // Header
                 if (chunk.Length < 3) return;
-
                 ulong bits = (ulong)BitConverterBE.ToUInt16(chunk, 1) << 48;
-
                 _aacProfile = BitHelper.Read(ref bits, 5) - 1;
                 _sampleRateIndex = BitHelper.Read(ref bits, 4);
                 _channelConfig = BitHelper.Read(ref bits, 4);
-
                 if ((_aacProfile < 0) || (_aacProfile > 3))
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Unsupported AAC profile.");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ExtractionException("Unsupported AAC profile.");
                 if (_sampleRateIndex > 12)
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Invalid AAC sample rate index.");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ExtractionException("Invalid AAC sample rate index.");
                 if (_channelConfig > 6)
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Invalid AAC channel configuration.");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ExtractionException("Invalid AAC channel configuration.");
             }
             else
             { // Audio data
                 int dataSize = chunk.Length - 1;
                 ulong bits = 0;
-
                 // Reference: WriteADTSHeader from FAAC's bitstream.c
-
                 BitHelper.Write(ref bits, 12, 0xFFF);
                 BitHelper.Write(ref bits, 1, 0);
                 BitHelper.Write(ref bits, 2, 0);
@@ -84,7 +73,6 @@ namespace FlvExtract
                 BitHelper.Write(ref bits, 13, 7 + dataSize);
                 BitHelper.Write(ref bits, 11, 0x7FF);
                 BitHelper.Write(ref bits, 2, 0);
-
                 _fs.Write(BitConverterBE.GetBytes(bits), 1, 7);
                 _fs.Write(chunk, 1, dataSize);
             }

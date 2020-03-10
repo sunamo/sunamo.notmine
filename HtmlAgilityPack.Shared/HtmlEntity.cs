@@ -4,28 +4,27 @@
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
 // Copyright � ZZZ Projects Inc. 2014 - 2017. All rights reserved.
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using SunamoExceptions;
 
 namespace HtmlAgilityPack
 {
     /// <summary>
     /// A utility class to replace special characters by entities and vice-versa.
     /// Follows HTML 4.0 specification found at https://www.w3.org/TR/html4/sgml/entities.html
+
     /// Follows Additional specification found at https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references
     /// See also: https://html.spec.whatwg.org/multipage/named-characters.html#named-character-references
     /// </summary>
     public class HtmlEntity
     {
         #region Static Members
-
         private static readonly int _maxEntitySize;
         private static Dictionary<int, string> _entityName;
         private static Dictionary<string, int> _entityValue;
-
         /// <summary>
         /// A collection of entities indexed by name.
         /// </summary>
@@ -33,7 +32,6 @@ namespace HtmlAgilityPack
         {
             get { return _entityName; }
         }
-
         /// <summary>
         /// A collection of entities indexed by value.
         /// </summary>
@@ -41,18 +39,13 @@ namespace HtmlAgilityPack
         {
             get { return _entityValue; }
         }
-
         #endregion
-
         #region Constructors
-
         static HtmlEntity()
         {
             _entityName = new Dictionary<int, string>();
             _entityValue = new Dictionary<string, int>();
-
             #region Entities Definition
-
             _entityValue.Add("quot", 34); // quotation mark = APL quote, U+0022 ISOnum 
             _entityName.Add(34, "quot");
             _entityValue.Add("amp", 38); // ampersand, U+0026 ISOnum 
@@ -567,20 +560,14 @@ namespace HtmlAgilityPack
             _entityName.Add(8250, "rsaquo");
             _entityValue.Add("euro", 8364); // euro sign, U+20AC NEW 
             _entityName.Add(8364, "euro");
-
             _maxEntitySize = 8 + 1; // we add the # char
-
             #endregion
         }
-
         private HtmlEntity()
         {
         }
-
         #endregion
-
         #region Public Methods
-
         /// <summary>
         /// Replace known entities by characters.
         /// </summary>
@@ -590,14 +577,11 @@ namespace HtmlAgilityPack
         {
             if (text == null)
                 return null;
-
             if (text.Length == 0)
                 return text;
-
             StringBuilder sb = new StringBuilder(text.Length);
             ParseState state = ParseState.Text;
             StringBuilder entity = new StringBuilder(10);
-
             for (int i = 0; i < text.Length; i++)
             {
                 switch (state)
@@ -608,14 +592,11 @@ namespace HtmlAgilityPack
                             case '&':
                                 state = ParseState.EntityStart;
                                 break;
-
                             default:
                                 sb.Append(text[i]);
                                 break;
                         }
-
                         break;
-
                     case ParseState.EntityStart:
                         switch (text[i])
                         {
@@ -642,7 +623,6 @@ namespace HtmlAgilityPack
                                             {
                                                 fromBase = 10;
                                             }
-
                                             int code = Convert.ToInt32(codeStr, fromBase);
                                             sb.Append(Convert.ToChar(code));
                                         }
@@ -666,19 +646,15 @@ namespace HtmlAgilityPack
                                             sb.Append(Convert.ToChar(code));
                                         }
                                     }
-
                                     entity.Remove(0, entity.Length);
                                 }
-
                                 state = ParseState.Text;
                                 break;
-
                             case '&':
                                 // new entity start without end, it was not an entity...
                                 sb.Append("&" + entity);
                                 entity.Remove(0, entity.Length);
                                 break;
-
                             default:
                                 entity.Append(text[i]);
                                 if (entity.Length > _maxEntitySize)
@@ -688,22 +664,20 @@ namespace HtmlAgilityPack
                                     sb.Append("&" + entity);
                                     entity.Remove(0, entity.Length);
                                 }
-
                                 break;
                         }
-
                         break;
                 }
             }
-
             // finish the work
             if (state == ParseState.EntityStart)
             {
                 sb.Append("&" + entity);
             }
-
             return sb.ToString();
         }
+
+        static Type type = typeof(HtmlEntity);
 
         /// <summary>
         /// Clone and entitize an HtmlNode. This will affect attribute values and nodes' text. It will also entitize all child nodes.
@@ -714,13 +688,11 @@ namespace HtmlAgilityPack
         {
             if (node == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("node");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"node");
             }
-
             HtmlNode result = node.CloneNode(true);
             if (result.HasAttributes)
                 Entitize(result.Attributes);
-
             if (result.HasChildNodes)
             {
                 Entitize(result.ChildNodes);
@@ -732,11 +704,8 @@ namespace HtmlAgilityPack
                     ((HtmlTextNode) result).Text = Entitize(((HtmlTextNode) result).Text, true, true);
                 }
             }
-
             return result;
         }
-
-
         /// <summary>
         /// Replace characters above 127 by entities.
         /// </summary>
@@ -746,7 +715,6 @@ namespace HtmlAgilityPack
         {
             return Entitize(text, true);
         }
-
         /// <summary>
         /// Replace characters above 127 by entities.
         /// </summary>
@@ -757,7 +725,6 @@ namespace HtmlAgilityPack
         {
             return Entitize(text, useNames, false);
         }
-
         /// <summary>
         /// Replace characters above 127 by entities.
         /// </summary>
@@ -777,10 +744,8 @@ namespace HtmlAgilityPack
         {
             if (text == null)
                 return null;
-
             if (text.Length == 0)
                 return text;
-
             StringBuilder sb = new StringBuilder(text.Length);
             for (int i = 0; i < text.Length; i++)
             {
@@ -790,7 +755,6 @@ namespace HtmlAgilityPack
                 {
                     string entity;
                     EntityName.TryGetValue(code, out entity);
-
                     if ((entity == null) || (!useNames))
                     {
                         sb.Append("&#" + code + ";");
@@ -805,14 +769,10 @@ namespace HtmlAgilityPack
                     sb.Append(text[i]);
                 }
             }
-
             return sb.ToString();
         }
-
         #endregion
-
         #region Private Methods
-
         private static void Entitize(HtmlAttributeCollection collection)
         {
             foreach (HtmlAttribute at in collection)
@@ -821,18 +781,15 @@ namespace HtmlAgilityPack
                 {
                     continue;
                 }
-
                 at.Value = Entitize(at.Value);
             }
         }
-
         private static void Entitize(HtmlNodeCollection collection)
         {
             foreach (HtmlNode node in collection)
             {
                 if (node.HasAttributes)
                     Entitize(node.Attributes);
-
                 if (node.HasChildNodes)
                 {
                     Entitize(node.ChildNodes);
@@ -846,17 +803,13 @@ namespace HtmlAgilityPack
                 }
             }
         }
-
         #endregion
-
         #region Nested type: ParseState
-
         private enum ParseState
         {
             Text,
             EntityStart
         }
-
         #endregion
     }
 }

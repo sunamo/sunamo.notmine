@@ -2,18 +2,21 @@
 using System.Diagnostics;
 using System.IO;
 using PathEditor.Models;
+using SunamoExceptions;
 
 namespace PathEditor.ModelViews
 {
     public class PathPartViewModel : BaseViewModel
     {
+        static Type type = typeof(PathPartViewModel);
+
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private string _pathPart;
 
         [DebuggerStepThrough]
         public PathPartViewModel(string pathPart)
         {
-            if (pathPart == null) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("pathPart");
+            if (pathPart == null) ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"pathPart");
             _pathPart = pathPart;
         }
 

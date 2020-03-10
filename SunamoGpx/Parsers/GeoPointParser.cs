@@ -3,11 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 namespace csGeoTools.Parsers
 {
     public abstract class GeoPointParser
     {
+static Type type = typeof(GeoPointParser);
         private static List<GeoPointParser> registeredParsers = new List<GeoPointParser>()
         {
             new DecimalDegreeParser()
@@ -16,7 +16,7 @@ namespace csGeoTools.Parsers
         public static GeoPointParser getParserFor(String coordinates)
         {
             return registeredParsers.Where(parser => parser.CanParse(coordinates)).First();
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Could not find a parser for the given input");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Could not find a parser for the given input");
         }
         
         public abstract bool CanParse(String input);

@@ -2,7 +2,6 @@
 // Copyright (c) Florian Mücke. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
-
 namespace fmdev.ResX
 {
     using System;
@@ -13,16 +12,15 @@ namespace fmdev.ResX
     using System.Resources;
     using System.Text;
     using System.Threading.Tasks;
-
     public static class ResXFile
     {
+static Type type = typeof(ResXFile);
         [Flags]
         public enum Option
         {
             None = 0,
             SkipComments = 1
         }
-
         public static List<ResXEntry> Read(string filename, Option options = Option.None)
         {
             var result = new List<ResXEntry>();
@@ -41,13 +39,10 @@ namespace fmdev.ResX
                         Comment = comment
                     });
                 }
-
                 resx.Close();
             }
-
             return result;
         }
-
         public static void Write(string filename, IEnumerable<ResXEntry> entries, Option options = Option.None)
         {
             using (var resx = new ResXResourceWriter(filename))
@@ -55,19 +50,15 @@ namespace fmdev.ResX
                 foreach (var entry in entries)
                 {
                     var node = new ResXDataNode(entry.Id, entry.Value.Replace("\r", string.Empty).Replace("\n", Environment.NewLine));
-
                     if (!options.HasFlag(Option.SkipComments) && !string.IsNullOrWhiteSpace(entry.Comment))
                     {
                         node.Comment = entry.Comment.Replace("\r", string.Empty).Replace("\n", Environment.NewLine);
                     }
-
                     resx.AddResource(node);
                 }
-
                 resx.Close();
             }
         }
-
         /// <summary>
         /// Generates a public C# designer class.
         /// </summary>
@@ -79,7 +70,6 @@ namespace fmdev.ResX
         {
             return GenerateDesignerFile(resXFile, className, namespaceName, false);
         }
-
         /// <summary>
         /// Generates a C# designer class.
         /// </summary>
@@ -92,19 +82,16 @@ namespace fmdev.ResX
         {
             if (!File.Exists(resXFile))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FileNotFoundException($"The file '{resXFile}' could not be found");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),FileNotFoundException($"The file '{resXFile}' could not be found");
             }
-
             if (string.IsNullOrEmpty(className))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException($"The class name must not be empty or null");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentException($"The class name must not be empty or null");
             }
-
             if (string.IsNullOrEmpty(namespaceName))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException($"The namespace name must not be empty or null");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentException($"The namespace name must not be empty or null");
             }
-
             string[] unmatchedElements;
             var codeProvider = new Microsoft.CSharp.CSharpCodeProvider();
             System.CodeDom.CodeCompileUnit code =
@@ -115,13 +102,11 @@ namespace fmdev.ResX
                     codeProvider,
                     publicClass,
                     out unmatchedElements);
-
             var designerFileName = Path.Combine(Path.GetDirectoryName(resXFile), $"{className}.Designer.cs");
             using (StreamWriter writer = new StreamWriter(designerFileName, false, System.Text.Encoding.UTF8))
             {
                 codeProvider.GenerateCodeFromCompileUnit(code, writer, new System.CodeDom.Compiler.CodeGeneratorOptions());
             }
-
             return unmatchedElements.Length == 0;
         }
     }

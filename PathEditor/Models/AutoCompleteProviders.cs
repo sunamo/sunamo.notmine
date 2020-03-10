@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using SunamoExceptions;
 
 namespace PathEditor.Models
 {
@@ -42,13 +43,14 @@ namespace PathEditor.Models
 
     public class EnvironmentVariableAutoCompleteProvider : IAutoCompleteProvider
     {
+        static Type type = typeof(EnvironmentVariableAutoCompleteProvider);
         private static readonly string[] EnvironmentVariables = Environment.GetEnvironmentVariables().Keys.OfType<string>().ToArray();
 
         private readonly string _variableNamePrefix;
 
         public EnvironmentVariableAutoCompleteProvider(string textToAppend)
         {
-            if (string.IsNullOrEmpty(textToAppend)) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("textToAppend");
+            if (string.IsNullOrEmpty(textToAppend)) ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"textToAppend");
 
             // remove leading '%'
             _variableNamePrefix = textToAppend.Substring(1);

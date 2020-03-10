@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using PathEditor.Views.Support.Validation;
+using SunamoExceptions;
 
 namespace PathEditor.Views.Support
 {
@@ -19,12 +20,14 @@ namespace PathEditor.Views.Support
             typeof(ButtonHelper),
             new UIPropertyMetadata(OnDialogResultChanged));
 
+        static Type type = typeof(ButtonHelper);
+
         private static void OnDialogResultChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             // Implementation of DialogResult functionality
             Button button = d as Button;
             if (button == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException("Can only use ButtonHelper.DialogResult on a Button control");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Can only use ButtonHelper.DialogResult on a Button control");
             button.Click += (sender, e2) =>
             {
                 var window = Window.GetWindow(button);

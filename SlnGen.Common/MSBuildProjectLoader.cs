@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Jeff Kluge. All rights reserved.
 //
 // Licensed under the MIT license.
-
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Exceptions;
 using Microsoft.Build.Framework;
@@ -10,46 +9,39 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace SlnGen.Common
 {
     /// <summary>
     /// A class for loading MSBuild projects and their project references.
     /// </summary>
+static Type type = typeof(for);
     public sealed class MSBuildProjectLoader
     {
         /// <summary>
         /// The name of the <ProjectReference /> item in MSBuild projects.
         /// </summary>
         private const string ProjectReferenceItemName = "ProjectReference";
-
         /// <summary>
         /// The name of the environment variable that configures MSBuild to ignore eager wildcard evaluations (like \**)
         /// </summary>
         private const string MSBuildSkipEagerWildcardEvaluationsEnvironmentVariableName = "MSBUILDSKIPEAGERWILDCARDEVALUATIONREGEXES";
-
         private readonly IBuildEngine _buildEngine;
-
         /// <summary>
         /// Stores the global properties to use when loading projects.
         /// </summary>
         private readonly IDictionary<string, string> _globalProperties;
-
         /// <summary>
         /// Stores the list of paths to the projects that are loaded.
         /// </summary>
         private readonly HashSet<string> _loadedProjects = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
         /// <summary>
         /// Stores the <see cref="ProjectLoadSettings"/> to use when loading projects.
         /// </summary>
         private readonly ProjectLoadSettings _projectLoadSettings;
-
         /// <summary>
         /// Stores the ToolsVersion to use when loading projects.
         /// </summary>
         private readonly string _toolsVersion;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MSBuildProjectLoader"/> class.
         /// </summary>
@@ -62,26 +54,21 @@ namespace SlnGen.Common
             _globalProperties = globalProperties;
             _toolsVersion = toolsVersion;
             _projectLoadSettings = projectLoadSettings;
-            _buildEngine = buildEngine ?? ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(buildEngine));
+            _buildEngine = buildEngine ?? ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(buildEngine));
         }
-
         /// <summary>
         /// Gets or sets a value indicating whether statistics should be collected.
         /// </summary>
         public bool CollectStats { get; set; } = false;
-
         /// <summary>
         /// Gets or sets a <see cref="Func{Project, Boolean}"/> that determines if a project is a traversal project.
         /// </summary>
         public Func<Project, bool> IsTraveralProject { get; set; } = project => string.Equals("true", project.GetPropertyValue("IsTraversal"));
-
         public MSBuildProjectLoaderStatistics Statistics { get; } = new MSBuildProjectLoaderStatistics();
-
         /// <summary>
         /// Gets or sets the item names that specify project references in a traversal project.  The default value is "ProjectFile".
         /// </summary>
         public string TraveralProjectFileItemName { get; set; } = "ProjectFile";
-
         /// <summary>
         /// Loads the specified projects and their references.
         /// </summary>
@@ -91,21 +78,17 @@ namespace SlnGen.Common
         {
             // Store the current value of the environment variable that disables eager wildcard evaluations
             string currentSkipEagerWildcardEvaluationsValue = Environment.GetEnvironmentVariable(MSBuildSkipEagerWildcardEvaluationsEnvironmentVariableName);
-
             try
             {
                 // Indicate to MSBuild that any item that has two wildcards should be evaluated lazily
                 Environment.SetEnvironmentVariable(MSBuildSkipEagerWildcardEvaluationsEnvironmentVariableName, @"\*{2}");
-
                 // Create a ProjectCollection for this thread
                 ProjectCollection projectCollection = new ProjectCollection(_globalProperties)
                 {
                     DefaultToolsVersion = _toolsVersion,
                     DisableMarkDirty = true, // Not sure but hoping this improves load performance
                 };
-
                 Parallel.ForEach(projectPaths, projectPath => { LoadProject(projectPath, projectCollection, _projectLoadSettings); });
-
                 return projectCollection;
             }
             finally
@@ -114,7 +97,6 @@ namespace SlnGen.Common
                 Environment.SetEnvironmentVariable(MSBuildSkipEagerWildcardEvaluationsEnvironmentVariableName, currentSkipEagerWildcardEvaluationsValue);
             }
         }
-
         /// <summary>
         /// Loads a single project if it hasn't already been loaded.
         /// </summary>
@@ -128,7 +110,6 @@ namespace SlnGen.Common
                 LoadProjectReferences(project, _projectLoadSettings);
             }
         }
-
         /// <summary>
         /// Loads the project references of the specified project.
         /// </summary>
@@ -137,20 +118,16 @@ namespace SlnGen.Common
         private void LoadProjectReferences(Project project, ProjectLoadSettings projectLoadSettings)
         {
             IEnumerable<ProjectItem> projects = project.GetItems(ProjectReferenceItemName);
-
             if (IsTraveralProject(project))
             {
                 projects = projects.Concat(project.GetItems(TraveralProjectFileItemName));
             }
-
             Parallel.ForEach(projects, projectReferenceItem =>
             {
                 string projectReferencePath = Path.IsPathRooted(projectReferenceItem.EvaluatedInclude) ? projectReferenceItem.EvaluatedInclude : Path.GetFullPath(Path.Combine(projectReferenceItem.Project.DirectoryPath, projectReferenceItem.EvaluatedInclude));
-
                 LoadProject(projectReferencePath, projectReferenceItem.Project.ProjectCollection, projectLoadSettings);
             });
         }
-
         /// <summary>
         /// Attempts to load the specified project if it hasn't already been loaded.
         /// </summary>
@@ -163,23 +140,17 @@ namespace SlnGen.Common
         private bool TryLoadProject(string path, string toolsVersion, ProjectCollection projectCollection, ProjectLoadSettings projectLoadSettings, out Project project)
         {
             project = null;
-
             bool shouldLoadProject;
-
             string fullPath = path.ToFullPathInCorrectCase();
-
             lock (_loadedProjects)
             {
                 shouldLoadProject = _loadedProjects.Add(fullPath);
             }
-
             if (!shouldLoadProject)
             {
                 return false;
             }
-
             long now = DateTime.Now.Ticks;
-
             try
             {
                 project = new Project(fullPath, null, toolsVersion, projectCollection, projectLoadSettings);
@@ -197,7 +168,6 @@ namespace SlnGen.Common
                     message: e.Message,
                     helpKeyword: e.HelpKeyword,
                     senderName: null));
-
                 return false;
             }
             catch (Exception e)
@@ -213,15 +183,12 @@ namespace SlnGen.Common
                     message: e.ToString(),
                     helpKeyword: null,
                     senderName: null));
-
                 return false;
             }
-
             if (CollectStats)
             {
                 Statistics.TryAddProjectLoadTime(path, TimeSpan.FromTicks(DateTime.Now.Ticks - now));
             }
-
             return true;
         }
     }

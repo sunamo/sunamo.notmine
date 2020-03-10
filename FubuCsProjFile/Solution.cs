@@ -6,6 +6,7 @@ using FubuCore;
 using System.Linq;
 using FubuCore.Util;
 using FubuCsProjFile.MSBuild;
+using SunamoExceptions;
 
 namespace FubuCsProjFile
 {
@@ -379,6 +380,8 @@ namespace FubuCsProjFile
             this._projects.Add(reference);
         }
 
+        static Type type = typeof(Solution);
+
         /// <summary>
         /// Adds a new project based on the supplied template file
         /// </summary>
@@ -389,7 +392,8 @@ namespace FubuCsProjFile
             var existing = FindProject(projectName);
             if (existing != null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("projectName", "Project with this name ({0}) already exists in the solution".ToFormat(projectName));
+                
+                ThrowExceptions.ArgumentOutOfRangeException(Exc.GetStackTrace(), type, Exc.CallingMethod(),"projectName", "Project with this name ({0}) already exists in the solution".ToFormat(projectName));
             }
 
 

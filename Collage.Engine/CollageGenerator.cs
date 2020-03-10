@@ -4,23 +4,21 @@
     using System.Drawing;
     using System.ComponentModel;
     using System.Runtime.Remoting.Messaging;
-
     public class CollageGenerator
     {
+static Type type = typeof(CollageGenerator);
         private readonly ProgressCounter progressCounter;
         private readonly IRandomGenerator randomGenerator;
         private readonly CollageSettings settings;
         private readonly TileTransformer tileTransformer;
         private readonly IFilesEnumerator filesEnumerator;
         private readonly CollageSaver collageSaver;
-
         public CollageGenerator(CollageSettings settings)
         {
             if (settings == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("settings");
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"settings");
             }
-
             this.settings = settings;
             this.progressCounter = new ProgressCounter(settings.Dimensions.NumberOfRows, settings.Dimensions.NumberOfColumns);
             this.randomGenerator = new RandomGenerator();
@@ -28,16 +26,11 @@
             this.filesEnumerator = new DateFilesEnumerator(settings.InputFiles);
             this.collageSaver = new CollageSaver(settings.OutputDirectory);
         }
-
         private bool isBusy;
-
         private readonly object sync = new object();
-
         private delegate void CreateTaskWorkerDelegate(AsyncOperation async, CreateCollageAsyncContext asyncContext, out bool cancelled);
-
         public event EventHandler<ProgressChangedEventArgs> CreateProgressChanged;
         public event AsyncCompletedEventHandler CreateCompleted;
-
         protected virtual void OnCreateCompleted(AsyncCompletedEventArgs e)
         {
             if (CreateCompleted != null)
@@ -45,7 +38,6 @@
                 CreateCompleted(this, e);
             }
         }
-
         protected virtual void OnCreateProgressChanged(ProgressChangedEventArgs e)
         {
             if (CreateProgressChanged != null)
@@ -53,32 +45,26 @@
                 CreateProgressChanged(this, e);
             }
         }
-
         private CreateCollageAsyncContext createTaskContext;
-
         public void CreateAsync()
         {
             var worker = new CreateTaskWorkerDelegate(CreateCollage);
             var completedCallback = new AsyncCallback(CreateTaskCompletedCallback);
-
             lock (this.sync)
             {
                 if (this.isBusy)
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException("The engine is currently busy.");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"The engine is currently busy.");
                 }
                     
                 AsyncOperation async = AsyncOperationManager.CreateOperation(null);
                 var context = new CreateCollageAsyncContext();
                 bool cancelled;
-
                 worker.BeginInvoke(async, context, out cancelled, completedCallback, async);
-
                 this.isBusy = true;
                 this.createTaskContext = context;
             }
         }
-
         public void CancelAsync()
         {
             lock (this.sync)
@@ -89,37 +75,29 @@
                 }
             }
         }
-
         private void CreateTaskCompletedCallback(IAsyncResult asyncResult)
         {
             var worker = (CreateTaskWorkerDelegate)((AsyncResult)asyncResult).AsyncDelegate;
             var async = (AsyncOperation)asyncResult.AsyncState;
-
             bool isCancelled;
             worker.EndInvoke(out isCancelled, asyncResult);
-
             lock (this.sync)
             {
                 this.isBusy = false;
             }
-
             var completedArgs = new AsyncCompletedEventArgs(null, isCancelled, null);
-
             async.PostOperationCompleted(
                 e => OnCreateCompleted((AsyncCompletedEventArgs) e),
               completedArgs);
         }
-
         public void Create()
         {
             bool cancelled;
             CreateCollage(null, null, out cancelled);
         }
-
         private void CreateCollage(AsyncOperation async, CreateCollageAsyncContext context, out bool isCancelled)
         {
             isCancelled = false;
-
             using (var bitmapCollage = new Bitmap(this.settings.Dimensions.TotalWidth, this.settings.Dimensions.TotalHeight))
             {
                 using (Graphics graphics = bitmapCollage.CreateGraphics())
@@ -130,16 +108,13 @@
                         {
                             this.ReportProgress(async, colsCounter, rowsCounter);
                             HandleCancellation(context, ref isCancelled);
-
                             DrawTile(graphics, colsCounter, rowsCounter);
                         }
                     }
                 }
-
                 this.collageSaver.Save(bitmapCollage);
             }
         }
-
         private void DrawTile(Graphics graphics, int colsCounter, int rowsCounter)
         {
             using (var tile = Image.FromFile(this.filesEnumerator.GetNextFileName()))
@@ -151,7 +126,6 @@
                                                       RotateAndFlipRandomly = settings.Additional.RotateAndFlipRandomly,
                                                       ScalePercent = settings.Dimensions.TileScalePercent
                                                   };
-
                 using (var tileTransformed = this.tileTransformer.Transform(tile, tileTransformerSettings))
                 {
                     graphics.DrawImage(
@@ -163,7 +137,6 @@
                 }
             }
         }
-
         private static void HandleCancellation(CreateCollageAsyncContext context, ref bool isCancelled)
         {
             if (context != null)
@@ -174,7 +147,6 @@
                 }
             }
         }
-
         private void ReportProgress(AsyncOperation async, int colsCounter, int rowsCounter)
         {
             if (async != null)
@@ -184,16 +156,13 @@
                 async.Post(e => this.OnCreateProgressChanged((ProgressChangedEventArgs)e), args);
             }
         }
-
         private Point GetTilePosition(Size tileSize)
         {
             int x = 0, y = 0;
-
             if (this.settings.Additional.CutTileRandomly)
             {
                 x = (tileSize.Width > this.settings.Dimensions.TileWidth) ?
                     this.randomGenerator.Next(0, tileSize.Width - this.settings.Dimensions.TileWidth) : 0;
-
                 y = (tileSize.Height > this.settings.Dimensions.TileHeight) ?
                     this.randomGenerator.Next(0, tileSize.Height - this.settings.Dimensions.TileHeight) : 0;
             }

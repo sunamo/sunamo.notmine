@@ -14,15 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
 using System;
 using System.Collections.Generic;
 using System.IO;
-
 namespace FlvExtract
 {
     public class SpeexWriter : IAudioWriter
     {
+static Type type = typeof(SpeexWriter);
         private const uint _msPerFrame = 20;
         private const uint _sampleRate = 16000;
         private const uint _samplesPerFrame = _sampleRate / (1000 / _msPerFrame);
@@ -36,7 +35,6 @@ namespace FlvExtract
         private int _packetListDataSize;
         private int _pageBuffOffset;
         private uint _pageSequenceNumber;
-
         public SpeexWriter(Stream ouputStream, int serialNumber)
         {
             _serialNumber = serialNumber;
@@ -49,12 +47,10 @@ namespace FlvExtract
             _pageSequenceNumber = 2; // First audio packet
             _granulePosition = 0;
         }
-
         public AudioFormat AudioFormat
         {
             get { return AudioFormat.Speex; }
         }
-
         public void Dispose()
         {
             WritePage();
@@ -67,7 +63,6 @@ namespace FlvExtract
             FlushPage(false);
             _fs.Dispose();
         }
-
         public void WriteChunk(byte[] chunk, uint timeStamp)
         {
             int[] subModeSizes = { 0, 43, 119, 160, 220, 300, 364, 492, 79 };
@@ -77,7 +72,6 @@ namespace FlvExtract
             int frameEnd = 0;
             int offset = 0;
             int length = chunk.Length * 8;
-
             while (length - offset >= 5)
             {
                 int x = BitHelper.Read(chunk, ref offset, 1);
@@ -140,24 +134,21 @@ namespace FlvExtract
             {
                 ThrowInvalidSpeexDataException();
             }
-
             if (frameStart != -1)
             {
                 WriteFramePacket(chunk, frameStart, frameEnd);
             }
         }
-
         private static void ThrowInvalidSpeexDataException()
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Invalid Speex data.");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ExtractionException("Invalid Speex data.");
         }
-
         private void AddPacket(byte[] data, uint sampleLength, bool delayWrite)
         {
             var packet = new OggPacket();
             if (data.Length >= 255)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ExtractionException("Packet exceeds maximum size.");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ExtractionException("Packet exceeds maximum size.");
             }
             _granulePosition += sampleLength;
             packet.Data = data;
@@ -169,7 +160,6 @@ namespace FlvExtract
                 WritePage();
             }
         }
-
         private void FlushPage(bool isLastPage)
         {
             if (_pageBuffOffset == 0) return;
@@ -179,7 +169,6 @@ namespace FlvExtract
             _fs.Write(_pageBuff, 0, _pageBuffOffset);
             _pageBuffOffset = 0;
         }
-
         private void WriteFramePacket(byte[] data, int startBit, int endBit)
         {
             int lengthBits = endBit - startBit;
@@ -190,7 +179,6 @@ namespace FlvExtract
             }
             AddPacket(frame, _samplesPerFrame, true);
         }
-
         private void WritePage()
         {
             if (_packetList.Count == 0) return;
@@ -215,7 +203,6 @@ namespace FlvExtract
             _packetListDataSize = 0;
             _pageSequenceNumber++;
         }
-
         private void WriteSpeexHeaderPacket()
         {
             var data = new byte[80];
@@ -233,28 +220,23 @@ namespace FlvExtract
             data[64] = 1; // frames_per_packet
             AddPacket(data, 0, false);
         }
-
         private void WriteToPage(byte[] data, int offset, int length)
         {
             Buffer.BlockCopy(data, offset, _pageBuff, _pageBuffOffset, length);
             _pageBuffOffset += length;
         }
-
         private void WriteToPage(byte data)
         {
             WriteToPage(new[] { data }, 0, 1);
         }
-
         private void WriteToPage(uint data)
         {
             WriteToPage(BitConverterLE.GetBytes(data), 0, 4);
         }
-
         private void WriteToPage(ulong data)
         {
             WriteToPage(BitConverterLE.GetBytes(data), 0, 8);
         }
-
         private void WriteVorbisCommentPacket()
         {
             byte[] vendorStringBytes = General.StringToAscii(_vendorString);
@@ -263,7 +245,6 @@ namespace FlvExtract
             General.CopyBytes(data, 4, vendorStringBytes);
             AddPacket(data, 0, false);
         }
-
         private class OggPacket
         {
             public byte[] Data;

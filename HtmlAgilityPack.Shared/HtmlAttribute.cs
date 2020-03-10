@@ -4,16 +4,12 @@
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
 // Copyright � ZZZ Projects Inc. 2014 - 2017. All rights reserved.
-
 #region
-
 using System;
 using System.Diagnostics;
-
+using SunamoExceptions;
 #endregion
-
 // ReSharper disable InconsistentNaming
-
 namespace HtmlAgilityPack
 {
     /// <summary>
@@ -22,8 +18,8 @@ namespace HtmlAgilityPack
     [DebuggerDisplay("Name: {OriginalName}, Value: {Value}")]
     public class HtmlAttribute : IComparable
     {
+static Type type = typeof(HtmlAttribute);
         #region Fields
-
         private int _line;
         public int _lineposition;
         public string _name;
@@ -36,20 +32,14 @@ namespace HtmlAgilityPack
         public string _value;
         public int _valuelength;
         public int _valuestartindex;
-
         #endregion
-
         #region Constructors
-
         public HtmlAttribute(HtmlDocument ownerdocument)
         {
             _ownerdocument = ownerdocument;
         }
-
         #endregion
-
         #region Properties
-
         /// <summary>
         /// Gets the line number of this attribute in the document.
         /// </summary>
@@ -58,7 +48,6 @@ namespace HtmlAgilityPack
             get { return _line; }
             set { _line = value; }
         }
-
         /// <summary>
         /// Gets the column number of this attribute in the document.
         /// </summary>
@@ -66,7 +55,6 @@ namespace HtmlAgilityPack
         {
             get { return _lineposition; }
         }
-
         /// <summary>
         /// Gets the stream position of the value of this attribute in the document, relative to the start of the document.
         /// </summary>
@@ -74,7 +62,6 @@ namespace HtmlAgilityPack
         {
             get { return _valuestartindex; }
         }
-
         /// <summary>
         /// Gets the length of the value.
         /// </summary>
@@ -82,9 +69,7 @@ namespace HtmlAgilityPack
         {
             get { return _valuelength; }
         }
-
 	    public bool UseOriginalName { get; set; } = false;
-
 	    /// <summary>
 		/// Gets the qualified name of the attribute.
 		/// </summary>
@@ -96,16 +81,14 @@ namespace HtmlAgilityPack
                 {
                     _name = _ownerdocument.Text.Substring(_namestartindex, _namelength);
                 }
-
 	            return UseOriginalName ? _name : _name.ToLowerInvariant();
 			}
             set
             {
                 if (value == null)
                 {
-                    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("value");
+                    ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"value");
                 }
-
                 _name = value;
                 if (_ownernode != null)
                 {
@@ -113,7 +96,6 @@ namespace HtmlAgilityPack
                 }
             }
         }
-
         /// <summary>
         /// Name of attribute with original case
         /// </summary>
@@ -121,7 +103,6 @@ namespace HtmlAgilityPack
         {
             get { return _name; }
         }
-
         /// <summary>
         /// Gets the HTML document to which this attribute belongs.
         /// </summary>
@@ -129,7 +110,6 @@ namespace HtmlAgilityPack
         {
             get { return _ownerdocument; }
         }
-
         /// <summary>
         /// Gets the HTML node to which this attribute belongs.
         /// </summary>
@@ -137,7 +117,6 @@ namespace HtmlAgilityPack
         {
             get { return _ownernode; }
         }
-
         /// <summary>
         /// Specifies what type of quote the data should be wrapped in
         /// </summary>
@@ -146,7 +125,6 @@ namespace HtmlAgilityPack
             get { return _quoteType; }
             set { _quoteType = value; }
         }
-
         /// <summary>
         /// Gets the stream position of this attribute in the document, relative to the start of the document.
         /// </summary>
@@ -154,7 +132,6 @@ namespace HtmlAgilityPack
         {
             get { return _streamposition; }
         }
-
         /// <summary>
         /// Gets or sets the value of the attribute.
         /// </summary>
@@ -167,30 +144,25 @@ namespace HtmlAgilityPack
                 {
                     return null;
                 }
-
                 if (_value == null)
                 {
                     _value = _ownerdocument.Text.Substring(_valuestartindex, _valuelength);
-
                     if (!_ownerdocument.BackwardCompatibility)
                     {
                         _value = HtmlEntity.DeEntitize(_value);
                     }
                 }
-
                 return _value;
             }
             set
             {
                 _value = value;
-
                 if (_ownernode != null)
                 {
                     _ownernode.SetChanged();
                 }
             }
         }
-
         /// <summary>
         /// Gets the DeEntitized value of the attribute.
         /// </summary>
@@ -198,17 +170,14 @@ namespace HtmlAgilityPack
         {
             get { return HtmlEntity.DeEntitize(Value); }
         }
-
         public string XmlName
         {
             get { return HtmlDocument.GetXmlName(Name, true, OwnerDocument.OptionPreserveXmlNamespaces); }
         }
-
         public string XmlValue
         {
             get { return Value; }
         }
-
         /// <summary>
         /// Gets a valid XPath string that points to this Attribute
         /// </summary>
@@ -220,11 +189,8 @@ namespace HtmlAgilityPack
                 return basePath + GetRelativeXpath();
             }
         }
-
         #endregion
-
         #region IComparable Members
-
         /// <summary>
         /// Compares the current instance with another attribute. Comparison is based on attributes' name.
         /// </summary>
@@ -235,16 +201,12 @@ namespace HtmlAgilityPack
             HtmlAttribute att = obj as HtmlAttribute;
             if (att == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException("obj");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"obj");
             }
-
             return Name.CompareTo(att.Name);
         }
-
         #endregion
-
         #region Public Methods
-
         /// <summary>
         /// Creates a duplicate of this attribute.
         /// </summary>
@@ -257,7 +219,6 @@ namespace HtmlAgilityPack
             att.QuoteType = QuoteType;
             return att;
         }
-
         /// <summary>
         /// Removes this attribute from it's parents collection
         /// </summary>
@@ -265,33 +226,24 @@ namespace HtmlAgilityPack
         {
             _ownernode.Attributes.Remove(this);
         }
-
         #endregion
-
         #region Private Methods
-
         private string GetRelativeXpath()
         {
             if (OwnerNode == null)
                 return Name;
-
             int i = 1;
             foreach (HtmlAttribute node in OwnerNode.Attributes)
             {
                 if (node.Name != Name) continue;
-
                 if (node == this)
                     break;
-
                 i++;
             }
-
             return "@" + Name + "[" + i + "]";
         }
-
         #endregion
     }
-
     /// <summary>
     /// An Enum representing different types of Quotes used for surrounding attribute values
     /// </summary>
@@ -301,7 +253,6 @@ namespace HtmlAgilityPack
         /// A single quote mark '
         /// </summary>
         SingleQuote,
-
         /// <summary>
         /// A double quote mark "
         /// </summary>

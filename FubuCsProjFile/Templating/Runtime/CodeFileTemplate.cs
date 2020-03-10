@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using FubuCore;
+using SunamoExceptions;
 
 namespace FubuCsProjFile.Templating.Runtime
 {
@@ -29,11 +30,13 @@ namespace FubuCsProjFile.Templating.Runtime
             return new CodeFileTemplate(relativePath, rawText);
         }
 
+        static Type type = typeof(CodeFileTemplate);
+
         public CodeFileTemplate(string relativePath, string rawText)
         {
             if (Path.GetExtension(relativePath) != ".cs")
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentOutOfRangeException("relativePath", "Relative Path must have the .cs extension");
+                ThrowExceptions.ArgumentOutOfRangeException(Exc.GetStackTrace(), type, Exc.CallingMethod(),"relativePath", "Relative Path must have the .cs extension");
             }
 
             _relativePath = relativePath.Replace('\\', '/');

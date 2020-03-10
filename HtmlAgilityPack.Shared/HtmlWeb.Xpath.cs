@@ -4,18 +4,19 @@
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
-
 #if !(NETSTANDARD1_3 || NETSTANDARD1_6) && !METRO
 using System;
 using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Xml.Xsl;
+using SunamoExceptions;
 
 namespace HtmlAgilityPack
 {
     public partial class HtmlWeb
     {
+static Type type = typeof(HtmlWeb);
         /// <summary>
         /// Creates an instance of the given type from the specified Internet resource.
         /// </summary>
@@ -28,7 +29,6 @@ namespace HtmlAgilityPack
         {
             return CreateInstance(htmlUrl, xsltUrl, xsltArgs, type, null);
         }
-
         /// <summary>
         /// Creates an instance of the given type from the specified Internet resource.
         /// </summary>
@@ -58,24 +58,21 @@ namespace HtmlAgilityPack
                     LoadHtmlAsXml(htmlUrl, xsltUrl, xsltArgs, writer, xmlPath);
                 }
             }
-
             writer.Flush();
             StringReader sr = new StringReader(sw.ToString());
             XmlTextReader reader = new XmlTextReader(sr);
             XmlSerializer serializer = new XmlSerializer(type);
-            object o;
+            object o = null;
             try
             {
                 o = serializer.Deserialize(reader);
             }
             catch (InvalidOperationException ex)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ex + ", --- xml:" + sw);
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ex + ", --- xml:" + sw);
             }
-
             return o;
         }
-
         /// <summary>
         /// Loads an HTML document from an Internet resource and saves it to the specified XmlTextWriter, after an XSLT transformation.
         /// </summary>
@@ -87,7 +84,6 @@ namespace HtmlAgilityPack
         {
             LoadHtmlAsXml(htmlUrl, xsltUrl, xsltArgs, writer, null);
         }
-
         /// <summary>
         /// Loads an HTML document from an Internet resource and saves it to the specified XmlTextWriter, after an XSLT transformation.
         /// </summary>
@@ -101,28 +97,23 @@ namespace HtmlAgilityPack
         {
             if (htmlUrl == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("htmlUrl");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"htmlUrl");
             }
-
             HtmlDocument doc = Load(htmlUrl);
-
             if (xmlPath != null)
             {
                 XmlTextWriter w = new XmlTextWriter(xmlPath, doc.Encoding);
                 doc.Save(w);
                 w.Close();
             }
-
             if (xsltArgs == null)
             {
                 xsltArgs = new XsltArgumentList();
             }
-
             // add some useful variables to the xslt doc
             xsltArgs.AddParam("url", "", htmlUrl);
             xsltArgs.AddParam("requestDuration", "", RequestDuration);
             xsltArgs.AddParam("fromCache", "", FromCache);
-
             XslCompiledTransform xslt = new XslCompiledTransform();
             xslt.Load(xsltUrl);
             xslt.Transform(doc, xsltArgs, writer);

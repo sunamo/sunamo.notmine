@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SunamoExceptions;
 
 namespace FubuCsProjFile.Templating.Graph
 {
@@ -7,11 +8,12 @@ namespace FubuCsProjFile.Templating.Graph
     {
         public readonly IList<string> Alterations = new List<string>(); 
         private readonly Substitutions _substitutions = new Substitutions();
+        static Type type = typeof(ProjectRequest);
 
         public ProjectRequest(string name, string template)
         {
-            if (name == null) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("name");
-            if (template == null) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("template");
+            if (name == null) ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"name");
+            if (template == null) ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"template");
 
             Name = name;
             Template = template;

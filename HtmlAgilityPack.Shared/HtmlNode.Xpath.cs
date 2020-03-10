@@ -4,16 +4,16 @@
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
-
 #if !METRO
-
 using System;
 using System.Xml.XPath;
+using SunamoExceptions;
 
 namespace HtmlAgilityPack
 {
     public partial class HtmlNode : IXPathNavigable
     {
+
         /// <summary>
         /// Creates a new XPathNavigator object for navigating this HTML node.
         /// </summary>
@@ -22,7 +22,6 @@ namespace HtmlAgilityPack
         {
             return new HtmlNodeNavigator(OwnerDocument, this);
         }
-
         /// <summary>
         /// Creates an XPathNavigator using the root of this document.
         /// </summary>
@@ -30,7 +29,6 @@ namespace HtmlAgilityPack
         {
             return new HtmlNodeNavigator(OwnerDocument, OwnerDocument.DocumentNode);
         }
-
         /// <summary>
         /// Selects a list of nodes matching the <see cref="XPath"/> expression.
         /// </summary>
@@ -39,7 +37,6 @@ namespace HtmlAgilityPack
         public HtmlNodeCollection SelectNodes(string xpath)
         {
             HtmlNodeCollection list = new HtmlNodeCollection(null);
-
             HtmlNodeNavigator nav = new HtmlNodeNavigator(OwnerDocument, this);
             XPathNodeIterator it = nav.Select(xpath);
             while (it.MoveNext())
@@ -47,15 +44,12 @@ namespace HtmlAgilityPack
                 HtmlNodeNavigator n = (HtmlNodeNavigator) it.Current;
                 list.Add(n.CurrentNode, false);
             }
-
             if (list.Count == 0 && !OwnerDocument.OptionEmptyCollection)
             {
                 return null;
             }
-
             return list;
         }
-
         /// <summary>
         /// Selects a list of nodes matching the <see cref="XPath"/> expression.
         /// </summary>
@@ -64,7 +58,6 @@ namespace HtmlAgilityPack
         public HtmlNodeCollection SelectNodes(XPathExpression xpath)
         { 
             HtmlNodeCollection list = new HtmlNodeCollection(null);
-
             HtmlNodeNavigator nav = new HtmlNodeNavigator(OwnerDocument, this);
             XPathNodeIterator it = nav.Select(xpath);
             while (it.MoveNext())
@@ -72,15 +65,12 @@ namespace HtmlAgilityPack
                 HtmlNodeNavigator n = (HtmlNodeNavigator) it.Current;
                 list.Add(n.CurrentNode, false);
             }
-
             if (list.Count == 0 && !OwnerDocument.OptionEmptyCollection)
             {
                 return null;
             }
-
             return list;
         } 
-
         /// <summary>
         /// Selects the first XmlNode that matches the XPath expression.
         /// </summary>
@@ -90,20 +80,17 @@ namespace HtmlAgilityPack
         {
             if (xpath == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("xpath");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"xpath");
             }
-
             HtmlNodeNavigator nav = new HtmlNodeNavigator(OwnerDocument, this);
             XPathNodeIterator it = nav.Select(xpath);
             if (!it.MoveNext())
             {
                 return null;
             }
-
             HtmlNodeNavigator node = (HtmlNodeNavigator) it.Current;
             return node.CurrentNode;
         }
-
         /// <summary>
         /// Selects a list of nodes matching the <see cref="XPath"/> expression.
         /// </summary>
@@ -113,16 +100,14 @@ namespace HtmlAgilityPack
         {
             if (xpath == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("xpath");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"xpath");
             }
-
             HtmlNodeNavigator nav = new HtmlNodeNavigator(OwnerDocument, this);
             XPathNodeIterator it = nav.Select(xpath);
             if (!it.MoveNext())
             {
                 return null;
             }
-
             HtmlNodeNavigator node = (HtmlNodeNavigator)it.Current;
             return node.CurrentNode;
         }

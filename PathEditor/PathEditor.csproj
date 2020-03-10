@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PathEditor</RootNamespace>
     <AssemblyName>PathEditor</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -41,49 +41,50 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SuggestTextBoxPath.xaml.cs">
-      <DependentUpon>SuggestTextBoxPath.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Models\AutoCompleteProviders.cs" />
     <Compile Include="Models\PathRepository.cs" />
     <Compile Include="Models\StringExtender.cs" />
+    <Compile Include="ModelViews\BaseViewModel.cs" />
+    <Compile Include="ModelViews\DelegateCommand.cs" />
     <Compile Include="ModelViews\PathEditorViewModel.cs" />
     <Compile Include="ModelViews\PathPartViewModel.cs" />
+    <Page Include="PathEditorDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="Properties\LocalResources.cs" />
+    <Page Include="SuggestTextBoxPath.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="SuggestTextBoxPath.xaml.cs">
+      <DependentUpon>SuggestTextBoxPath.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Support\ButtonHelper.cs" />
     <Compile Include="Views\Support\PathExistenceToBrushConverter.cs" />
     <Compile Include="Views\Support\PathSelectionToEnabledConverter.cs" />
     <Compile Include="Views\Support\Validation\ValidationHelper.cs" />
     <Compile Include="Views\Support\WindowHelper.cs" />
     <Compile Include="Views\UserControls\AutoCompleteTextBox.cs" />
-    <Page Include="PathEditorDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SuggestTextBoxPath.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Compile Include="Properties\LocalResources.cs" />
-    <Compile Include="ModelViews\DelegateCommand.cs" />
-    <Compile Include="ModelViews\BaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AppDesigner Include="Properties\" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,20 +93,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\App.ico" />
@@ -122,6 +122,10 @@
     <ProjectReference Include="..\..\sunamo\duo\duo.csproj">
       <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
       <Name>duo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj">
+      <Project>{f3f6f3ca-a5f5-4994-9666-3fed63614b8f}</Project>
+      <Name>SunamoExceptions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

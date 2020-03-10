@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FubuCore;
 using FubuCore.Descriptions;
+using SunamoExceptions;
 
 namespace FubuCsProjFile.Templating.Graph
 {
@@ -55,7 +56,7 @@ namespace FubuCsProjFile.Templating.Graph
                         if (!tryResolveSelection(o, choices))
                         {
                             if (opt == null)
-                                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Unknown option '{0}' for project type {1}".ToFormat(o, Name));
+                                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Unknown option '{0}' for project type {1}".ToFormat(o, Name));
                         }
                     }
                     else
@@ -77,6 +78,8 @@ namespace FubuCsProjFile.Templating.Graph
 
             return request;
         }
+
+        static Type type = typeof(ProjectTemplate);
 
         // Query/Command separation violation, but hey, it works
         private bool tryResolveSelection(string optionName, TemplateChoices choices)

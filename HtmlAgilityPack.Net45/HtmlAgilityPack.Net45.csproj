@@ -75,6 +75,16 @@
   <ItemGroup>
     <None Include="HtmlAgilityPack.snk" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamo.web\sunamo.web\sunamo.web.csproj">
+      <Project>{bbb4128f-3fd5-42f3-90d1-b9b1a1e65d6e}</Project>
+      <Name>sunamo.web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj">
+      <Project>{a9c23d88-7047-4294-8fcc-70036783e76a}</Project>
+      <Name>SunamoExceptions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

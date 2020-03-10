@@ -5,6 +5,7 @@ using System.Linq;
 using FubuCore;
 using FubuCsProjFile.Templating.Graph;
 using FubuCsProjFile.Templating.Runtime;
+using SunamoExceptions;
 
 namespace FubuCsProjFile.Templating.Planning
 {
@@ -124,6 +125,8 @@ namespace FubuCsProjFile.Templating.Planning
             _currentProject = project;
         }
 
+        static Type type = typeof(TemplatePlan);
+
         public void Execute()
         {
             if (_missingInputs.Any())
@@ -132,7 +135,7 @@ namespace FubuCsProjFile.Templating.Planning
                 Logger.Trace("---------------");
                 _missingInputs.Each(x => Console.WriteLine(x));
 
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),MissingInputException(_missingInputs.ToArray());
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), "MissingInput: "+ Exc.Join(",", _missingInputs));
             }
 
             Logger.Starting(_steps.Count);

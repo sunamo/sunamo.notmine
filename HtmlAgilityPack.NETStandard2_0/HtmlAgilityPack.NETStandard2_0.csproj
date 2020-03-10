@@ -42,4 +42,8 @@
     <PackageReference Include="System.Xml.XPath.XmlDocument" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj" />
+  </ItemGroup>
+
 </Project>

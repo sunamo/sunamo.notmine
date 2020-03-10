@@ -6,19 +6,21 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using PathEditor.Models;
 using PathEditor.Views.UserControls;
+using SunamoExceptions;
 using Application = System.Windows.Application;
 
 namespace PathEditor.ModelViews
 {
     public class PathEditorViewModel : BaseViewModel
     {
+        static Type type = typeof(PathEditorViewModel);
         private readonly PathRepository _repository;
         private PathPartViewModel _selectedPathPart;
 
         [DebuggerStepThrough]
         public PathEditorViewModel(PathRepository repository)
         {
-            if (repository == null) ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("repository");
+            if (repository == null) ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"repository");
             _repository = repository;
 
             PathParts = new ObservableCollection<PathPartViewModel>(_repository.GetPathParts().Select(p => new PathPartViewModel(p)));

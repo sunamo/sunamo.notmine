@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace FlvExtract
 {
     public enum AudioFormat
@@ -9,16 +8,15 @@ namespace FlvExtract
         Speex,
         Wav
     }
-
     public enum VideoFormat
     {
         H264,
         Avi
     }
-
     /// <summary>
     /// This class represents information about the successful extraction of a audio and/or video stream.
     /// </summary>
+static Type type = typeof(represents);
     public class ExtractionInfo
     {
         public ExtractionInfo(AudioFormat audioFormat, VideoFormat videoFormat)
@@ -26,17 +24,14 @@ namespace FlvExtract
             this.AudioFormat = audioFormat;
             this.VideoFormat = videoFormat;
         }
-
         public ExtractionInfo(AudioFormat audioFormat)
         {
             this.AudioFormat = audioFormat;
         }
-
         public ExtractionInfo(VideoFormat videoFormat)
         {
             this.VideoFormat = videoFormat;
         }
-
         /// <summary>
         /// Gets the file-system extension that the audio format has. e.g ".mp3".
         /// </summary>
@@ -48,23 +43,17 @@ namespace FlvExtract
                 {
                     case FlvExtract.AudioFormat.Aac:
                         return ".aac";
-
                     case FlvExtract.AudioFormat.Mp3:
                         return ".mp3";
-
                     case FlvExtract.AudioFormat.Speex:
                         return ".spx";
-
                     case FlvExtract.AudioFormat.Wav:
                         return ".wav";
                 }
-
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Something is wrong here");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException("Something is wrong here");
             }
         }
-
         public AudioFormat? AudioFormat { get; private set; }
-
         /// <summary>
         /// Gets the file-system extension that the video format has. e.g ".avi".
         /// </summary>
@@ -76,15 +65,12 @@ namespace FlvExtract
                 {
                     case FlvExtract.VideoFormat.Avi:
                         return ".avi";
-
                     case FlvExtract.VideoFormat.H264:
                         return ".mp4";
                 }
-
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Something is wrong here");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),NotImplementedException("Something is wrong here");
             }
         }
-
         public VideoFormat? VideoFormat { get; private set; }
     }
 }

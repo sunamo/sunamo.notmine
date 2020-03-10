@@ -2,26 +2,22 @@
 {
     using System;
     using System.IO;
-
     internal class FileNameCreator
     {
+static Type type = typeof(FileNameCreator);
         public DirectoryInfo OutputDirectory { get; private set; }
-
         public FileNameCreator(DirectoryInfo outputDirectory)
         {
             if (outputDirectory == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("outputDirectory");
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),"outputDirectory");
             }
-
             if (!outputDirectory.Exists)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentException("Output directory does not exist", "outputDirectory");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Output directory does not exist");
             }
-
             this.OutputDirectory = outputDirectory;
         }
-
         public string CreateFileName()
         {
             string fileName = string.Format("collage-{0:yyyy-MM-dd_HHmm}.jpg", DateTime.Now);

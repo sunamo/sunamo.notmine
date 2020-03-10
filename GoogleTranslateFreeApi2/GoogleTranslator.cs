@@ -13,19 +13,18 @@ using System.Threading.Tasks;
 using GoogleTranslateFreeApi.TranslationData;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
 namespace GoogleTranslateFreeApi
 {
 	/// <summary>
 	/// Represent a class for translate the text using <see href="http://translate.google.com"/>
 	/// </summary>
+static Type type = typeof(for);
 	public class GoogleTranslator: ITranslator
   {
     private readonly GoogleKeyTokenGenerator _generator;
 	  private readonly HttpClient _httpClient;
 		private TimeSpan _timeOut;
 		private IWebProxy _proxy;
-
 		protected Uri Address;
 		
 		/// <summary>
@@ -53,25 +52,21 @@ namespace GoogleTranslateFreeApi
 				_generator.Proxy = value;
 			}
 		}
-
 		public string Domain
 		{
 			get { return Address.AbsoluteUri.GetTextBetween("https://", "/translate_a/single"); }
 			set { Address = new Uri($"https://{value}/translate_a/single"); }
 		}
-
 		/// <summary>
 		/// An Array of supported languages by google translate
 		/// </summary>
 		public static Language[] LanguagesSupported { get; }
-
 		/// <param name="language">Full name of the required language</param>
 		/// <example>GoogleTranslator.GetLanguageByName("English")</example>
 		/// <returns>Language object from the LanguagesSupported array</returns>
 		public static Language GetLanguageByName(string language)
 			=> LanguagesSupported.FirstOrDefault(i
 				=> i.FullName.Equals(language, StringComparison.OrdinalIgnoreCase));
-
 	  /// <param name="iso">ISO of the required language</param>
 	  /// <example>GoogleTranslator.GetLanguageByISO("en")</example>
 	  /// <returns>Language object from the LanguagesSupported array</returns>
@@ -79,7 +74,6 @@ namespace GoogleTranslateFreeApi
 		public static Language GetLanguageByISO(string iso)
 			=> LanguagesSupported.FirstOrDefault(i
 				=> i.ISO639.Equals(iso, StringComparison.OrdinalIgnoreCase));
-
 		/// <summary>
 		/// Check is available language to translate
 		/// </summary>
@@ -93,12 +87,10 @@ namespace GoogleTranslateFreeApi
 			return LanguagesSupported.Contains(language) ||
 						 LanguagesSupported.FirstOrDefault(language.Equals) != null;
 		}
-
 		static GoogleTranslator()
 		{
 			var assembly = typeof(GoogleTranslator).GetTypeInfo().Assembly;
 			Stream stream = assembly.GetManifestResourceStream("GoogleTranslateFreeApi.Languages.json");
-
 			using (StreamReader reader = new StreamReader(stream))
 			{
 				string languages = reader.ReadToEnd();
@@ -106,7 +98,6 @@ namespace GoogleTranslateFreeApi
 					.DeserializeObject<Language[]>(languages);
 			}
 		}
-
 		/// <param name="domain">A Domain name which will be used to execute requests</param>
 		public GoogleTranslator(string domain = "translate.google.com")
 		{
@@ -114,7 +105,6 @@ namespace GoogleTranslateFreeApi
 			_generator = new GoogleKeyTokenGenerator();
 			_httpClient = new HttpClient();
 		}
-
 		/// <summary>
 		/// <p>
 		/// Async text translation from language to language. Include full information about the translation.
@@ -131,7 +121,6 @@ namespace GoogleTranslateFreeApi
 		{
 			return await GetTranslationResultAsync(originalText, fromLanguage, toLanguage, true);
 		}
-
 		/// <summary>
 		/// <p>
 		/// Async text translation from language to language. Include full information about the translation.
@@ -146,7 +135,6 @@ namespace GoogleTranslateFreeApi
 		{
 			return await TranslateAsync(item.OriginalText, item.FromLanguage, item.ToLanguage);
 		}
-
 		/// <summary>
 		/// <p>
 		/// Async text translation from language to language. 
@@ -164,7 +152,6 @@ namespace GoogleTranslateFreeApi
 	  {
 		  return await GetTranslationResultAsync(originalText, fromLanguage, toLanguage, false);
 	  }
-
 	  /// <summary>
 	  /// <p>
 	  /// Async text translation from language to language. 
@@ -185,17 +172,14 @@ namespace GoogleTranslateFreeApi
 		  Language toLanguage, bool additionInfo)
 	  {
 		  if (!IsLanguageSupported(fromLanguage))
-				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),LanguageIsNotSupportedException(fromLanguage);
+				ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),LanguageIsNotSupportedException(fromLanguage);
 			if (!IsLanguageSupported(toLanguage))
-				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),LanguageIsNotSupportedException(toLanguage);
+				ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),LanguageIsNotSupportedException(toLanguage);
 			if (toLanguage.Equals(Language.Auto))
-				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),InvalidOperationException("A destination Language is auto");
-
+				ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),InvalidOperationException("A destination Language is auto");
 			if (originalText.Trim() == String.Empty)
 				return new TranslationResult();
-
 			string token = await _generator.GenerateAsync(originalText);
-
 			string postData = $"sl={fromLanguage.ISO639}&" +
 												$"tl={toLanguage.ISO639}&" +
 												$"hl=en&" +
@@ -209,26 +193,21 @@ namespace GoogleTranslateFreeApi
 												"ssel=0&" +
 												"tsel=0&" +
 												"kc=7";
-
 			string result;
-
 			try
 			{
 				result = await _httpClient.GetStringAsync($"{Address}?{postData}");
 			}
 			catch (HttpRequestException ex) when (ex.Message.Contains("503"))
 			{
-				ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),GoogleTranslateIPBannedException(GoogleTranslateIPBannedException.Operation.Translation);
+				ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),GoogleTranslateIPBannedException(GoogleTranslateIPBannedException.Operation.Translation);
 			}
 			catch
 			{
 				if (_generator.IsExternalKeyObsolete)
 					return await TranslateAsync(originalText, fromLanguage, toLanguage);
-
 				throw;
 			}
-
-
 			return ResponseToTranslateResultParse(result, originalText, fromLanguage, toLanguage, additionInfo);
 	  }
 	  
@@ -236,49 +215,38 @@ namespace GoogleTranslateFreeApi
 			Language sourceLanguage, Language targetLanguage, bool additionInfo)
 		{
 			TranslationResult translationResult = new TranslationResult();
-
 			JToken tmp = JsonConvert.DeserializeObject<JToken>(result);
 			
 			string originalTextTranscription = null, translatedTextTranscription = null;
 			string[] translate;
-
 			var mainTranslationInfo = tmp[0];
-
 			GetMainTranslationInfo(mainTranslationInfo, out translate,
 				ref originalTextTranscription, ref translatedTextTranscription);
 			
 			translationResult.FragmentedTranslation = translate;
 			translationResult.OriginalText = sourceText;
-
 			translationResult.OriginalTextTranscription = originalTextTranscription;
 			translationResult.TranslatedTextTranscription = translatedTextTranscription;
-
 			translationResult.Corrections = GetTranslationCorrections(tmp);
-
 			translationResult.SourceLanguage = sourceLanguage.Equals(Language.Auto) 
 				? GetLanguageByISO( (string)tmp[8][0][0] ) 
 				: sourceLanguage;
 			
 			translationResult.TargetLanguage = targetLanguage;
-
 			if (!additionInfo) 
 				return translationResult;
 			
 			translationResult.ExtraTranslations = 
 				TranslationInfoParse<ExtraTranslations>(tmp[1]);
-
 			translationResult.Synonyms = tmp.Count() >= 12
 				? TranslationInfoParse<Synonyms>(tmp[11])
 				: null;
-
 			translationResult.Definitions = tmp.Count() >= 13
 				? TranslationInfoParse<Definitions>(tmp[12])
 				: null;
-
 			translationResult.SeeAlso = tmp.Count() >= 15
 				? GetSeeAlso(tmp[14])
 				: null;
-
 			return translationResult;
 		}
 	  
@@ -292,7 +260,6 @@ namespace GoogleTranslateFreeApi
 		  foreach (var item in response)
 		  {
 			  string partOfSpeech = (string)item[0];
-
 			  JToken itemToken = translationInfoObject.ItemDataIndex == -1 ? item : item[translationInfoObject.ItemDataIndex];
 				
 			  //////////////////////////////////////////////////////////////
@@ -311,7 +278,6 @@ namespace GoogleTranslateFreeApi
 			
 		  return translationInfoObject;
 	  }
-
 	  protected static string[] GetSeeAlso(JToken response)
 	  {
 		  return !response.HasValues ? new string[0] : response[0].ToObject<string[]>(); 
@@ -330,7 +296,6 @@ namespace GoogleTranslateFreeApi
 				{
 					var transcriptionInfo = item;
 					int elementsCount = transcriptionInfo.Count();
-
 					if (elementsCount == 3)
 					{
 						translatedTextTranscription = (string)transcriptionInfo[elementsCount - 1];
@@ -341,43 +306,32 @@ namespace GoogleTranslateFreeApi
 							translatedTextTranscription = (string)transcriptionInfo[elementsCount - 2];
 						else
 							translatedTextTranscription = (string)transcriptionInfo[elementsCount - 1];
-
 						originalTextTranscription = (string)transcriptionInfo[elementsCount - 1];
 					}
 				}
 			}
-
 			translate = translations.ToArray();
 		}
-
 		protected static Corrections GetTranslationCorrections(JToken response)
 		{
 			if (!response.HasValues)
 				return new Corrections();
-
 			Corrections corrections = new Corrections();
-
 			JToken textCorrectionInfo = response[7];
-
 			if (textCorrectionInfo.HasValues)
 			{
 				Regex pattern = new Regex(@"<b><i>(.*?)</i></b>");
 				MatchCollection matches = pattern.Matches((string)textCorrectionInfo[0]);
-
 				var correctedText = (string)textCorrectionInfo[1];
 				var correctedWords = new string[matches.Count];
-
 				for (int i = 0; i < matches.Count; i++)
 					correctedWords[i] = matches[i].Groups[1].Value;
-
 				corrections.CorrectedWords = correctedWords;
 				corrections.CorrectedText = correctedText;
 				corrections.TextWasCorrected = true;
 			}
-
 			string selectedLangauge = (string)response[2];
 			string detectedLanguage = (string)(response[8])[0][0];
-
 			if (selectedLangauge != detectedLanguage)
 			{
 				corrections.LanguageWasCorrected = true;

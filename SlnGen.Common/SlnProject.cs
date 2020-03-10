@@ -1,20 +1,18 @@
 ﻿// Copyright (c) Jeff Kluge. All rights reserved.
 //
 // Licensed under the MIT license.
-
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
-
 namespace SlnGen.Common
 {
     public sealed class SlnProject
     {
+static Type type = typeof(SlnProject);
         public static readonly Guid DefaultLegacyProjectTypeGuid = new Guid("FAE04EC0-301F-11D3-BF4B-00C04F79EFBC");
         public static readonly Guid DefaultNetSdkProjectTypeGuid = new Guid("9A19103F-16F7-4668-BE54-9A1E7A4F7556");
-
         /// <summary>
         /// Known project type GUIDs for legacy projects.
         /// </summary>
@@ -24,7 +22,6 @@ namespace SlnGen.Common
             [".csproj"] = DefaultLegacyProjectTypeGuid,
             [".vbproj"] = new Guid("F184B08F-C81C-45F6-A57F-5ABD9991F28F"),
         };
-
         /// <summary>
         /// Known project type GUIDs for .NET SDK projects.
         /// </summary>
@@ -34,7 +31,6 @@ namespace SlnGen.Common
             [".csproj"] = DefaultNetSdkProjectTypeGuid,
             [".vbproj"] = new Guid("778DAE3C-4631-46EA-AA77-85C1314464D9"),
         };
-
         /// <summary>
         /// Known project type GUIDs for all project types.
         /// </summary>
@@ -50,11 +46,10 @@ namespace SlnGen.Common
             [".wixproj"] = new Guid("930C7802-8A8C-48F9-8165-68863BCCD9DD"),
             [".sfproj"] = new Guid("A07B5EB6-E848-4116-A8D0-A826331D98C6"),
         };
-
         public SlnProject(string fullPath, string name, Guid projectGuid, Guid projectTypeGuid, IEnumerable<string> configurations, IEnumerable<string> platforms, bool isMainProject, bool isDeployable)
         {
-            FullPath = fullPath ?? ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(fullPath));
-            Name = name ?? ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(name));
+            FullPath = fullPath ?? ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(fullPath));
+            Name = name ?? ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(name));
             ProjectGuid = projectGuid;
             ProjectTypeGuid = projectTypeGuid;
             IsDeployable = isDeployable;
@@ -62,91 +57,63 @@ namespace SlnGen.Common
             Configurations = new HashSet<string>(configurations, StringComparer.OrdinalIgnoreCase);
             Platforms = new HashSet<string>(platforms, StringComparer.OrdinalIgnoreCase);
         }
-
         public HashSet<string> Configurations { get; }
-
         public string FullPath { get; }
-
         public bool IsDeployable { get; }
-
         public bool IsMainProject { get; }
-
         public string Name { get; }
-
         public HashSet<string> Platforms { get; }
-
         public Guid ProjectGuid { get; }
-
         public Guid ProjectTypeGuid { get; }
-
         public static SlnProject FromProject(Project project, IReadOnlyDictionary<string, Guid> customProjectTypeGuids, bool isMainProject = false)
         {
             if (project == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(project));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(project));
             }
-
             if (customProjectTypeGuids == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException(nameof(customProjectTypeGuids));
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(customProjectTypeGuids));
             }
-
             if (!ShouldIncludeInSolution(project))
             {
                 return null;
             }
-
             string name = project.GetPropertyValueOrDefault(SlnConstants.AssemblyName, Path.GetFileNameWithoutExtension(project.FullPath));
-
             bool isUsingMicrosoftNetSdk = project.GetPropertyValue(SlnConstants.UsingMicrosoftNETSdk).Equals("true", StringComparison.OrdinalIgnoreCase);
-
             string extension = Path.GetExtension(project.FullPath);
-
             Guid projectTypeGuid = GetKnownProjectTypeGuid(extension, isUsingMicrosoftNetSdk, customProjectTypeGuids);
-
             IEnumerable<string> configurations = project.GetPossiblePropertyValuesOrDefault("Configuration", "Debug");
             IEnumerable<string> platforms = GetPlatforms(project);
-
             Guid projectGuid = Guid.NewGuid();
-
             if (!isUsingMicrosoftNetSdk && !Guid.TryParse(project.GetPropertyValueOrDefault(SlnConstants.ProjectGuid, projectGuid.ToString()), out projectGuid))
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),FormatException($"property ProjectGuid has an invalid format in {project.FullPath}");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),FormatException($"property ProjectGuid has an invalid format in {project.FullPath}");
             }
-
             string isDeployableStr = project.GetPropertyValue("SlnGenIsDeployable");
-
             bool isDeployable = isDeployableStr.Equals("true", StringComparison.OrdinalIgnoreCase) || (string.IsNullOrWhiteSpace(isDeployableStr) && string.Equals(Path.GetExtension(project.FullPath), ".sfproj", StringComparison.OrdinalIgnoreCase));
-
             return new SlnProject(project.FullPath, name, projectGuid, projectTypeGuid, configurations, platforms, isMainProject, isDeployable);
         }
-
         public static Dictionary<string, Guid> GetCustomProjectTypeGuids(IEnumerable<ITaskItem> items)
         {
             Dictionary<string, Guid> projectTypeGuids = new Dictionary<string, Guid>();
-
             foreach (ITaskItem taskItem in items)
             {
                 string extension = taskItem.ItemSpec.Trim();
-
                 // Only consider items that start with a "." because they are supposed to be file extensions
                 if (!extension.StartsWith("."))
                 {
                     continue;
                 }
-
                 string projectTypeGuidString = taskItem.GetMetadata(SlnConstants.ProjectTypeGuid)?.Trim();
-
                 if (!string.IsNullOrWhiteSpace(projectTypeGuidString) && Guid.TryParse(projectTypeGuidString, out Guid projectTypeGuid))
                 {
                     // Trim and ToLower the file extension
                     projectTypeGuids[taskItem.ItemSpec.Trim().ToLowerInvariant()] = projectTypeGuid;
                 }
             }
-
             return projectTypeGuids;
         }
-
         /// <summary>
         /// Determines the project type GUID for the specified file extension.
         /// </summary>
@@ -160,22 +127,18 @@ namespace SlnGen.Common
             {
                 return projectTypeGuid;
             }
-
             // Use GUIDs for .NET SDK projects
             if (isUsingMicrosoftNetSdk && !KnownNetSdkProjectTypeGuids.TryGetValue(extension, out projectTypeGuid))
             {
                 projectTypeGuid = DefaultNetSdkProjectTypeGuid;
             }
-
             // Use GUIDs for legacy projects
             if (!isUsingMicrosoftNetSdk && !KnownLegacyProjectTypeGuids.TryGetValue(extension, out projectTypeGuid))
             {
                 projectTypeGuid = DefaultLegacyProjectTypeGuid;
             }
-
             return projectTypeGuid;
         }
-
         /// <summary>
         /// Checks whether a project should be included in the solution or not.
         /// </summary>
@@ -188,7 +151,6 @@ namespace SlnGen.Common
                 &&
                 !project.GetPropertyValue(SlnConstants.IsTraversal).Equals(bool.TrueString, StringComparison.OrdinalIgnoreCase);  // Filter out traversal projects by looking for an IsTraversal property
         }
-
         private static IEnumerable<string> GetPlatforms(Project project)
         {
             foreach (string platform in project.GetPossiblePropertyValuesOrDefault("Platform", "Any CPU"))

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FubuCsProjFile</RootNamespace>
     <AssemblyName>FubuCsProjFile</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FubuCore, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -51,74 +54,74 @@
     <Compile Include="CsProjFile.cs" />
     <Compile Include="EmbeddedResource.cs" />
     <Compile Include="FrameworkNameDetector.cs" />
-    <Compile Include="MSBuild\MSBuildTarget.cs" />
-    <Compile Include="MSBuild\MSBuildImport.cs" />
-    <Compile Include="MSBuild\MSBuildProjectSettings.cs" />
-    <Compile Include="None.cs" />
-    <Compile Include="ProjectDependenciesSection.cs" />
-    <Compile Include="ProjectReference.cs" />
-    <Compile Include="ProjectSection.cs" />
-    <Compile Include="SourceControlInformation.cs" />
-    <Compile Include="StringExtensions.cs" />
     <Compile Include="GlobalSection.cs" />
-    <Compile Include="ProjectItem.cs" />
     <Compile Include="MSBuild\ByteOrderMark.cs" />
-    <Compile Include="MSBuild\MSBuildProject.cs" />
+    <Compile Include="MSBuild\MSBuildImport.cs" />
     <Compile Include="MSBuild\MSBuildItem.cs" />
     <Compile Include="MSBuild\MSBuildItemGroup.cs" />
     <Compile Include="MSBuild\MSBuildObject.cs" />
+    <Compile Include="MSBuild\MSBuildProject.cs" />
+    <Compile Include="MSBuild\MSBuildProjectSettings.cs" />
     <Compile Include="MSBuild\MSBuildProperty.cs" />
     <Compile Include="MSBuild\MSBuildPropertyGroup.cs" />
     <Compile Include="MSBuild\MSBuildPropertyGroupMerged.cs" />
     <Compile Include="MSBuild\MSBuildPropertySet.cs" />
-    <Compile Include="SolutionProject.cs" />
+    <Compile Include="MSBuild\MSBuildTarget.cs" />
+    <Compile Include="None.cs" />
+    <Compile Include="ProjectDependenciesSection.cs" />
+    <Compile Include="ProjectItem.cs" />
+    <Compile Include="ProjectReference.cs" />
+    <Compile Include="ProjectSection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sln.cs" />
     <Compile Include="Solution.cs" />
     <Compile Include="SolutionLoading.cs" />
+    <Compile Include="SolutionProject.cs" />
+    <Compile Include="SourceControlInformation.cs" />
+    <Compile Include="StringExtensions.cs" />
     <Compile Include="TargetFrameworkVersion.cs" />
-    <Compile Include="Templating\Graph\ProjectCategory.cs" />
-    <Compile Include="Templating\Graph\TemplateGraph.cs" />
+    <Compile Include="Templating\Graph\Input.cs" />
+    <Compile Include="Templating\Graph\ITemplateLibrary.cs" />
     <Compile Include="Templating\Graph\Option.cs" />
     <Compile Include="Templating\Graph\OptionSelection.cs" />
-    <Compile Include="Templating\Graph\TemplateChoices.cs" />
-    <Compile Include="Templating\Graph\TemplateGraphExtensions.cs" />
-    <Compile Include="Templating\Graph\ProjectTemplate.cs" />
-    <Compile Include="Templating\Runtime\AssemblyInfoAlteration.cs" />
-    <Compile Include="Templating\Runtime\CopyFileToProject.cs" />
-    <Compile Include="Templating\Runtime\CopyFileToSolution.cs" />
-    <Compile Include="Templating\Runtime\CreateSolution.cs" />
-    <Compile Include="Templating\Planning\FilesTemplatePlanner.cs" />
-    <Compile Include="Templating\Runtime\GemReference.cs" />
-    <Compile Include="Templating\Runtime\GitIgnoreStep.cs" />
-    <Compile Include="Templating\Graph\Input.cs" />
-    <Compile Include="Templating\Runtime\IProjectAlteration.cs" />
-    <Compile Include="Templating\Runtime\CodeFileTemplate.cs" />
-    <Compile Include="Templating\Graph\ITemplateLibrary.cs" />
-    <Compile Include="Templating\Runtime\ITemplateLogger.cs" />
-    <Compile Include="Templating\Planning\ITemplatePlanner.cs" />
-    <Compile Include="Templating\Planning\ITemplatePlannerAction.cs" />
-    <Compile Include="Templating\Runtime\ITemplateStep.cs" />
-    <Compile Include="Templating\Planning\MissingInputException.cs" />
-    <Compile Include="Templating\Runtime\ProjectDirectory.cs" />
-    <Compile Include="Templating\Runtime\ProjectPlan.cs" />
-    <Compile Include="Templating\Planning\ProjectPlanner.cs" />
+    <Compile Include="Templating\Graph\ProjectCategory.cs" />
     <Compile Include="Templating\Graph\ProjectRequest.cs" />
-    <Compile Include="Templating\Runtime\RakeFileTransform.cs" />
-    <Compile Include="Templating\Runtime\ReadSolution.cs" />
-    <Compile Include="Templating\Runtime\SolutionDirectory.cs" />
-    <Compile Include="Templating\Planning\SolutionPlanner.cs" />
+    <Compile Include="Templating\Graph\ProjectTemplate.cs" />
     <Compile Include="Templating\Graph\Substitutions.cs" />
-    <Compile Include="Templating\Runtime\SystemReference.cs" />
     <Compile Include="Templating\Graph\Template.cs" />
     <Compile Include="Templating\Graph\TemplateBuilder.cs" />
-    <Compile Include="Templating\Runtime\CopyProjectReferences.cs" />
+    <Compile Include="Templating\Graph\TemplateChoices.cs" />
+    <Compile Include="Templating\Graph\TemplateGraph.cs" />
+    <Compile Include="Templating\Graph\TemplateGraphExtensions.cs" />
     <Compile Include="Templating\Graph\TemplateLibrary.cs" />
-    <Compile Include="Templating\Runtime\TemplateLogger.cs" />
+    <Compile Include="Templating\Graph\TemplateRequest.cs" />
+    <Compile Include="Templating\Planning\FilesTemplatePlanner.cs" />
+    <Compile Include="Templating\Planning\ITemplatePlanner.cs" />
+    <Compile Include="Templating\Planning\ITemplatePlannerAction.cs" />
+    <Compile Include="Templating\Planning\MissingInputException.cs" />
+    <Compile Include="Templating\Planning\ProjectPlanner.cs" />
+    <Compile Include="Templating\Planning\SolutionPlanner.cs" />
     <Compile Include="Templating\Planning\TemplatePlan.cs" />
     <Compile Include="Templating\Planning\TemplatePlanBuilder.cs" />
     <Compile Include="Templating\Planning\TemplatePlanner.cs" />
-    <Compile Include="Templating\Graph\TemplateRequest.cs" />
+    <Compile Include="Templating\Runtime\AssemblyInfoAlteration.cs" />
+    <Compile Include="Templating\Runtime\CodeFileTemplate.cs" />
+    <Compile Include="Templating\Runtime\CopyFileToProject.cs" />
+    <Compile Include="Templating\Runtime\CopyFileToSolution.cs" />
+    <Compile Include="Templating\Runtime\CopyProjectReferences.cs" />
+    <Compile Include="Templating\Runtime\CreateSolution.cs" />
+    <Compile Include="Templating\Runtime\GemReference.cs" />
+    <Compile Include="Templating\Runtime\GitIgnoreStep.cs" />
+    <Compile Include="Templating\Runtime\IProjectAlteration.cs" />
+    <Compile Include="Templating\Runtime\ITemplateLogger.cs" />
+    <Compile Include="Templating\Runtime\ITemplateStep.cs" />
+    <Compile Include="Templating\Runtime\ProjectDirectory.cs" />
+    <Compile Include="Templating\Runtime\ProjectPlan.cs" />
+    <Compile Include="Templating\Runtime\RakeFileTransform.cs" />
+    <Compile Include="Templating\Runtime\ReadSolution.cs" />
+    <Compile Include="Templating\Runtime\SolutionDirectory.cs" />
+    <Compile Include="Templating\Runtime\SystemReference.cs" />
+    <Compile Include="Templating\Runtime\TemplateLogger.cs" />
     <Compile Include="Templating\TemplateType.cs" />
     <Compile Include="Templating\TextFile.cs" />
   </ItemGroup>
@@ -133,6 +136,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj">
+      <Project>{f3f6f3ca-a5f5-4994-9666-3fed63614b8f}</Project>
+      <Name>SunamoExceptions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

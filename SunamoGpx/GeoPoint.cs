@@ -7,11 +7,11 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-
 namespace csGeoTools
 {
     public static class FNVHasher
     {
+static Type type = typeof(FNVHasher);
         private static readonly int offsetBasis = unchecked((int)2166136261);
         private static readonly int prime = 16777619;
         public static int CreateHash(params object[] objs)
@@ -19,10 +19,11 @@ namespace csGeoTools
             return objs.Aggregate(offsetBasis, (r, o) => (r ^ o.GetHashCode()) * prime);
         }
     }
-
     [DataContract]
     public class GeoPoint
     {
+        static Type type = typeof(GeoPoint);
+
         [DataMember]
         public virtual Double Latitude { get; protected set; }
         [DataMember]
@@ -33,7 +34,6 @@ namespace csGeoTools
         public virtual Double LongitudeRadians { get; protected set; }
         [DataMember]
         public virtual Ellipsoid ReferenceEllipsoid { get; protected set; }
-
         public GeoPoint() { }
         
         private GeoPoint(Double latitude, Double longitude, Ellipsoid referenceEllipsoid)
@@ -54,7 +54,6 @@ namespace csGeoTools
         {
             return new GeoPoint(latitude, longitude, referenceEllipsoid);
         }
-
         public static GeoPoint Parse(String coordinates)
         {
             return Parse(coordinates, GeoConstants.DEFAULT_ELLIPSOID);
@@ -65,12 +64,10 @@ namespace csGeoTools
             GeoPointParser parser = GeoPointParser.getParserFor(coordinates);
             return parser.Parse(coordinates, referenceEllipsoid);
         }
-
         public virtual String As(GeoPointFormat format)
         {
             return As(format, CultureInfo.InvariantCulture);
         }
-
         public virtual String As(GeoPointFormat format, CultureInfo culture)
         {
             switch (format)
@@ -84,12 +81,10 @@ namespace csGeoTools
                 default: return String.Empty;
             }
         }
-
         public virtual String AsDd()
         {
             return AsDd(CultureInfo.InvariantCulture);
         }
-
         public virtual String AsDd(CultureInfo culture)
         {
             string decimalFormat = "#.######"; // 6 decimal places = ~11cm precision
@@ -104,18 +99,15 @@ namespace csGeoTools
             Double fractionalPart = coordinate % 1;
             Int32 degrees = (Int32)coordinate;
             coordinate = fractionalPart * 60;
-
             string minuteFormat = "00.000";
             return String.Format("{0}° {1}", 
                 degrees.ToString(degreeFormatPattern, culture.NumberFormat), 
                 coordinate.ToString(minuteFormat, culture.NumberFormat));
         }
-
         public virtual String AsDm()
         {
             return AsDm(CultureInfo.InvariantCulture);
         }
-
         public virtual String AsDm(CultureInfo culture)
         {
             String latitudeDirection = Latitude > 0 ? "N" : "S";
@@ -137,12 +129,10 @@ namespace csGeoTools
             string decimalFormat = "0.###";
             return String.Format("{0}° {1}' {2}\"", degrees, minutes, coordinate.ToString(decimalFormat, culture.NumberFormat));
         }
-
         public virtual String AsDms()
         {
             return AsDms(CultureInfo.InvariantCulture);
         }
-
         public virtual String AsDms(CultureInfo culture)
         {
             String latitudeDirection = Latitude > 0 ? "N" : "S";
@@ -151,36 +141,31 @@ namespace csGeoTools
                 Latitude != 0 ? latitudeDirection : "", decimalToDms(Latitude, culture),
                 Longitude != 0 ? longitudeDirection : "", decimalToDms(Longitude, culture));
         }
-
         public virtual GeoPoint ConvertTo(Ellipsoid referenceEllipsoid)
         {
             if (this.ReferenceEllipsoid == referenceEllipsoid)
             {
                 return this;
             }
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),NotImplementedException("Conversion between different reference ellipsoids is not yet implemented");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Conversion between different reference ellipsoids is not yet implemented");
+            return null;
         }
-
         public virtual Bearing BearingTo(GeoPoint that)
         {
 		    return Bearing.Between(this, that);
 	    }
-
         public virtual Bearing InitialBearingTo(GeoPoint that)
         {
 		    return BearingTo(that);
 	    }
-
         public virtual Bearing FinalBearingTo(GeoPoint that)
         {
 		    return Bearing.DecimalDegrees((Bearing.Between(that, this).DecimalDegrees() + 180) % 360);
 	    }
-
         public virtual Distance DistanceTo(GeoPoint that)
         {
             return Distance.Between(this, that);
         }
-
         public virtual GeoPoint MidpointTo(GeoPoint that)
         {
             return ((PointToPointDistance) Distance.Between(this, that)).Midpoint();
@@ -199,12 +184,10 @@ namespace csGeoTools
             return this.ReferenceEllipsoid.Equals(d.ReferenceEllipsoid)
                 && this.Latitude.Equals(d.Latitude) && this.Longitude.Equals(d.Longitude);
         }
-
         public override int GetHashCode()
         {
             return FNVHasher.CreateHash(Latitude, Longitude, ReferenceEllipsoid);
         }
-
         public virtual int GetHashCode(Double latitude, Double longitude, Ellipsoid ellipsoid = GeoConstants.DEFAULT_ELLIPSOID)
         {
             return FNVHasher.CreateHash(latitude, longitude, ellipsoid);

@@ -1,20 +1,19 @@
-﻿// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
+// Description: Html Agility Pack - HTML Parsers, selectors, traversors, manupulators.
 // Website & Documentation: https://html-agility-pack.net
 // Forum & Issues: https://github.com/zzzprojects/html-agility-pack
 // License: https://github.com/zzzprojects/html-agility-pack/blob/master/LICENSE
 // More projects: https://www.zzzprojects.com/
 // Copyright © ZZZ Projects Inc. 2014 - 2017. All rights reserved.
-
 #if !METRO
-
 using System;
 using System.IO;
 using System.Text;
-
+using SunamoExceptions;
 namespace HtmlAgilityPack
 {
     public partial class HtmlDocument
     {
+static Type type = typeof(HtmlDocument);
         /// <summary>
         /// Detects the encoding of an HTML document from a file first, and then loads the file.
         /// </summary>
@@ -23,7 +22,6 @@ namespace HtmlAgilityPack
         {
             DetectEncodingAndLoad(path, true);
         }
-
         /// <summary>
         /// Detects the encoding of an HTML document from a file first, and then loads the file.
         /// </summary>
@@ -33,9 +31,8 @@ namespace HtmlAgilityPack
         {
             if (path == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"path");
             }
-
             Encoding enc;
             if (detectEncoding)
             {
@@ -45,7 +42,6 @@ namespace HtmlAgilityPack
             {
                 enc = null;
             }
-
             if (enc == null)
             {
                 Load(path);
@@ -55,7 +51,6 @@ namespace HtmlAgilityPack
                 Load(path, enc);
             }
         }
-
         /// <summary>
         /// Detects the encoding of an HTML file.
         /// </summary>
@@ -65,9 +60,8 @@ namespace HtmlAgilityPack
         {
             if (path == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"path");
             }
-
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), OptionDefaultStreamEncoding))
 #else
@@ -78,7 +72,6 @@ namespace HtmlAgilityPack
                 return encoding;
             }
         }
-
         /// <summary>
         /// Loads an HTML document from a file.
         /// </summary>
@@ -86,8 +79,7 @@ namespace HtmlAgilityPack
         public void Load(string path)
         {
             if (path == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"path");
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), OptionDefaultStreamEncoding))
 #else
@@ -97,7 +89,6 @@ namespace HtmlAgilityPack
                 Load(sr);
             }
         }
-
         /// <summary>
         /// Loads an HTML document from a file.
         /// </summary>
@@ -106,8 +97,7 @@ namespace HtmlAgilityPack
         public void Load(string path, bool detectEncodingFromByteOrderMarks)
         {
             if (path == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"path");
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), detectEncodingFromByteOrderMarks))
 #else
@@ -117,7 +107,6 @@ namespace HtmlAgilityPack
                 Load(sr);
             }
         }
-
         /// <summary>
         /// Loads an HTML document from a file.
         /// </summary>
@@ -126,11 +115,9 @@ namespace HtmlAgilityPack
         public void Load(string path, Encoding encoding)
         {
             if (path == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"path");
             if (encoding == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"encoding");
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), encoding))
 #else
@@ -140,7 +127,6 @@ namespace HtmlAgilityPack
                 Load(sr);
             }
         }
-
         /// <summary>
         /// Loads an HTML document from a file.
         /// </summary>
@@ -150,11 +136,9 @@ namespace HtmlAgilityPack
         public void Load(string path, Encoding encoding, bool detectEncodingFromByteOrderMarks)
         {
             if (path == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"path");
             if (encoding == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"encoding");
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), encoding, detectEncodingFromByteOrderMarks))
 #else
@@ -164,7 +148,6 @@ namespace HtmlAgilityPack
                 Load(sr);
             }
         }
-
         /// <summary>
         /// Loads an HTML document from a file.
         /// </summary>
@@ -175,14 +158,11 @@ namespace HtmlAgilityPack
         public void Load(string path, Encoding encoding, bool detectEncodingFromByteOrderMarks, int buffersize)
         {
             if (path == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("path");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"path");
             if (encoding == null)
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
-
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"encoding");
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamReader sr = new StreamReader(File.OpenRead(path), encoding, detectEncodingFromByteOrderMarks, buffersize))
-
 #else
             using (StreamReader sr = new StreamReader(path, encoding, detectEncodingFromByteOrderMarks, buffersize))
 #endif
@@ -190,7 +170,6 @@ namespace HtmlAgilityPack
                 Load(sr);
             }
         }
-
         /// <summary>
         /// Saves the mixed document to the specified file.
         /// </summary>
@@ -206,7 +185,6 @@ namespace HtmlAgilityPack
                 Save(sw);
             }
         }
-
         /// <summary>
         /// Saves the mixed document to the specified file.
         /// </summary>
@@ -216,12 +194,11 @@ namespace HtmlAgilityPack
         {
             if (filename == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("filename");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"filename");
             }
-
             if (encoding == null)
             {
-                ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),ArgumentNullException("encoding");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"encoding");
             }
 #if NETSTANDARD1_3 || NETSTANDARD1_6
             using (StreamWriter sw = new StreamWriter(File.OpenWrite(filename), encoding))
