@@ -3,6 +3,7 @@
 // Licensed under the MIT license.
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Framework;
+using SunamoExceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -48,8 +49,9 @@ static Type type = typeof(SlnProject);
         };
         public SlnProject(string fullPath, string name, Guid projectGuid, Guid projectTypeGuid, IEnumerable<string> configurations, IEnumerable<string> platforms, bool isMainProject, bool isDeployable)
         {
-            FullPath = fullPath ?? ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(fullPath));
-            Name = name ?? ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(name));
+            
+            ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), nameof(fullPath));
+            ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), nameof(name));
             ProjectGuid = projectGuid;
             ProjectTypeGuid = projectTypeGuid;
             IsDeployable = isDeployable;
@@ -69,11 +71,11 @@ static Type type = typeof(SlnProject);
         {
             if (project == null)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(project));
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),nameof(project));
             }
             if (customProjectTypeGuids == null)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(customProjectTypeGuids));
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),nameof(customProjectTypeGuids));
             }
             if (!ShouldIncludeInSolution(project))
             {
@@ -88,7 +90,7 @@ static Type type = typeof(SlnProject);
             Guid projectGuid = Guid.NewGuid();
             if (!isUsingMicrosoftNetSdk && !Guid.TryParse(project.GetPropertyValueOrDefault(SlnConstants.ProjectGuid, projectGuid.ToString()), out projectGuid))
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),FormatException($"property ProjectGuid has an invalid format in {project.FullPath}");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),$"property ProjectGuid has an invalid format in {project.FullPath}");
             }
             string isDeployableStr = project.GetPropertyValue("SlnGenIsDeployable");
             bool isDeployable = isDeployableStr.Equals("true", StringComparison.OrdinalIgnoreCase) || (string.IsNullOrWhiteSpace(isDeployableStr) && string.Equals(Path.GetExtension(project.FullPath), ".sfproj", StringComparison.OrdinalIgnoreCase));

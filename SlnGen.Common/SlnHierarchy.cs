@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using SunamoExceptions;
+
 namespace SlnGen.Common
 {
     /// <summary>
@@ -45,7 +47,7 @@ static Type type = typeof(SlnHierarchy);
             List<string> paths = projects.Where(i => !i.IsMainProject).Select(i => Directory.GetParent(i.FullPath).FullName).ToList();
             if (!paths.Any())
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),InvalidOperationException();
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(), string.Empty);
             }
             // TODO: Unit tests, optimize
             string commonPath = string.Empty;

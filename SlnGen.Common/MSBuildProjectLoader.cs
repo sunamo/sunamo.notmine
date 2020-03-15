@@ -4,6 +4,7 @@
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Exceptions;
 using Microsoft.Build.Framework;
+using SunamoExceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,9 +15,11 @@ namespace SlnGen.Common
     /// <summary>
     /// A class for loading MSBuild projects and their project references.
     /// </summary>
-static Type type = typeof(for);
+
     public sealed class MSBuildProjectLoader
     {
+        static Type type = typeof(MSBuildProjectLoader);
+
         /// <summary>
         /// The name of the <ProjectReference /> item in MSBuild projects.
         /// </summary>
@@ -54,7 +57,8 @@ static Type type = typeof(for);
             _globalProperties = globalProperties;
             _toolsVersion = toolsVersion;
             _projectLoadSettings = projectLoadSettings;
-            _buildEngine = buildEngine ?? ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(buildEngine));
+            ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(), nameof(buildEngine), buildEngine);
+            _buildEngine = buildEngine;
         }
         /// <summary>
         /// Gets or sets a value indicating whether statistics should be collected.

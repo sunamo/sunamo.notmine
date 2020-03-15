@@ -9,4 +9,8 @@
     <PackageReference Include="Microsoft.Build.Framework" Version="16.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj" />
+  </ItemGroup>
+
 </Project>
