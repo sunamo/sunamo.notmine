@@ -1,6 +1,6 @@
 ﻿namespace Collage.Engine
 {
-    internal interface IFilesEnumerator
+    public interface IFilesEnumerator
     {
         string GetNextFileName();
     }

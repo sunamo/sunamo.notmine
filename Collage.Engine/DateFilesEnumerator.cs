@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    internal class DateFilesEnumerator : IFilesEnumerator
+    public class DateFilesEnumerator : IFilesEnumerator
     {
 static Type type = typeof(DateFilesEnumerator);
         private readonly List<FileInfo> filesListOrderedByDate;

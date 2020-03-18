@@ -2,7 +2,7 @@
 {
     using System;
     using System.Drawing;
-    internal class TileTransformer
+    public class TileTransformer
     {
 static Type type = typeof(TileTransformer);
         private readonly IRandomGenerator randomGenerator;

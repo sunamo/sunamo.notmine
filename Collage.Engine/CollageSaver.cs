@@ -4,7 +4,7 @@
     using System.Drawing;
     using System.Drawing.Imaging;
     using System.IO;
-    internal class CollageSaver
+    public class CollageSaver
     {
 static Type type = typeof(CollageSaver);
         private readonly FileNameCreator fileNameCreator;

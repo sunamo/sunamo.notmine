@@ -1,7 +1,7 @@
 ﻿namespace Collage.Engine
 {
     using System;
-    internal class ProgressCounter
+    public class ProgressCounter
     {
 static Type type = typeof(ProgressCounter);
         private readonly int totalNumberOfRows;

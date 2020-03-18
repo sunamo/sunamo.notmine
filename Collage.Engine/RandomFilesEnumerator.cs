@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
-    internal class RandomFilesEnumerator : IFilesEnumerator
+    public class RandomFilesEnumerator : IFilesEnumerator
     {
 static Type type = typeof(RandomFilesEnumerator);
         private readonly List<FileInfo> filesList;

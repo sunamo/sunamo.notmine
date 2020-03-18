@@ -2,7 +2,7 @@
 {
     using System;
     using System.IO;
-    internal class FileNameCreator
+    public class FileNameCreator
     {
 static Type type = typeof(FileNameCreator);
         public DirectoryInfo OutputDirectory { get; private set; }

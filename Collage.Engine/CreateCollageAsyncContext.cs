@@ -1,6 +1,6 @@
 ﻿namespace Collage.Engine
 {
-    internal class CreateCollageAsyncContext
+    public class CreateCollageAsyncContext
     {
         private readonly object sync = new object();
         private bool isCancelling;

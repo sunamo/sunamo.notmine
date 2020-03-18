@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal class RandomGenerator : IRandomGenerator
+    public class RandomGenerator : IRandomGenerator
     {
         private readonly Random random;
 

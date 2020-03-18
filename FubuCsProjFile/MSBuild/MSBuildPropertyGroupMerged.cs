@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace FubuCsProjFile.MSBuild
 {
-    internal class MSBuildPropertyGroupMerged : MSBuildPropertySet
+    public class MSBuildPropertyGroupMerged : MSBuildPropertySet
     {
         private readonly List<MSBuildPropertyGroup> groups = new List<MSBuildPropertyGroup>();
 
