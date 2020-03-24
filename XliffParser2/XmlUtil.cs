@@ -6,6 +6,8 @@
     using System.Text;
     using System.Threading.Tasks;
     using System.Xml.Linq;
+    using SunamoExceptions;
+
     public static class XmlUtil
     {
 static Type type = typeof(XmlUtil);
@@ -13,7 +15,7 @@ static Type type = typeof(XmlUtil);
         {
             if (node == null)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(node));
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),(nameof(node)));
             }
             var a = node.Attribute(name);
             return a != null ? a.Value : string.Empty;
@@ -22,7 +24,7 @@ static Type type = typeof(XmlUtil);
         {
             if (node == null)
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentNullException(nameof(node));
+                ThrowExceptions.IsNull(Exc.GetStackTrace(), type, Exc.CallingMethod(),nameof(node));
             }
             var a = node.Attribute(name);
             return a != null ? int.Parse(a.Value) : 0;

@@ -4,6 +4,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
+    using SunamoExceptions;
+
     public class XlfFile
     {
 static Type type = typeof(XlfFile);
@@ -78,7 +80,8 @@ static Type type = typeof(XlfFile);
                 switch (addMode)
                 {
                     case AddMode.FailIfExists:
-                        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),InvalidOperationException($"There is already a trans-unit with id={id}");
+                        ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),$"There is already a trans-unit with id={id}");
+                        return null;
                     case AddMode.SkipExisting:
                         return resultUnit;
                     default:
