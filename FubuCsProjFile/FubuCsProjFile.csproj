@@ -138,7 +138,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj">
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
       <Project>{f3f6f3ca-a5f5-4994-9666-3fed63614b8f}</Project>
       <Name>SunamoExceptions</Name>
     </ProjectReference>
