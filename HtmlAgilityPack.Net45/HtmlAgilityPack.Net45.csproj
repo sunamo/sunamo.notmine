@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -80,7 +80,7 @@
       <Project>{bbb4128f-3fd5-42f3-90d1-b9b1a1e65d6e}</Project>
       <Name>sunamo.web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj">
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
       <Project>{a9c23d88-7047-4294-8fcc-70036783e76a}</Project>
       <Name>SunamoExceptions</Name>
     </ProjectReference>
