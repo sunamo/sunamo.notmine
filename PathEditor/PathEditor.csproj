@@ -123,7 +123,7 @@
       <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
       <Name>duo</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj">
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
       <Project>{f3f6f3ca-a5f5-4994-9666-3fed63614b8f}</Project>
       <Name>SunamoExceptions</Name>
     </ProjectReference>

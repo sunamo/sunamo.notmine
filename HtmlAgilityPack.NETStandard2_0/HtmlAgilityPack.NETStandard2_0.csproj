@@ -43,6 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj" />
     <ProjectReference Include="..\..\sunamo\SunamoExceptions\SunamoExceptions.csproj" />
   </ItemGroup>
 
