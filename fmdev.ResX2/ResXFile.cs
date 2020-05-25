@@ -10,8 +10,11 @@ namespace fmdev.ResX
     using System.IO;
     using System.Linq;
     using System.Resources;
+    using System.Resources.NetStandard;
     using System.Text;
     using System.Threading.Tasks;
+    using SunamoExceptions;
+
     public static class ResXFile
     {
 static Type type = typeof(ResXFile);
@@ -82,20 +85,21 @@ static Type type = typeof(ResXFile);
         {
             if (!File.Exists(resXFile))
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),FileNotFoundException($"The file '{resXFile}' could not be found");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),$"The file '{resXFile}' could not be found");
             }
             if (string.IsNullOrEmpty(className))
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentException($"The class name must not be empty or null");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),$"The class name must not be empty or null");
             }
             if (string.IsNullOrEmpty(namespaceName))
             {
-                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),ArgumentException($"The namespace name must not be empty or null");
+                ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),$"The namespace name must not be empty or null");
             }
             string[] unmatchedElements;
+            //System.Resources.Tools.
             var codeProvider = new Microsoft.CSharp.CSharpCodeProvider();
             System.CodeDom.CodeCompileUnit code =
-                System.Resources.Tools.StronglyTypedResourceBuilder.Create(
+                StronglyTypedResourceBuilder.Create(
                     resXFile,
                     className,
                     namespaceName,
