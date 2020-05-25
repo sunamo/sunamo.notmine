@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
@@ -23,16 +22,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collage.Engine", "Collage.E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlAgilityPack.Net45", "HtmlAgilityPack.Net45\HtmlAgilityPack.Net45.csproj", "{8DCFDE1C-263F-41D4-B518-9B7EE06F7D52}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoExceptions", "..\sunamo\SunamoExceptions\SunamoExceptions.csproj", "{F3F6F3CA-A5F5-4994-9666-3FED63614B8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoExceptions", "..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj", "{F3F6F3CA-A5F5-4994-9666-3FED63614B8F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunamoGpx", "SunamoGpx\SunamoGpx.csproj", "{6A4711EA-F8B6-4847-B7EE-B13B1364F919}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlnGen.Common", "SlnGen.Common\SlnGen.Common.csproj", "{BD75C897-82D9-43FC-97D9-F46DAD70C47E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExifLib", "ExifLib\ExifLib.csproj", "{4B695D0B-1FDF-4570-AD7A-6C431C55341B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExifLib.standard", "ExifLib.standard\ExifLib.standard.csproj", "{259DBA9D-6703-4A5A-A127-F7F7098F6470}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems*{5ba9a0d7-173f-4c4f-affa-3dd6dc2f9a79}*SharedItemsImports = 13
 		HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems*{8dcfde1c-263f-41d4-b518-9b7ee06f7d52}*SharedItemsImports = 4
+		HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems*{ef331821-8547-4cc6-9ce1-dbbde919714f}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -187,6 +191,30 @@ Global
 		{BD75C897-82D9-43FC-97D9-F46DAD70C47E}.Release|x64.Build.0 = Release|Any CPU
 		{BD75C897-82D9-43FC-97D9-F46DAD70C47E}.Release|x86.ActiveCfg = Release|Any CPU
 		{BD75C897-82D9-43FC-97D9-F46DAD70C47E}.Release|x86.Build.0 = Release|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Debug|x64.Build.0 = Debug|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Debug|x86.Build.0 = Debug|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Release|x64.ActiveCfg = Release|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Release|x64.Build.0 = Release|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B695D0B-1FDF-4570-AD7A-6C431C55341B}.Release|x86.Build.0 = Release|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Debug|x64.Build.0 = Debug|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Debug|x86.Build.0 = Debug|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Release|Any CPU.Build.0 = Release|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Release|x64.ActiveCfg = Release|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Release|x64.Build.0 = Release|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Release|x86.ActiveCfg = Release|Any CPU
+		{259DBA9D-6703-4A5A-A127-F7F7098F6470}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
