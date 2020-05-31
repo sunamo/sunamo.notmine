@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package>
+  <metadata minClientVersion="3.3">
+    <id>MimeTypes</id>
+    <version>2.0.1</version>
+    <title>MimeTypes.cs</title>
+    <authors>Kristian Hellang</authors>
+    <owners>Kristian Hellang</owners>
+    <license type="expression">Apache-2.0</license>
+    <projectUrl>https://github.com/khellang/MimeTypes</projectUrl>
+    <icon>images\nuget-icon.png</icon>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple lookup from file name/extension to MIME/media type, generated from Apache's mime.types.</description>
+    <copyright>Copyright © Kristian Hellang 2016</copyright>
+    <developmentDependency>true</developmentDependency>
+    <tags>MIME Media Types</tags>
+    <contentFiles>
+      <files include="cs/**/*.*" buildAction="Compile" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="MimeTypes.NullableAttributes.cs.pp" target="contentFiles\cs\any" />
+    <file src="MimeTypes.cs.pp" target="contentFiles\cs\netstandard2.1" />
+    <file src="MimeTypes.cs.pp" target="contentFiles\cs\netcoreapp3.0" />
+    <file src="..\..\etc\nuget-icon.png" target="images" />
+  </files>
+</package>

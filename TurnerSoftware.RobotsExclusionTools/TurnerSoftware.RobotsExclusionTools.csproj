@@ -1,0 +1,11 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>TurnerSoftware.RobotsExclusionTools</AssemblyName>
+    <Description>Robots.txt parsing and querying utility</Description>
+    <PackageTags>$(PackageBaseTags)</PackageTags>
+    <Authors>James Turner</Authors>
+  </PropertyGroup>
+
+</Project>
