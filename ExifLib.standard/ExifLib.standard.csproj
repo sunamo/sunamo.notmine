@@ -1,9 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="..\ExifLib\ExifIds.cs" Link="ExifIds.cs" />
     <Compile Include="..\ExifLib\ExifIO.cs" Link="ExifIO.cs" />
@@ -11,5 +10,4 @@
     <Compile Include="..\ExifLib\ExifTag.cs" Link="ExifTag.cs" />
     <Compile Include="..\ExifLib\JpegInfo.cs" Link="JpegInfo.cs" />
   </ItemGroup>
-
 </Project>

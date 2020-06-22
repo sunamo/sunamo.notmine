@@ -45,6 +45,16 @@ namespace SlnGen.Common
         /// Stores the ToolsVersion to use when loading projects.
         /// </summary>
         private readonly string _toolsVersion;
+
+
+        /// <summary>
+        /// Class BuildEngine you get after obtain nuget MSBuild.ProjectCreation
+        /// </summary>
+        /// <param name="BuildEngineCreate"></param>
+        public MSBuildProjectLoader(IBuildEngine BuildEngineCreate) : this(null, ProjectCollection.GlobalProjectCollection.DefaultToolsVersion, BuildEngineCreate)
+        {
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MSBuildProjectLoader"/> class.
         /// </summary>

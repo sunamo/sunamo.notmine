@@ -21,10 +21,15 @@ namespace PathEditor
     /// <summary>
     /// Interaction logic for SuggestTextBoxPath.xaml
     /// </summary>
-    public partial class SuggestTextBoxPath : UserControl
+    public partial class SuggestTextBoxPath : UserControl, IValidateControl
     {
         public static Type type = typeof(SuggestTextBoxPath);
         public PathEditorViewModel dataContext = null;
+
+        static SuggestTextBoxPath()
+        {
+            TypesControlsSunamo.tPathEditor = type;
+        }
 
         public SuggestTextBoxPath()
         {
@@ -36,22 +41,26 @@ namespace PathEditor
 
         public static bool validated;
 
-        public static void Validate(object tb, SuggestTextBoxPath control, ValidateData d = null)
+        public bool Validated { get => validated; set => validated = value; }
+
+        public  bool Validate(object tb, object o, ValidateData d = null)
         {
+            SuggestTextBoxPath control = (SuggestTextBoxPath)o;
             var path = control.dataContext.SelectedPathPart.Path;
+
             // Cant use FS because have to import PathEditor to both desktop and desktop.web  (common validation method)
             if (File.Exists(path ) || Directory.Exists(path))
             {
                 validated = true;
-                return;
             }
+
             validated = false;
-            return;
+            return validated;
         }
 
-        public void Validate(object tbFolder, ValidateData d = null)
+        public bool Validate(object tbFolder, ValidateData d = null)
         {
-            Validate(tbFolder, this, d);
+            return Validate(tbFolder, this, d);
         }
 
         /// <summary>
@@ -68,6 +77,11 @@ namespace PathEditor
             //txt.txt.Text = fullPathFolder;
             txt.Tag = tag;
             return txt;
+        }
+
+        public object GetContent()
+        {
+            return dataContext.SelectedPathPart.Path;
         }
     }
 }
