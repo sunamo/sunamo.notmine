@@ -70,8 +70,14 @@
     <EmbeddedResource Include="XML\countries.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\sunamo.fragments\Lang\Lang.csproj">
-      <Project>{693c5eaf-4f45-43a8-acd3-2b27f9288397}</Project>
+      <Project>{171a4585-709b-41dc-acd8-810386f591cf}</Project>
       <Name>Lang</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
@@ -79,12 +85,5 @@
       <Name>SunamoExceptions</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
