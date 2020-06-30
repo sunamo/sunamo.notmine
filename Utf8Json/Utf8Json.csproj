@@ -3,7 +3,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <Configurations>Debug;Release;</Configurations>
         <SignAssembly>true</SignAssembly>
-        <AssemblyOriginatorKeyFile>opensource.snk</AssemblyOriginatorKeyFile>
+        <AssemblyOriginatorKeyFile>_\opensource.snk</AssemblyOriginatorKeyFile>
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
 

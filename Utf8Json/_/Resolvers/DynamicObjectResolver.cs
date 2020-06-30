@@ -56,7 +56,7 @@ namespace Utf8Json.Resolvers.Internal
 
     #region DynamicAssembly
 
-    internal sealed class DynamicObjectResolverAllowPrivateFalseExcludeNullFalseNameMutateOriginal : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateFalseExcludeNullFalseNameMutateOriginal : IJsonFormatterResolver
 #if DEBUG && (NET45 || NET47)
             , ISave
 #endif
@@ -101,7 +101,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateFalseExcludeNullFalseNameMutateCamelCase : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateFalseExcludeNullFalseNameMutateCamelCase : IJsonFormatterResolver
 #if DEBUG && (NET45 || NET47)
             , ISave
 #endif
@@ -146,7 +146,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateFalseExcludeNullFalseNameMutateSnakeCase : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateFalseExcludeNullFalseNameMutateSnakeCase : IJsonFormatterResolver
 #if DEBUG && (NET45 || NET47)
             , ISave
 #endif
@@ -191,7 +191,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateFalseExcludeNullTrueNameMutateOriginal : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateFalseExcludeNullTrueNameMutateOriginal : IJsonFormatterResolver
 #if DEBUG && (NET45 || NET47)
             , ISave
 #endif
@@ -236,7 +236,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateFalseExcludeNullTrueNameMutateCamelCase : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateFalseExcludeNullTrueNameMutateCamelCase : IJsonFormatterResolver
 #if DEBUG && (NET45 || NET47)
             , ISave
 #endif
@@ -281,7 +281,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateFalseExcludeNullTrueNameMutateSnakeCase : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateFalseExcludeNullTrueNameMutateSnakeCase : IJsonFormatterResolver
 #if DEBUG && (NET45 || NET47)
             , ISave
 #endif
@@ -330,7 +330,7 @@ namespace Utf8Json.Resolvers.Internal
 
     #region DynamicMethod
 
-    internal sealed class DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateOriginal : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateOriginal : IJsonFormatterResolver
     {
         // configuration
         public static readonly IJsonFormatterResolver Instance = new DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateOriginal();
@@ -353,7 +353,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateCamelCase : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateCamelCase : IJsonFormatterResolver
     {
         // configuration
         public static readonly IJsonFormatterResolver Instance = new DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateCamelCase();
@@ -376,7 +376,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateSnakeCase : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateSnakeCase : IJsonFormatterResolver
     {
         // configuration
         public static readonly IJsonFormatterResolver Instance = new DynamicObjectResolverAllowPrivateTrueExcludeNullFalseNameMutateSnakeCase();
@@ -399,7 +399,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateOriginal : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateOriginal : IJsonFormatterResolver
     {
         // configuration
         public static readonly IJsonFormatterResolver Instance = new DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateOriginal();
@@ -422,7 +422,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateCamelCase : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateCamelCase : IJsonFormatterResolver
     {
         // configuration
         public static readonly IJsonFormatterResolver Instance = new DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateCamelCase();
@@ -445,7 +445,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateSnakeCase : IJsonFormatterResolver
+    public sealed  class DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateSnakeCase : IJsonFormatterResolver
     {
         // configuration
         public static readonly IJsonFormatterResolver Instance = new DynamicObjectResolverAllowPrivateTrueExcludeNullTrueNameMutateSnakeCase();
