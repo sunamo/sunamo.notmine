@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converters\ConverterCountryToFlag.cs" />
+    <Compile Include="CountryComboBoxUC.cs" />
     <Compile Include="CountryDropdown.xaml.cs">
       <DependentUpon>CountryDropdown.xaml</DependentUpon>
     </Compile>
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj">
       <Project>{f3f6f3ca-a5f5-4994-9666-3fed63614b8f}</Project>
       <Name>SunamoExceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\duo\duo.csproj">
+      <Project>{d4c45a56-f726-4b63-b94b-4172ac65f358}</Project>
+      <Name>duo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
