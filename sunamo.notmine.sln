@@ -38,6 +38,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExCSS", "ExCSS\ExCSS.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utf8Json", "Utf8Json\Utf8Json.csproj", "{E0740EFD-1B2F-4F1D-8366-3E70C3FD1200}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UAParser", "UAParser\UAParser.csproj", "{61543FCA-6E6C-44DB-87F1-0546658E343C}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		HtmlAgilityPack.Shared\HtmlAgilityPack.Shared.projitems*{5ba9a0d7-173f-4c4f-affa-3dd6dc2f9a79}*SharedItemsImports = 13
@@ -269,6 +271,18 @@ Global
 		{E0740EFD-1B2F-4F1D-8366-3E70C3FD1200}.Release|x64.Build.0 = Release|Any CPU
 		{E0740EFD-1B2F-4F1D-8366-3E70C3FD1200}.Release|x86.ActiveCfg = Release|Any CPU
 		{E0740EFD-1B2F-4F1D-8366-3E70C3FD1200}.Release|x86.Build.0 = Release|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Debug|x64.Build.0 = Debug|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Debug|x86.Build.0 = Debug|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Release|x64.ActiveCfg = Release|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Release|x64.Build.0 = Release|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Release|x86.ActiveCfg = Release|Any CPU
+		{61543FCA-6E6C-44DB-87F1-0546658E343C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

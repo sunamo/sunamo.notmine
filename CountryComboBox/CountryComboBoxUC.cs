@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 public class CountryComboBoxUC
@@ -11,15 +12,15 @@ public class CountryComboBoxUC
 	public static CountryDropdown cd = null;
 	public static Label lblLang = null;
 
-	public static void SetToRowWitlLabel(ref bool loaded, Label lblLang, int row, string ThisAppL, IResourceHelper embeddedResourcesH, Grid grid, Action<string> Cd_SelectionChanged)
+	public static void SetToRowWitlLabel(ref bool loaded, Label lblLang, int row, string ThisAppL, IResourceHelper embeddedResourcesH, Action<int, string, FrameworkElement> AddControl, Action<string> Cd_SelectionChanged)
     {
 		#region lblLang
 		
-		lblLang.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
-		Grid.SetRow(lblLang, row);
+		//lblLang.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+		//Grid.SetRow(lblLang, row);
 
 
-		grid.Children.Add(lblLang);
+		//grid.Children.Add(lblLang);
 		#endregion
 
 		#region lang
@@ -35,7 +36,8 @@ public class CountryComboBoxUC
 
 		cd.Init(embeddedResourcesH.GetStream("XML/countries.xml"));
 
-		grid.Children.Add(cd);
+		AddControl(row, null, cd);
+		//grid.Children.Add(cd);
 		#endregion
 	}
 }
