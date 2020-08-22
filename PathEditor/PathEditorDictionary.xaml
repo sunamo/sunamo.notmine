@@ -3,11 +3,7 @@
                     xmlns:props="clr-namespace:PathEditor.Properties"
              xmlns:support="clr-namespace:PathEditor.Views.Support"
                     xmlns:local="clr-namespace:PathEditor">
-    
-    <!--To be working, must be inserted:
-    <Application.Resources>
-        <ResourceDictionary Source="/PathEditor;component/PathEditorDictionary.xaml"></ResourceDictionary>
-    </Application.Resources>-->
+
     
     <props:LocalResources x:Key="localResources"/>
     <support:PathExistenceToBrushConverter x:Key="PathExistenceConverter"/>
