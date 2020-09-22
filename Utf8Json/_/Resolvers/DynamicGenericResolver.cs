@@ -7,6 +7,7 @@ using Utf8Json.Formatters;
 using System.Collections.Generic;
 using Utf8Json.Resolvers.Internal;
 using System.Collections.ObjectModel;
+using SunamoExceptions;
 
 #if NETSTANDARD
 using System.Threading.Tasks;
@@ -36,6 +37,30 @@ namespace Utf8Json.Resolvers
             {
                 formatter = (IJsonFormatter<T>)DynamicGenericResolverGetFormatterHelper.GetFormatter(typeof(T));
             }
+            //    var v = string.Empty;
+            //    int i = 0;
+            //    while (true)
+            //    {
+            //        if (i == 50)
+            //        {
+            //            throw new Exception("error:More than 50 repetities in JavaScriptSerialization.Serialize");
+
+            //        }
+
+            //        try
+            //        {
+                        
+
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            i++;
+            //            continue;
+            //        }
+            //        break;
+            //    }
+                
+            //}
         }
     }
 }
