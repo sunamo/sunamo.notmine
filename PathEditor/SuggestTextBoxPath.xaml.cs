@@ -19,7 +19,7 @@ using System.Windows.Shapes;
 namespace PathEditor
 {
     /// <summary>
-    /// Interaction logic for SuggestTextBoxPath.xaml
+    /// 
     /// </summary>
     public partial class SuggestTextBoxPath : UserControl, IValidateControl
     {
