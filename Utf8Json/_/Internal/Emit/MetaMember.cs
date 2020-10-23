@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 
 namespace Utf8Json.Internal.Emit
 {
-    internal class MetaMember
+    public class MetaMember
     {
         public string Name { get; private set; }
         public string MemberName { get; private set; }
@@ -111,7 +111,7 @@ namespace Utf8Json.Internal.Emit
     }
 
     // used for serialize exception...
-    internal class StringConstantValueMetaMember : MetaMember
+    public class StringConstantValueMetaMember : MetaMember
     {
         readonly string constant;
 
@@ -134,15 +134,15 @@ namespace Utf8Json.Internal.Emit
     }
 
     // used for serialize exception...
-    internal class InnerExceptionMetaMember : MetaMember
+    public class InnerExceptionMetaMember : MetaMember
     {
         static readonly MethodInfo getInnerException = ExpressionUtility.GetPropertyInfo((Exception ex) => ex.InnerException).GetGetMethod();
         static readonly MethodInfo nongenericSerialize = ExpressionUtility.GetMethodInfo<JsonWriter>(writer => JsonSerializer.NonGeneric.Serialize(ref writer, default(object), default(IJsonFormatterResolver)));
 
         // set after...
-        internal ArgumentField argWriter;
-        internal ArgumentField argValue;
-        internal ArgumentField argResolver;
+        public ArgumentField argWriter;
+        public ArgumentField argValue;
+        public ArgumentField argResolver;
 
         public InnerExceptionMetaMember(string name)
             : base(typeof(Exception), name, name, false, true)

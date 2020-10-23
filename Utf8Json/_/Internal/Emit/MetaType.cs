@@ -6,16 +6,16 @@ using System.Runtime.Serialization;
 
 namespace Utf8Json.Internal.Emit
 {
-    internal class MetaType
+    public class MetaType
     {
         public Type Type { get; private set; }
         public bool IsClass { get; private set; }
         public bool IsStruct { get { return !IsClass; } }
         public bool IsConcreteClass { get; private set; }
 
-        public ConstructorInfo BestmatchConstructor { get; internal set; }
-        public MetaMember[] ConstructorParameters { get; internal set; }
-        public MetaMember[] Members { get; internal set; }
+        public ConstructorInfo BestmatchConstructor { get;  set; }
+        public MetaMember[] ConstructorParameters { get;  set; }
+        public MetaMember[] Members { get;  set; }
 
         public MetaType(Type type, Func<string, string> nameMutetor, bool allowPrivate)
         {

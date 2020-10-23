@@ -6,7 +6,7 @@ namespace SunamoJson
 { 
     public class XlfKeys
     {
-        internal static string Deserialize = "Deserialize";
-        internal static string Serialize = "Serialize";
+        public static string Deserialize = "Deserialize";
+        public static string Serialize = "Serialize";
     }
 }

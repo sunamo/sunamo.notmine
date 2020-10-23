@@ -7,24 +7,24 @@ using Utf8Json.Formatters.Internal;
 namespace Utf8Json.Formatters.Internal
 {
     // reduce static constructor generate size on generics(especially IL2CPP on Unity)
-    internal static class ValueTupleFormatterHelper
+    public static class ValueTupleFormatterHelper
     {
-        internal static readonly byte[][] nameCache1;
-        internal static readonly AutomataDictionary dictionary1;
-        internal static readonly byte[][] nameCache2;
-        internal static readonly AutomataDictionary dictionary2;
-        internal static readonly byte[][] nameCache3;
-        internal static readonly AutomataDictionary dictionary3;
-        internal static readonly byte[][] nameCache4;
-        internal static readonly AutomataDictionary dictionary4;
-        internal static readonly byte[][] nameCache5;
-        internal static readonly AutomataDictionary dictionary5;
-        internal static readonly byte[][] nameCache6;
-        internal static readonly AutomataDictionary dictionary6;
-        internal static readonly byte[][] nameCache7;
-        internal static readonly AutomataDictionary dictionary7;
-        internal static readonly byte[][] nameCache8;
-        internal static readonly AutomataDictionary dictionary8;
+        public static readonly byte[][] nameCache1;
+        public static readonly AutomataDictionary dictionary1;
+        public static readonly byte[][] nameCache2;
+        public static readonly AutomataDictionary dictionary2;
+        public static readonly byte[][] nameCache3;
+        public static readonly AutomataDictionary dictionary3;
+        public static readonly byte[][] nameCache4;
+        public static readonly AutomataDictionary dictionary4;
+        public static readonly byte[][] nameCache5;
+        public static readonly AutomataDictionary dictionary5;
+        public static readonly byte[][] nameCache6;
+        public static readonly AutomataDictionary dictionary6;
+        public static readonly byte[][] nameCache7;
+        public static readonly AutomataDictionary dictionary7;
+        public static readonly byte[][] nameCache8;
+        public static readonly AutomataDictionary dictionary8;
 
         static ValueTupleFormatterHelper()
         {

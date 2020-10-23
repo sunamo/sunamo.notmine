@@ -6,7 +6,7 @@ namespace Utf8Json.Internal.DoubleConversion
 {
     using uint64_t = UInt64;
 
-    internal struct Vector
+    public struct Vector
     {
         public readonly byte[] bytes;
         public readonly int start;
@@ -57,7 +57,7 @@ namespace Utf8Json.Internal.DoubleConversion
         }
     }
 
-    internal static class StringToDouble
+    public static class StringToDouble
     {
         [ThreadStatic]
         static byte[] copyBuffer;

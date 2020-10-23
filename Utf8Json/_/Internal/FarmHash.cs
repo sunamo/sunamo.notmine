@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace Utf8Json.Internal
 {
-    internal static class FarmHash
+    public static class FarmHash
     {
         // entry point of 32bit
 

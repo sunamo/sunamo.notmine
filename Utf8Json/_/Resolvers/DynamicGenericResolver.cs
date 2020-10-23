@@ -67,7 +67,7 @@ namespace Utf8Json.Resolvers
 
 namespace Utf8Json.Resolvers.Internal
 {
-    internal static class DynamicGenericResolverGetFormatterHelper
+    public static class DynamicGenericResolverGetFormatterHelper
     {
         static readonly Dictionary<Type, Type> formatterMap = new Dictionary<Type, Type>()
         {
@@ -104,7 +104,7 @@ namespace Utf8Json.Resolvers.Internal
         };
 
         // Reduce IL2CPP code generate size(don't write long code in <T>)
-        internal static object GetFormatter(Type t)
+        public static object GetFormatter(Type t)
         {
             var ti = t.GetTypeInfo();
 

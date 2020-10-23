@@ -1219,7 +1219,7 @@ namespace Utf8Json
             return offset;
         }
 
-        internal static class StringBuilderCache
+        public static class StringBuilderCache
         {
             [ThreadStatic]
             static byte[] buffer;

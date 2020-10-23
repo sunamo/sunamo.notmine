@@ -7,7 +7,7 @@ namespace Utf8Json.Internal.DoubleConversion
     using uint32_t = System.UInt32;
     using System.Collections.Generic;
 
-    internal struct StringBuilder
+    public struct StringBuilder
     {
         public byte[] buffer;
         public int offset;
@@ -72,7 +72,7 @@ namespace Utf8Json.Internal.DoubleConversion
     }
 
     // C# API
-    internal static partial class DoubleToStringConverter
+    public static partial class DoubleToStringConverter
     {
         [ThreadStatic]
         static byte[] decimalRepBuffer;
@@ -139,7 +139,7 @@ namespace Utf8Json.Internal.DoubleConversion
     // https://github.com/google/double-conversion/blob/master/double-conversion/fast-dtoa.h
     // https://github.com/google/double-conversion/blob/master/double-conversion/fast-dtoa.cc
 
-    internal static partial class DoubleToStringConverter
+    public static partial class DoubleToStringConverter
     {
         enum FastDtoaMode
         {

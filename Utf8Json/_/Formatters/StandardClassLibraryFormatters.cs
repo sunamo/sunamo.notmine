@@ -685,10 +685,10 @@ namespace Utf8Json.Formatters
 
 namespace Utf8Json.Formatters.Internal
 {
-    internal static class StandardClassLibraryFormatterHelper
+    public static class StandardClassLibraryFormatterHelper
     {
-        internal static readonly byte[][] keyValuePairName;
-        internal static readonly AutomataDictionary keyValuePairAutomata;
+        public static readonly byte[][] keyValuePairName;
+        public static readonly AutomataDictionary keyValuePairAutomata;
 
         static StandardClassLibraryFormatterHelper()
         {

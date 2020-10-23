@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Utf8Json.Internal
 {
-    internal static class ReflectionExtensions
+    public static class ReflectionExtensions
     {
         public static bool IsNullable(this System.Reflection.TypeInfo type)
         {

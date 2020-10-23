@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Utf8Json.Internal
 {
-    internal class ILStreamReader : BinaryReader
+    public class ILStreamReader : BinaryReader
     {
         static readonly OpCode[] oneByteOpCodes = new OpCode[0x100];
         static readonly OpCode[] twoByteOpCodes = new OpCode[0x100];

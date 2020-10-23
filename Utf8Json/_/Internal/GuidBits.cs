@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Utf8Json.Internal
 {
     [StructLayout(LayoutKind.Explicit, Pack = 1)]
-    internal struct GuidBits
+    public struct GuidBits
     {
         [FieldOffset(0)]
         public readonly Guid Value;

@@ -8,7 +8,7 @@ namespace Utf8Json.Internal
     // like ArraySegment<byte> hashtable.
     // Add is safe for construction phase only and requires capacity(does not do rehash)
 
-    internal class ByteArrayStringHashTable<T> : IEnumerable<KeyValuePair<string, T>>
+    public class ByteArrayStringHashTable<T> : IEnumerable<KeyValuePair<string, T>>
     {
         readonly Entry[][] buckets; // immutable array(faster than linkedlist)
         readonly ulong indexFor;

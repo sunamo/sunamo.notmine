@@ -36,9 +36,9 @@ namespace Utf8Json.Resolvers
 
 namespace Utf8Json.Resolvers.Internal
 {
-    internal static class StandardResolverHelper
+    public static class StandardResolverHelper
     {
-        internal static readonly IJsonFormatterResolver[] CompositeResolverBase = new[]
+        public static readonly IJsonFormatterResolver[] CompositeResolverBase = new[]
         {
             BuiltinResolver.Instance, // Builtin
 #if !NETSTANDARD
@@ -50,7 +50,7 @@ namespace Utf8Json.Resolvers.Internal
         };
     }
 
-    internal sealed class DefaultStandardResolver : IJsonFormatterResolver
+    public sealed class DefaultStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new DefaultStandardResolver();
@@ -118,7 +118,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class CamelCaseStandardResolver : IJsonFormatterResolver
+    public sealed class CamelCaseStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new CamelCaseStandardResolver();
@@ -186,7 +186,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class SnakeCaseStandardResolver : IJsonFormatterResolver
+    public sealed class SnakeCaseStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new SnakeCaseStandardResolver();
@@ -254,7 +254,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class ExcludeNullStandardResolver : IJsonFormatterResolver
+    public sealed class ExcludeNullStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new ExcludeNullStandardResolver();
@@ -322,7 +322,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class ExcludeNullCamelCaseStandardResolver : IJsonFormatterResolver
+    public sealed class ExcludeNullCamelCaseStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new ExcludeNullCamelCaseStandardResolver();
@@ -390,7 +390,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class ExcludeNullSnakeCaseStandardResolver : IJsonFormatterResolver
+    public sealed class ExcludeNullSnakeCaseStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new ExcludeNullSnakeCaseStandardResolver();
@@ -459,7 +459,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class AllowPrivateStandardResolver : IJsonFormatterResolver
+    public sealed class AllowPrivateStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new AllowPrivateStandardResolver();
@@ -528,7 +528,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class AllowPrivateCamelCaseStandardResolver : IJsonFormatterResolver
+    public sealed class AllowPrivateCamelCaseStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new AllowPrivateCamelCaseStandardResolver();
@@ -597,7 +597,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class AllowPrivateSnakeCaseStandardResolver : IJsonFormatterResolver
+    public sealed class AllowPrivateSnakeCaseStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new AllowPrivateSnakeCaseStandardResolver();
@@ -666,7 +666,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class AllowPrivateExcludeNullStandardResolver : IJsonFormatterResolver
+    public sealed class AllowPrivateExcludeNullStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new AllowPrivateExcludeNullStandardResolver();
@@ -735,7 +735,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class AllowPrivateExcludeNullCamelCaseStandardResolver : IJsonFormatterResolver
+    public sealed class AllowPrivateExcludeNullCamelCaseStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new AllowPrivateExcludeNullCamelCaseStandardResolver();
@@ -804,7 +804,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class AllowPrivateExcludeNullSnakeCaseStandardResolver : IJsonFormatterResolver
+    public sealed class AllowPrivateExcludeNullSnakeCaseStandardResolver : IJsonFormatterResolver
     {
         // configure
         public static readonly IJsonFormatterResolver Instance = new AllowPrivateExcludeNullSnakeCaseStandardResolver();

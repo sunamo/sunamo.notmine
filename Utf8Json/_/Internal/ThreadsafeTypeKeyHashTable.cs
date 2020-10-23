@@ -3,7 +3,7 @@
 namespace Utf8Json.Internal
 {
     // Safe for multiple-read, single-write.
-    internal class ThreadsafeTypeKeyHashTable<TValue>
+    public class ThreadsafeTypeKeyHashTable<TValue>
     {
         Entry[] buckets;
         int size; // only use in writer lock

@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 
 namespace Utf8Json.Internal.Emit
 {
-    internal struct ArgumentField
+    public struct ArgumentField
     {
         readonly int i;
         readonly bool @ref;
@@ -46,7 +46,7 @@ namespace Utf8Json.Internal.Emit
     /// <summary>
     /// Provides optimized generation code and helpers.
     /// </summary>
-    internal static class ILGeneratorExtensions
+    public static class ILGeneratorExtensions
     {
         /// <summary>
         /// Loads the local variable at a specific index onto the evaluation stack.

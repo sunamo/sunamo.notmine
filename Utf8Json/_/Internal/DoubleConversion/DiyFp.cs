@@ -7,7 +7,7 @@ namespace Utf8Json.Internal.DoubleConversion
     // https://github.com/google/double-conversion/blob/master/double-conversion/diy-fp.cc
     // https://github.com/google/double-conversion/blob/master/double-conversion/diy-fp.h
 
-    internal struct DiyFp
+    public struct DiyFp
     {
         public const int kSignificandSize = 64;
         public const ulong kUint64MSB = 0x8000000000000000; // 0x80000000_00000000;

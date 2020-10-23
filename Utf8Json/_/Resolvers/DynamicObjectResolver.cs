@@ -470,7 +470,7 @@ namespace Utf8Json.Resolvers.Internal
 
     #endregion
 
-    internal static class DynamicObjectTypeBuilder
+    public static class DynamicObjectTypeBuilder
     {
 #if NETSTANDARD
         static readonly Regex SubtractFullNameRegex = new Regex(@", Version=\d+.\d+.\d+.\d+, Culture=\w+, PublicKeyToken=\w+", RegexOptions.Compiled);
@@ -1479,7 +1479,7 @@ namespace Utf8Json.Resolvers.Internal
             public LocalBuilder IsDeserializedField;
         }
 
-        internal static class EmitInfo
+        public static class EmitInfo
         {
             public static readonly ConstructorInfo ObjectCtor = typeof(object).GetTypeInfo().DeclaredConstructors.First(x => x.GetParameters().Length == 0);
 
@@ -1518,7 +1518,7 @@ namespace Utf8Json.Resolvers.Internal
                 return typeof(Nullable<>).MakeGenericType(type).GetRuntimeProperty("HasValue").GetGetMethod();
             }
 
-            internal static class JsonWriter
+            public static class JsonWriter
             {
                 public static readonly MethodInfo GetEncodedPropertyNameWithBeginObject = ExpressionUtility.GetMethodInfo(() => Utf8Json.JsonWriter.GetEncodedPropertyNameWithBeginObject(default(string)));
 
@@ -1539,7 +1539,7 @@ namespace Utf8Json.Resolvers.Internal
                 }
             }
 
-            internal static class JsonReader
+            public static class JsonReader
             {
                 public static readonly MethodInfo ReadIsNull = ExpressionUtility.GetMethodInfo((Utf8Json.JsonReader reader) => reader.ReadIsNull());
                 public static readonly MethodInfo ReadIsBeginObjectWithVerify = ExpressionUtility.GetMethodInfo((Utf8Json.JsonReader reader) => reader.ReadIsBeginObjectWithVerify());
@@ -1554,14 +1554,14 @@ namespace Utf8Json.Resolvers.Internal
                 }
             }
 
-            internal static class JsonFormatterAttr
+            public static class JsonFormatterAttr
             {
-                internal static readonly MethodInfo FormatterType = ExpressionUtility.GetPropertyInfo((Utf8Json.JsonFormatterAttribute attr) => attr.FormatterType).GetGetMethod();
-                internal static readonly MethodInfo Arguments = ExpressionUtility.GetPropertyInfo((Utf8Json.JsonFormatterAttribute attr) => attr.Arguments).GetGetMethod();
+                public static readonly MethodInfo FormatterType = ExpressionUtility.GetPropertyInfo((Utf8Json.JsonFormatterAttribute attr) => attr.FormatterType).GetGetMethod();
+                public static readonly MethodInfo Arguments = ExpressionUtility.GetPropertyInfo((Utf8Json.JsonFormatterAttribute attr) => attr.Arguments).GetGetMethod();
             }
         }
 
-        internal class Utf8JsonDynamicObjectResolverException : Exception
+        public class Utf8JsonDynamicObjectResolverException : Exception
         {
             public Utf8JsonDynamicObjectResolverException(string message)
                 : base(message)
@@ -1571,10 +1571,10 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal delegate void AnonymousJsonSerializeAction<T>(byte[][] stringByteKeysField, object[] customFormatters, ref JsonWriter writer, T value, IJsonFormatterResolver resolver);
-    internal delegate T AnonymousJsonDeserializeFunc<T>(object[] customFormatters, ref JsonReader reader, IJsonFormatterResolver resolver);
+    public delegate void AnonymousJsonSerializeAction<T>(byte[][] stringByteKeysField, object[] customFormatters, ref JsonWriter writer, T value, IJsonFormatterResolver resolver);
+    public delegate T AnonymousJsonDeserializeFunc<T>(object[] customFormatters, ref JsonReader reader, IJsonFormatterResolver resolver);
 
-    internal class DynamicMethodAnonymousFormatter<T> : IJsonFormatter<T>
+    public class DynamicMethodAnonymousFormatter<T> : IJsonFormatter<T>
     {
         readonly byte[][] stringByteKeysField;
         readonly object[] serializeCustomFormatters;

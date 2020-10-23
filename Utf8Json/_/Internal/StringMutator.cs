@@ -3,7 +3,7 @@ using System.Text;
 
 namespace Utf8Json.Internal
 {
-    internal static class StringMutator
+    public static class StringMutator
     {
         /// <summary>
         /// MyProperty -> MyProperty

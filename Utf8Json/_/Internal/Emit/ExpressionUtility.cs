@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace Utf8Json.Internal.Emit
 {
-    internal static class ExpressionUtility
+    public static class ExpressionUtility
     {
         // Method
 

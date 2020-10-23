@@ -6,7 +6,7 @@ namespace Utf8Json.Internal.DoubleConversion
     using uint32_t = UInt32;
 
     [StructLayout(LayoutKind.Explicit, Pack = 1)]
-    internal struct UnionDoubleULong
+    public struct UnionDoubleULong
     {
         [FieldOffset(0)]
         public double d;
@@ -15,7 +15,7 @@ namespace Utf8Json.Internal.DoubleConversion
     }
 
     [StructLayout(LayoutKind.Explicit, Pack = 1)]
-    internal struct UnionFloatUInt
+    public struct UnionFloatUInt
     {
         [FieldOffset(0)]
         public float f;
@@ -25,7 +25,7 @@ namespace Utf8Json.Internal.DoubleConversion
 
     // https://github.com/google/double-conversion/blob/master/double-conversion/ieee.h
 
-    internal struct Double
+    public struct Double
     {
         public const ulong kSignMask = (0x8000000000000000);
         public const ulong kExponentMask = (0x7FF0000000000000);
@@ -288,7 +288,7 @@ namespace Utf8Json.Internal.DoubleConversion
         }
     }
 
-    internal struct Single
+    public struct Single
     {
         const int kExponentBias = 0x7F + kPhysicalSignificandSize;
         const int kDenormalExponent = -kExponentBias + 1;

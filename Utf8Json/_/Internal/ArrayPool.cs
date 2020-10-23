@@ -2,7 +2,7 @@
 
 namespace Utf8Json.Internal
 {
-    internal sealed class BufferPool : ArrayPool<byte>
+    public sealed class BufferPool : ArrayPool<byte>
     {
         public static readonly BufferPool Default = new BufferPool(65535);
 
@@ -12,7 +12,7 @@ namespace Utf8Json.Internal
         }
     }
 
-    internal class ArrayPool<T>
+    public class ArrayPool<T>
     {
         readonly int bufferLength;
         readonly object gate;

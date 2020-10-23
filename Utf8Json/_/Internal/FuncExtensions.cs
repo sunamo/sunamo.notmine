@@ -6,7 +6,7 @@ namespace Utf8Json.Internal
 {
     // Unity compiler can't understand this.
 
-    internal static class FuncExtensions
+    public static class FuncExtensions
     {
         // hack of avoid closure allocation(() => value).
         public static Func<T> AsFunc<T>(this T value)

@@ -955,10 +955,10 @@ namespace Utf8Json.Formatters
 
 namespace Utf8Json.Formatters.Internal
 {
-    internal static class CollectionFormatterHelper
+    public static class CollectionFormatterHelper
     {
-        internal static readonly byte[][] groupingName;
-        internal static readonly AutomataDictionary groupingAutomata;
+        public static readonly byte[][] groupingName;
+        public static readonly AutomataDictionary groupingAutomata;
 
         static CollectionFormatterHelper()
         {

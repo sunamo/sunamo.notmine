@@ -20,7 +20,7 @@ namespace Utf8Json.Resolvers
 
 namespace Utf8Json.Resolvers.Internal
 {
-    internal sealed class EnumDefaultResolver : IJsonFormatterResolver
+    public sealed class EnumDefaultResolver : IJsonFormatterResolver
     {
         public static readonly IJsonFormatterResolver Instance = new EnumDefaultResolver();
 
@@ -66,7 +66,7 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 
-    internal sealed class EnumUnderlyingValueResolver : IJsonFormatterResolver
+    public sealed class EnumUnderlyingValueResolver : IJsonFormatterResolver
     {
         public static readonly IJsonFormatterResolver Instance = new EnumUnderlyingValueResolver();
 

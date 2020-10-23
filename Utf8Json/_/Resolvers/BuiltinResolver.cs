@@ -33,7 +33,7 @@ namespace Utf8Json.Resolvers
         }
 
         // used from PrimitiveObjectFormatter
-        internal static class BuiltinResolverGetFormatterHelper
+        public static class BuiltinResolverGetFormatterHelper
         {
             static readonly Dictionary<Type, object> formatterMap = new Dictionary<Type, object>()
             {
@@ -133,7 +133,7 @@ namespace Utf8Json.Resolvers
     #endif
             };
 
-            internal static object GetFormatter(Type t)
+            public static object GetFormatter(Type t)
             {
                 object formatter;
                 if (formatterMap.TryGetValue(t, out formatter))

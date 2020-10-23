@@ -7,7 +7,7 @@ namespace Utf8Json.Internal.DoubleConversion
 #pragma warning disable 660
 #pragma warning disable 661
 
-    internal struct Iterator
+    public struct Iterator
     {
         byte[] buffer;
         int offset;
@@ -97,7 +97,7 @@ namespace Utf8Json.Internal.DoubleConversion
 #pragma warning restore 660
 
     // C# API
-    internal static partial class StringToDoubleConverter
+    public static partial class StringToDoubleConverter
     {
         [ThreadStatic]
         static byte[] kBuffer;
@@ -135,7 +135,7 @@ namespace Utf8Json.Internal.DoubleConversion
     }
 
     // port
-    internal static partial class StringToDoubleConverter
+    public static partial class StringToDoubleConverter
     {
         enum Flags
         {

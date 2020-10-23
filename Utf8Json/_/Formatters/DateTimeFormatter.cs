@@ -361,7 +361,7 @@ namespace Utf8Json.Formatters
 
     public sealed class UnixTimestampDateTimeFormatter : IJsonFormatter<DateTime>
     {
-        static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        public static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         public void Serialize(ref JsonWriter writer, DateTime value, IJsonFormatterResolver formatterResolver)
         {

@@ -10,7 +10,7 @@ namespace Utf8Json.Internal.DoubleConversion
     // https://github.com/google/double-conversion/blob/master/double-conversion/cached-powers.h
     // https://github.com/google/double-conversion/blob/master/double-conversion/cached-powers.cc
 
-    internal struct CachedPower
+    public struct CachedPower
     {
         public readonly uint64_t significand;
         public readonly int16_t binary_exponent;
@@ -24,7 +24,7 @@ namespace Utf8Json.Internal.DoubleConversion
         }
     };
 
-    internal static class PowersOfTenCache
+    public static class PowersOfTenCache
     {
         static readonly CachedPower[] kCachedPowers = new CachedPower[]
         {

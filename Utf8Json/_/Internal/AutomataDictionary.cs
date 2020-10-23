@@ -303,7 +303,7 @@ namespace Utf8Json.Internal
                 return null;
             }
 
-            internal static int BinarySearch(ulong[] array, int index, int length, ulong value)
+            public static int BinarySearch(ulong[] array, int index, int length, ulong value)
             {
                 int lo = index;
                 int hi = index + length - 1;
