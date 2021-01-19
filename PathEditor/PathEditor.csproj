@@ -60,10 +60,10 @@
     <Compile Include="Models\AutoCompleteProviders.cs" />
     <Compile Include="Models\PathRepository.cs" />
     <Compile Include="Models\StringExtender.cs" />
-    <Compile Include="ModelViews\BaseViewModel.cs" />
-    <Compile Include="ModelViews\DelegateCommand.cs" />
-    <Compile Include="ModelViews\PathEditorViewModel.cs" />
-    <Compile Include="ModelViews\PathPartViewModel.cs" />
+    <Compile Include="Models\ModelViews\BaseViewModel.cs" />
+    <Compile Include="Models\ModelViews\DelegateCommand.cs" />
+    <Compile Include="Models\ModelViews\PathEditorViewModel.cs" />
+    <Compile Include="Models\ModelViews\PathPartViewModel.cs" />
     <Page Include="PathEditorDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -56,10 +56,6 @@
     <ProjectReference Include="..\..\sunamo\shared\shared.csproj">
       <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
       <Name>shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj">
-      <Project>{f6f92307-b0b3-4d6c-bd9c-8b5ff5560dcf}</Project>
-      <Name>sunamo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
