@@ -30,9 +30,10 @@ namespace FubuCsProjFile
         {
             _project = new Lazy<CsProjFile>(() => csProjFile);
             _projectName = csProjFile.ProjectName;
-            _relativePath = csProjFile.FileName.PathRelativeTo(solutionDirectory);
+            _relativePath = FSXlf.GetRelativePath(solutionDirectory, csProjFile.FileName); //csProjFile.FileName.PathRelativeTo(solutionDirectory);
             _projectType = csProjFile.ProjectTypes().LastOrDefault();
             _projectGuid = csProjFile.ProjectGuid;
+            
         }
 
         public SolutionProject(string text, string solutionDirectory)
