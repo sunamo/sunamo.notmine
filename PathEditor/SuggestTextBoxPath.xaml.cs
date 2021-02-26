@@ -43,7 +43,7 @@ namespace PathEditor
 
         public bool Validated { get => validated; set => validated = value; }
 
-        public  bool Validate(object tb, object o, ValidateData d = null)
+        public  bool Validate(object tb, object o, ref ValidateData d)
         {
             SuggestTextBoxPath control = (SuggestTextBoxPath)o;
             var path = control.dataContext.SelectedPathPart.Path;
@@ -58,9 +58,9 @@ namespace PathEditor
             return validated;
         }
 
-        public bool Validate(object tbFolder, ValidateData d = null)
+        public bool Validate(object tbFolder, ref ValidateData d)
         {
-            return Validate(tbFolder, this, d);
+            return Validate(tbFolder, this, ref d);
         }
 
         /// <summary>
