@@ -8,7 +8,7 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj" />
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="netstandard">

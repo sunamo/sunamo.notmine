@@ -1,5 +1,6 @@
 ﻿namespace Collage.Engine
 {
+    using SunamoExceptions;
     using System;
     public class ProgressCounter
     {

@@ -1,3 +1,4 @@
+﻿using SunamoExceptions;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -111,7 +112,7 @@ namespace FubuCore
 
         public string ReadStringFromFile(string filename)
         {
-            return File.ReadAllText(filename);
+            return TF.ReadAllText(filename);
         }
 
         public string GetFileName(string path)

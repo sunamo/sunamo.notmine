@@ -53,12 +53,6 @@
     <Compile Include="ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo\shared\shared.csproj">
-      <Project>{77719c0d-7c8b-4b9e-a644-aee7ceb35134}</Project>
-      <Name>shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,7 @@
 ﻿using csGeoTools.Parsers;
 using csGeoTools.Utilites;
 using csGeoTools.Vincenty;
+using SunamoExceptions;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

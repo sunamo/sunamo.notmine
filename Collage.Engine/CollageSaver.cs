@@ -1,5 +1,6 @@
 ﻿namespace Collage.Engine
 {
+    using SunamoExceptions;
     using System;
     using System.Drawing;
     using System.Drawing.Imaging;

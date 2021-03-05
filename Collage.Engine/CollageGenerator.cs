@@ -4,6 +4,8 @@
     using System.Drawing;
     using System.ComponentModel;
     using System.Runtime.Remoting.Messaging;
+    using SunamoExceptions;
+
     public class CollageGenerator
     {
 static Type type = typeof(CollageGenerator);

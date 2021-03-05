@@ -1,5 +1,6 @@
 ﻿namespace Collage.Engine
 {
+    using SunamoExceptions;
     using System;
     using System.Drawing;
     public class TileTransformer
