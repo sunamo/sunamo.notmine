@@ -133,21 +133,10 @@ namespace CommandLine.Core
             if(type == typeof(object))
                 return true;
 
-            // Find all inherited defined properties and fields on the type
-            var inheritedTypes = type.GetTypeInfo().FlattenHierarchy().Select(i => i.GetTypeInfo());
+            var props = type.GetTypeInfo().GetProperties(BindingFlags.Public | BindingFlags.Instance).Any(p => p.CanWrite);
+            var fields = type.GetTypeInfo().GetFields(BindingFlags.Public | BindingFlags.Instance).Any();
 
-            foreach (var inheritedType in inheritedTypes) 
-            {
-                if (
-                    inheritedType.GetTypeInfo().GetProperties(BindingFlags.Public | BindingFlags.Instance).Any(p => p.CanWrite) ||
-                    inheritedType.GetTypeInfo().GetFields(BindingFlags.Public | BindingFlags.Instance).Any()
-                    )
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return props || fields;
         }
 
         public static object CreateDefaultForImmutable(this Type type)
@@ -219,14 +208,6 @@ namespace CommandLine.Core
                     ,typeof(TimeSpan)
                    }.Contains(type)
                 || Convert.GetTypeCode(type) != TypeCode.Object;
-        }
-
-        public static bool IsCustomStruct(this Type type)
-        {
-            var isStruct = type.GetTypeInfo().IsValueType && !type.GetTypeInfo().IsPrimitive && !type.GetTypeInfo().IsEnum &&  type != typeof(Guid);
-            if (!isStruct) return false;
-            var ctor = type.GetTypeInfo().GetConstructor(new[] { typeof(string) });
-            return ctor != null;
         }
     }
 }

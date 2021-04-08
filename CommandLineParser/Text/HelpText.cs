@@ -741,7 +741,6 @@ namespace CommandLine.Text
                                 config.PreferShortName = s.PreferShortName;
                                 config.GroupSwitches = s.GroupSwitches;
                                 config.UseEqualToken = s.UseEqualToken;
-                                config.SkipDefault = s.SkipDefault;
                             }));
                     yield return commandLine.ToString();
                 }
@@ -852,9 +851,9 @@ namespace CommandLine.Text
                               select
                                   OptionSpecification.NewSwitch(
                                       string.Empty,
-                                      verbTuple.Item1.Name.Concat(verbTuple.Item1.Aliases).ToDelimitedString(", "),
+                                      verbTuple.Item1.Name,
                                       false,
-                                      verbTuple.Item1.IsDefault ? "(Default Verb) " + verbTuple.Item1.HelpText : verbTuple.Item1.HelpText,  //Default verb
+                                      verbTuple.Item1.HelpText,
                                       string.Empty,
                                       verbTuple.Item1.Hidden);
             if (autoHelp)

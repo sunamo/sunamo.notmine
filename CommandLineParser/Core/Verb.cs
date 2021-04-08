@@ -9,36 +9,38 @@ namespace CommandLine.Core
 {
     sealed class Verb
     {
-        public Verb(string name, string helpText, bool hidden, bool isDefault, string[] aliases)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException(nameof(name));
-            Name = name;
+        private readonly string name;
+        private readonly string helpText;
+        private readonly bool hidden;
 
-            HelpText = helpText ?? throw new ArgumentNullException(nameof(helpText));
-            Hidden = hidden;
-            IsDefault = isDefault;
-            Aliases = aliases ?? new string[0];
+        public Verb(string name, string helpText, bool hidden = false)
+        {
+            this.name = name ?? throw new ArgumentNullException(nameof(name));
+            this.helpText = helpText ?? throw new ArgumentNullException(nameof(helpText));
+            this.hidden = hidden;
         }
 
-        public string Name { get; private set; }
+        public string Name
+        {
+            get { return name; }
+        }
 
-        public string HelpText { get; private set; }
+        public string HelpText
+        {
+            get { return helpText; }
+        }
 
-        public bool Hidden { get; private set; }
-
-        public bool IsDefault { get; private set; }
-
-        public string[] Aliases { get; private set; }
+        public bool Hidden
+        {
+            get { return hidden; }
+        }
 
         public static Verb FromAttribute(VerbAttribute attribute)
         {
             return new Verb(
                 attribute.Name,
                 attribute.HelpText,
-                attribute.Hidden,
-                attribute.IsDefault,
-                attribute.Aliases
+                attribute.Hidden
                 );
         }
 

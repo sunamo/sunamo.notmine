@@ -34,11 +34,11 @@ namespace CommandLine.Core
                                      ? TokenizeLongName(arg, onError)
                                      : TokenizeShortName(arg, nameLookup)
                           select token)
-                            .Memoize();
+                            .Memorize();
 
-            var normalized = normalize(tokens).Memoize();
+            var normalized = normalize(tokens).Memorize();
 
-            var unkTokens = (from t in normalized where t.IsName() && nameLookup(t.Text) == NameLookupResult.NoOptionFound select t).Memoize();
+            var unkTokens = (from t in normalized where t.IsName() && nameLookup(t.Text) == NameLookupResult.NoOptionFound select t).Memorize();
 
             return Result.Succeed(normalized.Where(x => !unkTokens.Contains(x)), errors.Concat(from t in unkTokens select new UnknownOptionError(t.Text)));
         }
@@ -50,7 +50,7 @@ namespace CommandLine.Core
             if (arguments.Any(arg => arg.EqualsOrdinal("--")))
             {
                 var tokenizerResult = tokenizer(arguments.TakeWhile(arg => !arg.EqualsOrdinal("--")));
-                var values = arguments.SkipWhile(arg => !arg.EqualsOrdinal("--")).Skip(1).Select(Token.ValueForced);
+                var values = arguments.SkipWhile(arg => !arg.EqualsOrdinal("--")).Skip(1).Select(Token.Value);
                 return tokenizerResult.Map(tokens => tokens.Concat(values));
             }
             return tokenizer(arguments);
@@ -60,12 +60,12 @@ namespace CommandLine.Core
             Result<IEnumerable<Token>, Error> tokenizerResult,
             Func<string, Maybe<char>> optionSequenceWithSeparatorLookup)
         {
-            var tokens = tokenizerResult.SucceededWith().Memoize();
+            var tokens = tokenizerResult.SucceededWith().Memorize();
 
             var replaces = tokens.Select((t, i) =>
                 optionSequenceWithSeparatorLookup(t.Text)
                     .MapValueOrDefault(sep => Tuple.Create(i + 1, sep),
-                        Tuple.Create(-1, '\0'))).SkipWhile(x => x.Item1 < 0).Memoize();
+                        Tuple.Create(-1, '\0'))).SkipWhile(x => x.Item1 < 0).Memorize();
 
             var exploded = tokens.Select((t, i) =>
                         replaces.FirstOrDefault(x => x.Item1 == i).ToMaybe()
@@ -74,7 +74,7 @@ namespace CommandLine.Core
 
             var flattened = exploded.SelectMany(x => x);
 
-            return Result.Succeed(flattened, tokenizerResult.SuccessMessages());
+            return Result.Succeed(flattened, tokenizerResult.SuccessfulMessages());
         }
 
         public static IEnumerable<Token> Normalize(
@@ -135,12 +135,6 @@ namespace CommandLine.Core
             string value,
             Func<string, NameLookupResult> nameLookup)
         {
-            //Allow single dash as a value
-            if (value.Length == 1 && value[0] == '-')
-            {
-                yield return Token.Value(value);
-                yield break;
-            }
             if (value.Length > 1 && value[0] == '-' && value[1] != '-')
             {
                 var text = value.Substring(1);

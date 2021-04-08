@@ -158,12 +158,6 @@ namespace CommandLine.Text
                                         "' (",
                                         string.Join(", ", missingGroupOptionError.Names.Select(n => n.NameText)),
                                         ") is required.");
-                                case ErrorType.GroupOptionAmbiguityError:
-                                    var groupOptionAmbiguityError = (GroupOptionAmbiguityError)error;
-                                    return "Both SetName and Group are not allowed in option: (".JoinTo(groupOptionAmbiguityError.Option.NameText, ")");
-                                case ErrorType.MultipleDefaultVerbsError:
-                                    return MultipleDefaultVerbsError.ErrorMessage;
-
                             }
                             throw new InvalidOperationException();
                         };

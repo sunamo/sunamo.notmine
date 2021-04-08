@@ -28,37 +28,37 @@ namespace CommandLine.Core
 
             var specProps = typeInfo.GetSpecifications(pi => SpecificationProperty.Create(
                     Specification.FromProperty(pi), pi, Maybe.Nothing<object>()))
-                .Memoize();
+                .Memorize();
 
             var specs = from pt in specProps select pt.Specification;
 
             var optionSpecs = specs
                 .ThrowingValidate(SpecificationGuards.Lookup)
                 .OfType<OptionSpecification>()
-                .Memoize();
+                .Memorize();
 
             Func<T> makeDefault = () =>
                 typeof(T).IsMutable()
-                    ? factory.MapValueOrDefault(f => f(), () => Activator.CreateInstance<T>())
+                    ? factory.MapValueOrDefault(f => f(), Activator.CreateInstance<T>())
                     : ReflectionHelper.CreateDefaultImmutableInstance<T>(
                         (from p in specProps select p.Specification.ConversionType).ToArray());
 
             Func<IEnumerable<Error>, ParserResult<T>> notParsed =
                 errs => new NotParsed<T>(makeDefault().GetType().ToTypeInfo(), errs);
 
-            var argumentsList = arguments.Memoize();
+            var argumentsList = arguments.Memorize();
             Func<ParserResult<T>> buildUp = () =>
             {
                 var tokenizerResult = tokenizer(argumentsList, optionSpecs);
 
-                var tokens = tokenizerResult.SucceededWith().Memoize();
+                var tokens = tokenizerResult.SucceededWith().Memorize();
 
                 var partitions = TokenPartitioner.Partition(
                     tokens,
                     name => TypeLookup.FindTypeDescriptorAndSibling(name, optionSpecs, nameComparer));
-                var optionsPartition = partitions.Item1.Memoize();
-                var valuesPartition = partitions.Item2.Memoize();
-                var errorsPartition = partitions.Item3.Memoize();
+                var optionsPartition = partitions.Item1.Memorize();
+                var valuesPartition = partitions.Item2.Memorize();
+                var errorsPartition = partitions.Item3.Memorize();
 
                 var optionSpecPropsResult =
                     OptionMapper.MapValues(
@@ -80,7 +80,7 @@ namespace CommandLine.Core
                                 .FromOptionSpecification());
 
                 var specPropsWithValue =
-                    optionSpecPropsResult.SucceededWith().Concat(valueSpecPropsResult.SucceededWith()).Memoize();
+                    optionSpecPropsResult.SucceededWith().Concat(valueSpecPropsResult.SucceededWith()).Memorize();
 
                 var setPropertyErrors = new List<Error>();
 
@@ -98,13 +98,13 @@ namespace CommandLine.Core
                 var validationErrors = specPropsWithValue.Validate(SpecificationPropertyRules.Lookup(tokens));
 
                 var allErrors =
-                    tokenizerResult.SuccessMessages()
+                    tokenizerResult.SuccessfulMessages()
                         .Concat(missingValueErrors)
-                        .Concat(optionSpecPropsResult.SuccessMessages())
-                        .Concat(valueSpecPropsResult.SuccessMessages())
+                        .Concat(optionSpecPropsResult.SuccessfulMessages())
+                        .Concat(valueSpecPropsResult.SuccessfulMessages())
                         .Concat(validationErrors)
                         .Concat(setPropertyErrors)
-                        .Memoize();
+                        .Memorize();
 
                 var warnings = from e in allErrors where nonFatalErrors.Contains(e.Tag) select e;
 
@@ -115,7 +115,7 @@ namespace CommandLine.Core
                     argumentsList.Any()
                     ? arguments.Preprocess(PreprocessorGuards.Lookup(nameComparer, autoHelp, autoVersion))
                     : Enumerable.Empty<Error>()
-                ).Memoize();
+                ).Memorize();
 
             var result = argumentsList.Any()
                 ? preprocessorErrors.Any()
@@ -128,7 +128,7 @@ namespace CommandLine.Core
 
         private static T BuildMutable<T>(Maybe<Func<T>> factory, IEnumerable<SpecificationProperty> specPropsWithValue, List<Error> setPropertyErrors )
         {
-            var mutable = factory.MapValueOrDefault(f => f(), () => Activator.CreateInstance<T>());
+            var mutable = factory.MapValueOrDefault(f => f(), Activator.CreateInstance<T>());
 
             setPropertyErrors.AddRange(
                 mutable.SetProperties(

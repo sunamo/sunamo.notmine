@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace CommandLine
 {
@@ -75,15 +74,7 @@ namespace CommandLine
         /// <summary>
         /// Value of <see cref="CommandLine.MissingGroupOptionError"/> type.
         /// </summary>
-        MissingGroupOptionError,
-        /// <summary>
-        /// Value of <see cref="CommandLine.GroupOptionAmbiguityError"/> type.
-        /// </summary>
-        GroupOptionAmbiguityError, 
-        /// <summary>
-        /// Value of <see cref="CommandLine.MultipleDefaultVerbsError"/> type.
-        /// </summary>
-        MultipleDefaultVerbsError
+        MissingGroupOptionError
 
     }
 
@@ -541,7 +532,7 @@ namespace CommandLine
         }
     }
 
-    public sealed class MissingGroupOptionError : Error, IEquatable<Error>, IEquatable<MissingGroupOptionError>
+    public sealed class MissingGroupOptionError : Error
     {
         public const string ErrorMessage = "At least one option in a group must have value.";
 
@@ -564,49 +555,5 @@ namespace CommandLine
         {
             get { return names; }
         }
-
-        public new bool Equals(Error obj)
-        {
-            var other = obj as MissingGroupOptionError;
-            if (other != null)
-            {
-                return Equals(other);
-            }
-
-            return base.Equals(obj);
-        }
-
-        public bool Equals(MissingGroupOptionError other)
-        {
-            if (other == null)
-            {
-                return false;
-            }
-
-            return Group.Equals(other.Group) && Names.SequenceEqual(other.Names);
-        }
-    }
-
-    public sealed class GroupOptionAmbiguityError : NamedError
-    {
-        public NameInfo Option;
-
-        internal GroupOptionAmbiguityError(NameInfo option)
-            : base(ErrorType.GroupOptionAmbiguityError, option)
-        {
-            Option = option;
-        }
-    }
-
-    /// <summary>
-    /// Models an error generated when multiple default verbs are defined.
-    /// </summary>
-    public sealed class MultipleDefaultVerbsError : Error
-    {
-        public const string ErrorMessage = "More than one default verb is not allowed.";
-
-        internal MultipleDefaultVerbsError()
-            : base(ErrorType.MultipleDefaultVerbsError)
-        { }
     }
 }

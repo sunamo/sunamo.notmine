@@ -20,6 +20,8 @@ namespace CommandLine
         /// <returns>The same <paramref name="result"/> instance.</returns>
         public static ParserResult<T> WithParsed<T>(this ParserResult<T> result, Action<T> action)
         {
+            //PD.ShowMb("WithParsed");
+
             var parsed = result as Parsed<T>;
             if (parsed != null)
             {

@@ -13,11 +13,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\TypeConverter_my.cs" />
     <Compile Remove="Infrastructure\FSharpOptionHelper.cs" />
+    <Compile Remove="ParserResult_my.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj" />
   </ItemGroup>
 
 </Project>

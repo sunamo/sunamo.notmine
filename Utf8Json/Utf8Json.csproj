@@ -68,10 +68,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\sunamoWithoutDep\SunamoExceptions\SunamoExceptions.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
         <None Update="Formatters\PrimitiveFormatter.tt">
             <Generator>TextTemplatingFileGenerator</Generator>
             <LastGenOutput>PrimitiveFormatter.cs</LastGenOutput>
