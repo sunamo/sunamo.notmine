@@ -331,4 +331,3 @@ namespace Utf8Json.Resolvers.Internal
         }
     }
 }
-

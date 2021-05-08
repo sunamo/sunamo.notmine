@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using FubuCore.Util;
 
 namespace FubuCore.Binding

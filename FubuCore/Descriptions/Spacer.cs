@@ -1,4 +1,4 @@
-namespace FubuCore.Descriptions
+﻿namespace FubuCore.Descriptions
 {
     public class Spacer : IPrefixSource
     {

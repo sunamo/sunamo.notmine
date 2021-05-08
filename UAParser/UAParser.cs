@@ -1,4 +1,4 @@
-#region Apache License, Version 2.0
+﻿#region Apache License, Version 2.0
 //
 // Copyright 2014 Atif Aziz
 // Portions Copyright 2012 Søren Enemærke

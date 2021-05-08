@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using FubuCore.Binding.InMemory;
 using FubuCore.Binding.Values;
 

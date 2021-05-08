@@ -1,4 +1,4 @@
-using FubuCore.Descriptions;
+﻿using FubuCore.Descriptions;
 
 namespace FubuCore.Conversion
 {

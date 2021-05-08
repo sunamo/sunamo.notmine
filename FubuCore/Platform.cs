@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace FubuCore
 {
@@ -24,4 +24,3 @@ namespace FubuCore
 
 	}
 }
-

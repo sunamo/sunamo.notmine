@@ -1,4 +1,4 @@
-namespace FubuCore.Logging
+﻿namespace FubuCore.Logging
 {
     public class StringMessage : LogRecord
     {

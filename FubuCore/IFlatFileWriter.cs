@@ -1,4 +1,4 @@
-namespace FubuCore
+﻿namespace FubuCore
 {
     public interface IFlatFileWriter
     {

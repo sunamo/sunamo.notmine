@@ -1,4 +1,4 @@
-namespace FubuCore.Configuration
+﻿namespace FubuCore.Configuration
 {
     public enum SettingCategory
     {

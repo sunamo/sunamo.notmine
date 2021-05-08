@@ -1,4 +1,4 @@
-namespace EverythingNet.Query
+﻿namespace EverythingNet.Query
 {
   using System;
   using System.Collections.Generic;

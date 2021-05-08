@@ -1,4 +1,4 @@
-namespace FubuCore.Binding.Logging
+﻿namespace FubuCore.Binding.Logging
 {
     public interface IBindingReportVisitor
     {

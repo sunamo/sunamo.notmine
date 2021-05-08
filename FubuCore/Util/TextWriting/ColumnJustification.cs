@@ -1,4 +1,4 @@
-namespace FubuCore.Util.TextWriting
+﻿namespace FubuCore.Util.TextWriting
 {
     public enum ColumnJustification
     {

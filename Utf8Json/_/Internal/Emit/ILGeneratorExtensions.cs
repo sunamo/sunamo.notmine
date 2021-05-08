@@ -375,4 +375,3 @@ namespace Utf8Json.Internal.Emit
         }
     }
 }
-

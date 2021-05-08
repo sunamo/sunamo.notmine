@@ -1,4 +1,4 @@
-namespace FubuCore.Binding.Values
+﻿namespace FubuCore.Binding.Values
 {
     public class DiagnosticValueSource
     {

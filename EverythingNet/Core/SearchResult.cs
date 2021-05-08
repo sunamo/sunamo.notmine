@@ -1,4 +1,4 @@
-namespace EverythingNet.Core
+﻿namespace EverythingNet.Core
 {
   using System;
   using System.IO;

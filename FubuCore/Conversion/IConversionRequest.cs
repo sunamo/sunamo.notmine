@@ -1,4 +1,4 @@
-namespace FubuCore.Conversion
+﻿namespace FubuCore.Conversion
 {
     public interface IConversionRequest
     {

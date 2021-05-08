@@ -1,4 +1,4 @@
-namespace FubuCore.Csv
+﻿namespace FubuCore.Csv
 {
     public interface ICsvReader
     {

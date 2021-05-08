@@ -1,4 +1,4 @@
-using FubuCore.Reflection;
+﻿using FubuCore.Reflection;
 
 namespace FubuCore.Formatting
 {
