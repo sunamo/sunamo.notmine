@@ -25,7 +25,7 @@
     Gigantic
   }
 
-  internal class SizeQueryable : Queryable, ISizeQueryable
+  public class SizeQueryable : Queryable, ISizeQueryable
   {
     private ISizeRef sizeRef;
 

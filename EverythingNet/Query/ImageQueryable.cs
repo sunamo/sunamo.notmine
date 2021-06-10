@@ -4,7 +4,7 @@
 
   using EverythingNet.Interfaces;
 
-  internal class ImageQueryable : Queryable, IImageQueryable
+  public class ImageQueryable : Queryable, IImageQueryable
   {
     private string pattern;
 

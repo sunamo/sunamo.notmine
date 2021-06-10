@@ -82,7 +82,7 @@ namespace CommandLine
             return new UnParserSettings { UseEqualToken = true };
         }
 
-        internal bool Consumed { get; set; }
+        public bool Consumed { get; set; }
     }
 
     /// <summary>

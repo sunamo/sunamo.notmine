@@ -5,7 +5,7 @@
   using EverythingNet.Core;
   using EverythingNet.Interfaces;
 
-  internal class FileQueryable : Queryable, IFileQueryable
+  public class FileQueryable : Queryable, IFileQueryable
   {
     private const string AudioExt = "aac;ac3;aif;aifc;aiff;au;cda;dts;fla;flac;it;m1a;m2a;m3u;m4a;mid;midi;mka;mod;mp2;mp3;mpa;ogg;ra;rmi;spc;rmi;snd;umx;voc;wav;wma;xm";
     private const string ZipExt = "7z;ace;arj;bz2;cab;gz;gzip;jar;r00;r01;r02;r03;r04;r05;r06;r07;r08;r09;r10;r11;r12;r13;r14;r15;r16;r17;r18;r19;r20;r21;r22;r23;r24;r25;r26;r27;r28;r29;rar;tar;tgz;z;zip";

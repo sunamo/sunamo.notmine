@@ -4,7 +4,7 @@
 
   using EverythingNet.Interfaces;
 
-  internal class LogicalQuery : Query
+  public class LogicalQuery : Query
   {
     private readonly string logicalOperator;
 

@@ -55,7 +55,7 @@
     void Reset();
   }
 
-  internal interface IEverythingInternal : IEverything
+  public interface IEverythingInternal : IEverything
   {
     long Count { get; }
 

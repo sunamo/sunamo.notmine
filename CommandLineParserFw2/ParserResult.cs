@@ -27,12 +27,12 @@ namespace CommandLine
             get { return this.choices; }
         }
 
-        internal static TypeInfo Create(Type current)
+        public static TypeInfo Create(Type current)
         {
             return new TypeInfo(current, Enumerable.Empty<Type>());
         }
 
-        internal static TypeInfo Create(Type current, IEnumerable<Type> choices)
+        public static TypeInfo Create(Type current, IEnumerable<Type> choices)
         {
             return new TypeInfo(current, choices);
         }
@@ -64,7 +64,7 @@ namespace CommandLine
         private readonly ParserResultType tag;
         private readonly TypeInfo typeInfo;
 
-        internal ParserResult(ParserResultType tag, TypeInfo typeInfo)
+        public ParserResult(ParserResultType tag, TypeInfo typeInfo)
         {
             this.tag = tag;
             this.typeInfo = typeInfo;
@@ -92,13 +92,13 @@ namespace CommandLine
     {
         private readonly T value;
 
-        internal Parsed(T value, TypeInfo typeInfo)
+        public Parsed(T value, TypeInfo typeInfo)
             : base(ParserResultType.Parsed, typeInfo)
         {
             this.value = value;
         }
 
-        internal Parsed(T value)
+        public Parsed(T value)
             : this(value, TypeInfo.Create(value.GetType()))
         {
         }
@@ -161,7 +161,7 @@ namespace CommandLine
     {
         private readonly IEnumerable<Error> errors;
 
-        internal NotParsed(TypeInfo typeInfo, IEnumerable<Error> errors)
+        public NotParsed(TypeInfo typeInfo, IEnumerable<Error> errors)
             : base(ParserResultType.NotParsed, typeInfo)
         {
             this.errors = errors;

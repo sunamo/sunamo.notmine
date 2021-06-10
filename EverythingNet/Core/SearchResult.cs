@@ -6,7 +6,7 @@
 
   using EverythingNet.Interfaces;
 
-  internal class SearchResult : ISearchResult
+  public class SearchResult : ISearchResult
   {
     private delegate bool MyDelegate(uint index, out long date);
 

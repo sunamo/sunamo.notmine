@@ -163,7 +163,7 @@ namespace CommandLine
             set { maximumDisplayWidth = value; }
         }
 
-        internal StringComparer NameComparer
+        public StringComparer NameComparer
         {
             get
             {
@@ -173,7 +173,7 @@ namespace CommandLine
             }
         }
 
-        internal bool Consumed { get; set; }
+        public bool Consumed { get; set; }
 
         /// <summary>
         /// Frees resources owned by the instance.

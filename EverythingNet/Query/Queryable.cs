@@ -8,7 +8,7 @@
 
   using IQueryable = Interfaces.IQueryable;
 
-  internal abstract class Queryable : IQueryable, IQueryGenerator
+  public abstract class Queryable : IQueryable, IQueryGenerator
   {
     private readonly IEverythingInternal everything;
     private IQueryGenerator parent;
@@ -71,7 +71,7 @@
       return text;
     }
 
-    internal void SetParent(IQueryGenerator onTheFlyparent)
+    public void SetParent(IQueryGenerator onTheFlyparent)
     {
       this.parent = onTheFlyparent;
     }

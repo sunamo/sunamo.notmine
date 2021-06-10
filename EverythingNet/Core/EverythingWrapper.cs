@@ -5,7 +5,7 @@
   using System.Text;
   using System.Threading;
 
-  internal class EverythingWrapper
+  public class EverythingWrapper
   {
     private static readonly ReaderWriterLockSlim locker = new ReaderWriterLockSlim();
 
@@ -51,7 +51,7 @@
     }
 
 
-  internal static IDisposable Lock()
+  public static IDisposable Lock()
     {
       return new Locker(locker);
     }

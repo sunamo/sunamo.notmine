@@ -44,7 +44,7 @@ namespace CommandLine
             settings.Consumed = true;
         }
 
-        internal Parser(ParserSettings settings)
+        public Parser(ParserSettings settings)
         {
             this.settings = settings;
             this.settings.Consumed = true;

@@ -164,7 +164,7 @@ namespace UAParser
         }
     }
 
-    internal static class VersionString
+    public static class VersionString
     {
         public static string Format(params string[] parts)
         {
@@ -373,7 +373,7 @@ namespace UAParser
         {
             private readonly ParserOptions _options;
 
-            internal Config(ParserOptions options)
+            public Config(ParserOptions options)
             {
                 _options = options;
             }
@@ -606,7 +606,7 @@ namespace UAParser
         }
     }
 
-    internal static class RegexBinderBuilder
+    public static class RegexBinderBuilder
     {
         public static Func<Match, IEnumerator<int>, TResult> SelectMany<T1, T2, TResult>(
             this Func<Match, IEnumerator<int>, T1> binder,
@@ -623,7 +623,7 @@ namespace UAParser
         }
     }
 
-    internal static class StringExtensions
+    public static class StringExtensions
     {
         public static string ReplaceFirstOccurence(this string input, string search, string replacement)
         {
@@ -635,7 +635,7 @@ namespace UAParser
         }
     }
 
-    internal static class DictionaryExtensions
+    public static class DictionaryExtensions
     {
         public static TValue Find<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
         {
@@ -649,9 +649,9 @@ namespace UAParser
     /// dependency on large Yaml parsing lib. Note that a unittest ensures compatibility
     /// by ensuring regexes and properties are read similar to using the full yaml lib
     /// </summary>
-    internal class MinimalYamlParser
+    public class MinimalYamlParser
     {
-        internal class Mapping
+        public class Mapping
         {
             private Dictionary<string, string> _lastEntry;
 
@@ -681,7 +681,7 @@ namespace UAParser
             ReadIntoMappingModel(yamlString);
         }
 
-        internal IDictionary<string, Mapping> Mappings => _mappings;
+        public IDictionary<string, Mapping> Mappings => _mappings;
 
         private void ReadIntoMappingModel(string yamlInputString)
         {

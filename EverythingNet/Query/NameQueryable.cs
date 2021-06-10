@@ -6,7 +6,7 @@
 
   using EverythingNet.Interfaces;
 
-  internal class NameQueryable : Queryable, INameQueryable
+  public class NameQueryable : Queryable, INameQueryable
   {
     private string pattern;
     private string startWith;

@@ -4,7 +4,7 @@
 
   using EverythingNet.Interfaces;
 
-  internal class MusicQueryable : Queryable, IMusicQueryable
+  public class MusicQueryable : Queryable, IMusicQueryable
   {
     private string artistPattern;
     private string genrePattern;

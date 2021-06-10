@@ -101,7 +101,7 @@ namespace CommandLine
         /// </summary>
         /// <param name="tag">Type discriminator tag.</param>
         /// <param name="stopsProcessing">Tells if error stops parsing process.</param>
-        protected internal Error(ErrorType tag, bool stopsProcessing)
+        protected public Error(ErrorType tag, bool stopsProcessing)
         {
             this.tag = tag;
             this.stopsProcessing = stopsProcessing;
@@ -111,7 +111,7 @@ namespace CommandLine
         /// Initializes a new instance of the <see cref="CommandLine.Error"/> class.
         /// </summary>
         /// <param name="tag">Type discriminator tag.</param>
-        protected internal Error(ErrorType tag)
+        protected public Error(ErrorType tag)
             : this(tag, false)
         {
         }
@@ -186,7 +186,7 @@ namespace CommandLine
         /// </summary>
         /// <param name="tag">Error type.</param>
         /// <param name="token">Problematic token.</param>
-        protected internal TokenError(ErrorType tag, string token)
+        protected public TokenError(ErrorType tag, string token)
             : base(tag)
         {
             if (token == null) throw new ArgumentNullException("token");
@@ -248,7 +248,7 @@ namespace CommandLine
     /// </summary>
     public sealed class BadFormatTokenError : TokenError
     {
-        internal BadFormatTokenError(string token)
+        public BadFormatTokenError(string token)
             : base(ErrorType.BadFormatTokenError, token)
         {
         }
@@ -267,7 +267,7 @@ namespace CommandLine
         /// <param name="tag">Error type.</param>
         /// <param name="nameInfo">Problematic name.</param>
 
-        protected internal NamedError(ErrorType tag, NameInfo nameInfo)
+        protected public NamedError(ErrorType tag, NameInfo nameInfo)
             : base(tag)
         {
             this.nameInfo = nameInfo;
@@ -327,7 +327,7 @@ namespace CommandLine
     /// </summary>
     public sealed class MissingValueOptionError : NamedError
     {
-        internal MissingValueOptionError(NameInfo nameInfo)
+        public MissingValueOptionError(NameInfo nameInfo)
             : base(ErrorType.MissingValueOptionError, nameInfo)
         {
         }
@@ -338,7 +338,7 @@ namespace CommandLine
     /// </summary>
     public sealed class UnknownOptionError : TokenError
     {
-        internal UnknownOptionError(string token)
+        public UnknownOptionError(string token)
             : base(ErrorType.UnknownOptionError, token)
         {
         }
@@ -349,7 +349,7 @@ namespace CommandLine
     /// </summary>
     public sealed class MissingRequiredOptionError : NamedError
     {
-        internal MissingRequiredOptionError(NameInfo nameInfo)
+        public MissingRequiredOptionError(NameInfo nameInfo)
             : base(ErrorType.MissingRequiredOptionError, nameInfo)
         {
         }
@@ -362,7 +362,7 @@ namespace CommandLine
     {
         private readonly string setName;
 
-        internal MutuallyExclusiveSetError(NameInfo nameInfo, string setName)
+        public MutuallyExclusiveSetError(NameInfo nameInfo, string setName)
             : base(ErrorType.MutuallyExclusiveSetError, nameInfo)
         {
             this.setName = setName;
@@ -382,7 +382,7 @@ namespace CommandLine
     /// </summary>
     public sealed class BadFormatConversionError : NamedError
     {
-        internal BadFormatConversionError(NameInfo nameInfo)
+        public BadFormatConversionError(NameInfo nameInfo)
             : base(ErrorType.BadFormatConversionError, nameInfo)
         {
         }
@@ -393,7 +393,7 @@ namespace CommandLine
     /// </summary>
     public sealed class SequenceOutOfRangeError : NamedError
     {
-        internal SequenceOutOfRangeError(NameInfo nameInfo)
+        public SequenceOutOfRangeError(NameInfo nameInfo)
             : base(ErrorType.SequenceOutOfRangeError, nameInfo)
         {
         }
@@ -404,7 +404,7 @@ namespace CommandLine
     /// </summary>
     public sealed class RepeatedOptionError : NamedError
     {
-        internal RepeatedOptionError(NameInfo nameInfo)
+        public RepeatedOptionError(NameInfo nameInfo)
             : base(ErrorType.RepeatedOptionError, nameInfo)
         {
         }
@@ -415,7 +415,7 @@ namespace CommandLine
     /// </summary>
     public sealed class BadVerbSelectedError : TokenError
     {
-        internal BadVerbSelectedError(string token)
+        public BadVerbSelectedError(string token)
             : base(ErrorType.BadVerbSelectedError, token)
         {
         }
@@ -426,7 +426,7 @@ namespace CommandLine
     /// </summary>
     public sealed class HelpRequestedError : Error
     {
-        internal HelpRequestedError()
+        public HelpRequestedError()
             : base(ErrorType.HelpRequestedError, true)
         {
         }
@@ -441,7 +441,7 @@ namespace CommandLine
         private readonly Type type;
         private readonly bool matched;
 
-        internal HelpVerbRequestedError(string verb, Type type, bool matched)
+        public HelpVerbRequestedError(string verb, Type type, bool matched)
             : base(ErrorType.HelpVerbRequestedError, true)
         {
             this.verb = verb;
@@ -479,7 +479,7 @@ namespace CommandLine
     /// </summary>
     public sealed class NoVerbSelectedError : Error
     {
-        internal NoVerbSelectedError()
+        public NoVerbSelectedError()
             : base(ErrorType.NoVerbSelectedError)
         {
         }
@@ -490,7 +490,7 @@ namespace CommandLine
     /// </summary>
     public sealed class VersionRequestedError : Error
     {
-        internal VersionRequestedError()
+        public VersionRequestedError()
             : base(ErrorType.VersionRequestedError, true)
         {
         }
@@ -504,7 +504,7 @@ namespace CommandLine
         private readonly Exception exception;
         private readonly object value;
 
-        internal SetValueExceptionError(NameInfo nameInfo, Exception exception, object value)
+        public SetValueExceptionError(NameInfo nameInfo, Exception exception, object value)
             : base(ErrorType.SetValueExceptionError, nameInfo)
         {
             this.exception = exception;
@@ -535,7 +535,7 @@ namespace CommandLine
     {
         public const string ErrorMessage = "Check if Option or Value attribute values are set properly for the given type.";
 
-        internal InvalidAttributeConfigurationError()
+        public InvalidAttributeConfigurationError()
             : base(ErrorType.InvalidAttributeConfigurationError, true)
         {
         }
@@ -548,7 +548,7 @@ namespace CommandLine
         private readonly string group;
         private readonly IEnumerable<NameInfo> names;
 
-        internal MissingGroupOptionError(string group, IEnumerable<NameInfo> names)
+        public MissingGroupOptionError(string group, IEnumerable<NameInfo> names)
             : base(ErrorType.MissingGroupOptionError)
         {
             this.group = group;
@@ -591,7 +591,7 @@ namespace CommandLine
     {
         public NameInfo Option;
 
-        internal GroupOptionAmbiguityError(NameInfo option)
+        public GroupOptionAmbiguityError(NameInfo option)
             : base(ErrorType.GroupOptionAmbiguityError, option)
         {
             Option = option;
@@ -605,7 +605,7 @@ namespace CommandLine
     {
         public const string ErrorMessage = "More than one default verb is not allowed.";
 
-        internal MultipleDefaultVerbsError()
+        public MultipleDefaultVerbsError()
             : base(ErrorType.MultipleDefaultVerbsError)
         { }
     }

@@ -57,7 +57,7 @@ namespace FubuCore.Formatting
 
         // Yes, I made this internal.  Don't necessarily want it in the public interface,
         // but needs to be "settable"
-        internal IServiceLocator Locator { get { return _locator; } set { _locator = value; } }
+        public IServiceLocator Locator { get { return _locator; } set { _locator = value; } }
 
         public Type OwnerType { get; set; }
 

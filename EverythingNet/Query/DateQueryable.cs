@@ -6,11 +6,11 @@
   using EverythingNet.Core;
   using EverythingNet.Interfaces;
 
-  internal class DateQueryable : Queryable, IDateQueryable
+  public class DateQueryable : Queryable, IDateQueryable
   {
     private string searchPattern;
 
-    internal DateQueryable(IEverythingInternal everything, IQueryGenerator parent, string kind)
+    public DateQueryable(IEverythingInternal everything, IQueryGenerator parent, string kind)
       : base(everything, parent)
     {
       this.searchPattern = kind;

@@ -7,7 +7,7 @@
 
   using IQueryable = Interfaces.IQueryable;
 
-  internal class Query : IQuery, IQueryGenerator
+  public class Query : IQuery, IQueryGenerator
   {
     private readonly IEverythingInternal everything;
     private readonly IQueryGenerator parent;

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CommandLine.Infrastructure
 {
-    internal class LocalizableAttributeProperty
+    public class LocalizableAttributeProperty
     {
         private string _propertyName;
         private string _value;

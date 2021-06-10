@@ -320,7 +320,7 @@ namespace FubuCore.Reflection
     /// Provides virtual methods that can be used by subclasses to parse an expression tree.
     /// </summary>
     /// <remarks>
-    /// This class actually already exists in the System.Core assembly...as an internal class.
+    /// This class actually already exists in the System.Core assembly...as an public class.
     /// I can only speculate as to why it is internal, but it is obviously much too dangerous
     /// for anyone outside of Microsoft to be using...
     /// </remarks>

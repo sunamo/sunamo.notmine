@@ -18,7 +18,7 @@ namespace CommandLine
         private readonly string longName;
         private readonly string shortName;
 
-        internal NameInfo(string shortName, string longName)
+        public NameInfo(string shortName, string longName)
         {
             if (shortName == null) throw new ArgumentNullException("shortName");
             if (longName == null) throw new ArgumentNullException("longName");

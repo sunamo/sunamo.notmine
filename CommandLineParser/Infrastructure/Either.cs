@@ -61,7 +61,7 @@ namespace CSharpx
     {
         private readonly TLeft value;
 
-        internal Left(TLeft value)
+        public Left(TLeft value)
             : base(EitherType.Left)
         {
             this.value = value;
@@ -80,7 +80,7 @@ namespace CSharpx
     {
         private readonly TRight value;
 
-        internal Right(TRight value)
+        public Right(TRight value)
             : base(EitherType.Right)
         {
             this.value = value;

@@ -7,6 +7,6 @@ namespace CommandLine
     /// </summary>
     public sealed class NullInstance
     {
-        internal NullInstance() { }
+        public NullInstance() { }
     }
 }

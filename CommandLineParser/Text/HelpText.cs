@@ -790,7 +790,7 @@ namespace CommandLine.Text
             return result.ToString();
         }
 
-        internal static void AddLine(StringBuilder builder, string value, int maximumLength)
+        public static void AddLine(StringBuilder builder, string value, int maximumLength)
         {
             if (builder == null)
             {

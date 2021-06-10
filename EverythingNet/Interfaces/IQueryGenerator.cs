@@ -2,7 +2,7 @@
 {
   using System.Collections.Generic;
 
-  internal interface IQueryGenerator
+  public interface IQueryGenerator
   {
     RequestFlags Flags { get; }
 

@@ -70,7 +70,7 @@ namespace CSharpx
 #endif
         sealed class Nothing<T> : Maybe<T>
     {
-        internal Nothing()
+        public Nothing()
             : base(MaybeType.Nothing)
         {
         }
@@ -86,7 +86,7 @@ namespace CSharpx
     {
         private readonly T value;
 
-        internal Just(T value)
+        public Just(T value)
             : base(MaybeType.Just)
         {
             this.value = value;
