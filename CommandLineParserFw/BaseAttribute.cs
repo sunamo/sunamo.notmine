@@ -19,7 +19,7 @@ namespace CommandLine
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandLine.BaseAttribute"/> class.
         /// </summary>
-        protected public BaseAttribute()
+        protected BaseAttribute()
         {
             min = -1;
             max = -1;

@@ -99,27 +99,27 @@ namespace FubuCore.Binding.InMemory
                 _services.Add<IObjectResolver>(new ObjectResolver(_services, _registry, _logger));
             }
 
-            protected public InMemoryBindingHistory History
+            protected InMemoryBindingHistory History
             {
                 get { return _history; }
             }
 
-            protected public RecordingBindingLogger Logger
+            protected RecordingBindingLogger Logger
             {
                 get { return _logger; }
             }
 
-            protected public IRequestData RequestData
+            protected IRequestData RequestData
             {
                 get { return new RequestData(new FlatValueSource(_data)); }
             }
 
-            protected public IServiceLocator Services
+            protected IServiceLocator Services
             {
                 get { return _customServices ?? _services; }
             }
 
-            protected public IEnumerable<Action<IBindingContext>> Actions
+            protected IEnumerable<Action<IBindingContext>> Actions
             {
                 get
                 {

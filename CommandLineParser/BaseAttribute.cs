@@ -19,7 +19,7 @@ namespace CommandLine
         /// <summary>
         /// Initializes a new instance of the <see cref="CommandLine.BaseAttribute"/> class.
         /// </summary>
-        protected public BaseAttribute()
+        protected BaseAttribute()
         {
             min = -1;
             max = -1;
@@ -30,7 +30,7 @@ namespace CommandLine
 
         /// <summary>
         /// Gets or sets a value indicating whether a command line option is required.
-        /// </summary>
+        /// </summary>5
         public bool Required
         {
             get;
